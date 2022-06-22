@@ -1,0 +1,63 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  width: 100%;
+  height: 96px;
+  padding: 0 104px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+
+  .presale {
+    font-weight: 300;
+    font-size: 32px;
+  }
+
+  .buttons_block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .basket_btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 36px;
+
+      .icon {
+        color: $grey;
+        width: 26px;
+        height: 26px;
+      }
+
+      &:hover {
+        .icon {
+          @extend .icon;
+          color: $black;
+        }
+      }
+    }
+
+    .info_btn {
+      @extend .basket_btn;
+      margin-right: 0;
+
+      .icon {
+        @extend .icon;
+        width: 32px;
+        height: 32px;
+      }
+
+      &:hover {
+        .icon {
+          @extend .icon;
+          color: $black;
+        }
+      }
+    }
+  }
+}

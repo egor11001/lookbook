@@ -1,0 +1,104 @@
+@import '../variables';
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@font-face {
+  // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
+  font-family: 'Helvetica';
+  // адрес шрифта и тип
+  src: url('./helvetica_regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+}
+@font-face {
+  // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
+  font-family: 'Helvetica';
+  // адрес шрифта и тип
+  src: url('./helvetica_bold.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 600;
+}
+@font-face {
+  // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
+  font-family: 'Helvetica';
+  // адрес шрифта и тип
+  src: url('./helvetica_light.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 200;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  box-sizing: border-box;
+  outline: none;
+  font-family: 'TeX Gyre Heros', 'Roboto';
+}
+
+body {
+  font-family: 'TeX Gyre Heros', 'Roboto';
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #ffffff;
+}
+
+a,
+span,
+p,
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+hr,
+button,
+input {
+  margin: 0;
+  padding: 0;
+  color: $black;
+}
+
+button,
+button:focus {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  padding: 0;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input:focus,
+input {
+  outline: none;
+  border: none;
+}
+
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+@mixin noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Opera and Firefox */
+}
