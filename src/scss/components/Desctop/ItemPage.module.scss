@@ -1,0 +1,157 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 72px;
+  display: flex;
+  padding: 0 0 0 104px;
+  min-height: 960px;
+  max-height: 100%;
+
+  .photos_block {
+    width: 624px;
+  }
+
+  .back {
+    width: 100px;
+    height: 100px;
+    margin-right: 80px;
+
+    .back_icon {
+      width: 48px;
+      height: 48px;
+      color: $pink;
+    }
+  }
+
+  .photos_block {
+    width: 624px;
+    height: 760px;
+    margin-right: 120px;
+
+    @media (max-width: 1600px) {
+      margin-right: 60px;
+    }
+
+    @media (max-width: 1500px) {
+      margin-right: 0;
+    }
+
+    .swiper {
+      .slide {
+        .photo {
+          object-fit: cover;
+          width: 624px;
+          height: 760px;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    .desc {
+      font-weight: 400;
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+
+    .price {
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 88px;
+    }
+
+    .sizes {
+      display: flex;
+      align-items: center;
+
+      .modal_btn {
+        margin-left: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 8px;
+        font-weight: 400;
+        font-size: 16px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .buy {
+      margin-top: 50px;
+      font-weight: 400;
+      font-size: 16px;
+      border: 2px solid #525050;
+      border-radius: 5px;
+      background: $grey;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 0;
+      width: 336px;
+      color: white;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: $black;
+        border: 2px solid $black;
+        transition: 0.2s;
+      }
+    }
+
+    .info_block {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+
+      .buttons {
+        display: flex;
+        align-items: center;
+        margin-bottom: 32px;
+
+        .info_btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 184px;
+          padding: 16px 0;
+          border-bottom: 2px solid $light;
+          margin-right: 36px;
+          font-weight: 600;
+          font-size: 16px;
+          color: $light;
+
+          &:nth-last-of-type(1) {
+            margin-right: 0;
+          }
+
+          &_active {
+            @extend .info_btn;
+            border-bottom: 2px solid $black;
+            color: $black;
+          }
+        }
+      }
+
+      .info {
+        width: 630px;
+        font-weight: 400;
+        font-size: 16px;
+      }
+    }
+  }
+}

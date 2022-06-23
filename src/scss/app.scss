@@ -11,22 +11,73 @@
   color: $grey;
 }
 
-.swiper-slide,
-.swiper-slide-active,
-.swiper-slide-duplicate-prev,
-.swiper-slide-duplicate {
-  opacity: 0.5;
+#MainPage {
+  .swiper-slide,
+  .swiper-slide-active,
+  .swiper-slide-duplicate-prev,
+  .swiper-slide-duplicate {
+    opacity: 0.5;
 
-  &:hover {
-    opacity: 0.8;
-    transition: 1.5s;
+    &:hover {
+      opacity: 0.8;
+      transition: 1.5s;
+    }
+  }
+
+  .swiper-slide-next {
+    opacity: 1;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 
-.swiper-slide-next {
-  opacity: 1;
+#ItemPage {
+  .swiper-horizontal > .swiper-pagination-bullets,
+  .swiper-pagination-bullets.swiper-pagination-horizontal,
+  .swiper-pagination-custom,
+  .swiper-pagination-fraction {
+    bottom: 24px;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: white;
+    opacity: 1;
+    width: 10px;
+    height: 10px;
+    border: 1px solid $light;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: $pink !important;
+  }
+}
+
+.modal_close {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 1px solid $black;
+  align-self: flex-start;
+  position: absolute;
+  right: 50px;
+  top: 40px;
+
+  .close_icon {
+    width: 24px;
+    height: 24px;
+    color: $black;
+  }
 
   &:hover {
-    opacity: 1;
+    background-color: $black;
+
+    .close_icon {
+      @extend .close_icon;
+      color: white;
+    }
   }
 }
