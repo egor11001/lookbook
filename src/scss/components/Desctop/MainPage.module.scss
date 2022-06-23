@@ -22,14 +22,19 @@
     margin-top: 48px;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     .swiper {
-      width: 1400px;
       overflow: hidden;
       display: flex;
+      width: 1400px;
+
+      @media (max-width: 1700px) {
+        width: fit-content;
+      }
 
       .slide {
-        width: 440px !important;
+        width: fit-content;
         height: 668px;
         display: flex;
         flex-direction: column;
