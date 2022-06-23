@@ -1,0 +1,99 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 32px 175px 96px 104px;
+
+  .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .block {
+      display: flex;
+      align-items: center;
+
+      .back {
+        width: 100px;
+        height: 100px;
+        margin-right: 80px;
+
+        .back_icon {
+          width: 48px;
+          height: 48px;
+          color: $pink;
+        }
+      }
+
+      .title {
+        font-weight: 600;
+        font-size: 24px;
+      }
+    }
+
+    .counts {
+      font-weight: 400;
+      font-size: 20px;
+
+      span {
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+
+    .total_price {
+      font-weight: 600;
+      font-size: 24px;
+
+      span {
+        font-weight: 600;
+        font-size: 24px;
+        margin-left: 32px;
+      }
+    }
+  }
+
+  .content {
+    width: fit-content;
+    height: 600px;
+    margin-top: 24px;
+    overflow-y: scroll;
+    padding-right: 24px;
+    margin-left: 24px;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 10px !important;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+      border-radius: 10px;
+      background-clip: content-box;
+      margin-left: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $light;
+      border-radius: 10px;
+    }
+  }
+
+  .submit {
+    margin-top: 16px;
+    padding: 16px 32px;
+    background-color: $grey;
+    color: white;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 10px;
+
+    &:hover {
+      background-color: $black;
+    }
+  }
+}
