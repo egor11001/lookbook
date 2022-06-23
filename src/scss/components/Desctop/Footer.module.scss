@@ -17,11 +17,13 @@
   .links_block {
     margin-left: 40px;
     width: fit-content;
+
     ul {
       display: flex;
       flex-wrap: wrap;
-      width: 890px;
+      width: 910px;
       align-items: center;
+      justify-content: flex-start;
 
       @media (max-width: 1460px) {
         width: fit-content;
