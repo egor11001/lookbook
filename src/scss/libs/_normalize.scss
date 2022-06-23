@@ -93,6 +93,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  pointer-events: none;
+}
+
 @mixin noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none; /* Safari */
