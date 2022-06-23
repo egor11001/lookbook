@@ -40,7 +40,7 @@ const SizesModal = ({ visible, setVisible }) => {
         <button className="modal_close" onClick={handleClose}>
           <CloseIcon className="close_icon" />
         </button>
-        <img src={SizeImg} alt="sizes" />
+        <img className="sizes_img" src={SizeImg} alt="sizes" />
       </Box>
     </Modal>
   );
