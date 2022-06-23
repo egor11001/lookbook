@@ -10,8 +10,8 @@
   min-height: 960px;
   max-height: 100%;
 
-  .photos_block {
-    width: 624px;
+  @media (max-width: 1500px) {
+    padding-left: 40px;
   }
 
   .back {
@@ -39,12 +39,23 @@
       margin-right: 0;
     }
 
+    @media (max-width: 1482px) {
+      width: 364px;
+      height: 500px;
+      margin-right: 60px;
+    }
+
     .swiper {
       .slide {
         .photo {
           object-fit: cover;
           width: 624px;
           height: 760px;
+
+          @media (max-width: 1482px) {
+            width: 364px;
+            height: 500px;
+          }
         }
       }
     }
