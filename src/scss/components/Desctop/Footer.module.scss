@@ -10,13 +10,22 @@
   padding: 0 120px;
   background-color: #000000;
 
+  @media (max-width: 1460px) {
+    padding: 0 80px;
+  }
+
   .links_block {
-    margin-left: 60px;
+    margin-left: 40px;
+    width: fit-content;
     ul {
       display: flex;
       flex-wrap: wrap;
       width: 890px;
       align-items: center;
+
+      @media (max-width: 1460px) {
+        width: fit-content;
+      }
 
       li {
         width: 200px;
@@ -31,12 +40,23 @@
         &:nth-of-type(4) {
           width: fit-content;
         }
+        @media (max-width: 1460px) {
+          width: 188px;
+        }
+
+        @media (max-width: 1221px) {
+          width: 160px;
+        }
 
         .link {
           font-weight: 200;
           font-size: 20px;
           color: white;
           text-decoration: none;
+
+          @media (max-width: 1460px) {
+            font-size: 16px;
+          }
         }
       }
     }
@@ -54,6 +74,10 @@
 
     &:hover {
       text-decoration: underline;
+    }
+
+    @media (max-width: 1460px) {
+      font-size: 16px;
     }
   }
 
