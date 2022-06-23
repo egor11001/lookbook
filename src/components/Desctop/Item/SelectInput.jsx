@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import OutsideClickHandler from 'react-outside-click-handler';
 
 import styles from '../../../scss/components/Desctop/Select.module.scss';
-
-const optionsItems = ['S', 'M', 'L', 'XL'];
 
 const Dropdown = ({ options, handleChangeOption }) => {
   return (
@@ -18,9 +16,9 @@ const Dropdown = ({ options, handleChangeOption }) => {
   );
 };
 
-const SelectInput = () => {
+const SelectInput = ({ values, defaultValue }) => {
   const [value, setValue] = useState(null);
-  const [options, setOptions] = useState(optionsItems);
+  const [options, setOptions] = useState(values);
   const [visible, setVisible] = useState(false);
 
   const handleClickBlock = () => {
@@ -41,11 +39,15 @@ const SelectInput = () => {
     }
   };
 
+  useEffect(() => {
+    setOptions(values);
+  }, [values]);
+
   return (
     <OutsideClickHandler disabled={!visible} onOutsideClick={onOutstide}>
       <div onClick={handleClickBlock} className={visible ? styles.wrapper_active : styles.wrapper}>
         <div className={styles.block}>
-          <h3 className={styles.title}>{value ? value : 'Выберите размер'}</h3>
+          <h3 className={styles.title}>{value ? value : defaultValue}</h3>
           <KeyboardArrowDownIcon className={styles.down_icon} />
         </div>
         {visible ? <Dropdown options={options} handleChangeOption={handleChangeOption} /> : null}

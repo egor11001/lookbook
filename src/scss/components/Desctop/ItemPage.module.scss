@@ -51,6 +51,7 @@
           object-fit: cover;
           width: 624px;
           height: 760px;
+          pointer-events: none;
 
           @media (max-width: 1482px) {
             width: 364px;

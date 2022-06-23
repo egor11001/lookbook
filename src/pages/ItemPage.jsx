@@ -65,7 +65,7 @@ const ItemPage = () => {
         <h1 className={styles.price}>9500 ₽</h1>
 
         <div className={styles.sizes}>
-          <SelectInput />
+          <SelectInput values={['S', 'M', 'L', 'XL']} defaultValue={'Выберите размер'} />
           <button onClick={() => setVisible(true)} className={styles.modal_btn}>
             Размерная сетка
           </button>

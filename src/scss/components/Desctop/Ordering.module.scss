@@ -1,0 +1,249 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  width: 100%;
+  padding: 32px 104px 96px 104px;
+  min-height: 906px;
+  max-height: fit-content;
+
+  .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .top_left {
+        display: flex;
+        align-items: center;
+
+        .back {
+          width: 100px;
+          height: 100px;
+          margin-right: 80px;
+
+          .back_icon {
+            width: 48px;
+            height: 48px;
+            color: $pink;
+          }
+        }
+
+        .title {
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+      .top_right {
+        display: flex;
+
+        .title_small {
+          font-weight: 400;
+          font-size: 20px;
+          text-align: right;
+        }
+      }
+    }
+
+    .content {
+      width: 100%;
+      height: 570px;
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+
+      .contacts_block {
+        margin-top: 60px;
+        margin-bottom: 106px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .contacts_input {
+          width: 336px;
+          height: 48px;
+          padding: 0 16px 0 24px;
+          border: 2px solid $light;
+          color: $black;
+          font-weight: 400;
+          font-size: 16px;
+          border-radius: 5px;
+          margin-bottom: 60px;
+
+          ::placeholder {
+            color: $light;
+          }
+
+          &:nth-last-of-type(1) {
+            margin-bottom: 0;
+          }
+
+          &:focus {
+            border: 2px solid $black;
+          }
+        }
+      }
+    }
+
+    .address_block {
+      width: 1334px;
+      display: flex;
+
+      .map {
+        width: 754px;
+        height: 464px;
+        border-radius: 20px;
+        overflow: hidden;
+        margin-right: 64px;
+
+        .ymap {
+          width: 754px !important;
+          height: 464px !important;
+          border-radius: 20px !important;
+        }
+      }
+
+      .fields {
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          font-weight: 400;
+          font-size: 20px;
+        }
+
+        .address_input {
+          @extend .input;
+          position: relative;
+          width: 516px !important;
+          z-index: 800;
+          margin-top: 100px;
+
+          &_active {
+            @extend .address_input;
+            border-radius: 5px 5px 0 0 !important;
+            border: 2px solid $black !important;
+          }
+        }
+
+        .dropdown {
+          width: 516px !important;
+          border-radius: 0 0 5px 5px;
+          border: 2px solid $black;
+          border-top: none;
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          background-color: white;
+          margin-top: -4px;
+          z-index: 50;
+
+          .item {
+            display: flex;
+            width: 100%;
+            align-items: center;
+            padding: 0 16px 0 24px;
+            height: 62px;
+            cursor: pointer;
+
+            &:nth-of-type(1) {
+              padding-top: 20px;
+            }
+
+            &:nth-last-of-type(1) {
+              padding-bottom: 16px;
+            }
+
+            .title {
+              font-weight: 400;
+              font-size: 16px;
+            }
+
+            &:hover {
+              .title {
+                font-weight: 600;
+              }
+            }
+          }
+        }
+
+        .index_input {
+          @extend .input;
+          margin-top: 32px;
+
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          }
+        }
+
+        .accept {
+          @extend .next_btn;
+          width: fit-content !important;
+          padding: 0 24px;
+          font-size: 16px !important;
+          border-radius: 50px !important;
+          align-self: center !important;
+          margin-top: 120px;
+        }
+      }
+    }
+
+    .next_btn {
+      width: 292px;
+      height: 52px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      border: 2px solid $grey;
+      border-radius: 10px;
+      background-color: $grey;
+      align-self: flex-end;
+      font-size: 20px;
+      justify-self: end;
+
+      &:hover {
+        background-color: $black;
+        border: 2px solid $black;
+      }
+    }
+  }
+}
+
+.input {
+  width: 336px;
+  height: 48px;
+  padding: 0 16px 0 24px;
+  border: 2px solid $light;
+  color: $black;
+  font-weight: 400;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-bottom: 60px;
+
+  ::placeholder {
+    color: $light;
+  }
+
+  &:nth-last-of-type(1) {
+    margin-bottom: 0;
+  }
+
+  &:focus,
+  &:hover {
+    transition: 0.2s;
+    border: 2px solid $black;
+  }
+}

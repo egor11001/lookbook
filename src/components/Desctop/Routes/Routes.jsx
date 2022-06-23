@@ -12,6 +12,7 @@ import DeliveryInfoPage from '../../../pages/infos/DeliveryInfoPage';
 import CollaborationInfoPage from '../../../pages/infos/CollaborationInfoPage';
 import InvestorsInfoPage from '../../../pages/infos/InvestorsInfoPage';
 import PrivacyPolicyPage from '../../../pages/infos/PrivacyPolicyPage';
+import Ordering from '../../../pages/Ordering';
 
 const Routes = () => {
   return (
@@ -20,6 +21,7 @@ const Routes = () => {
         <Route path="" element={<MainPage />} />
         <Route path="item" element={<ItemPage />} />
         <Route path="basket" element={<BasketPage />} />
+        <Route path="ordering" element={<Ordering />} />
         <Route path="about" element={<AboutUsPage />} />
         <Route path="contacts" element={<ContactsPage />} />
         <Route path="payment" element={<PaymentInfoPage />} />

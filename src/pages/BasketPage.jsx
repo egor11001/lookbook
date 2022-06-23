@@ -73,7 +73,9 @@ const BasketPage = () => {
         ))}
       </div>
 
-      <button className={styles.submit}>Перейти к оформлению</button>
+      <button onClick={() => navigate('/ordering')} className={styles.submit}>
+        Перейти к оформлению
+      </button>
     </div>
   );
 };
