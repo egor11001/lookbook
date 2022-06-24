@@ -19,7 +19,7 @@ const items = [
     brand: 'Xylitos',
     type: 'Кот Стикс',
     count: '1',
-    price: '∞ (для Егора 100 рэ)',
+    price: '∞',
   },
   {
     photo:

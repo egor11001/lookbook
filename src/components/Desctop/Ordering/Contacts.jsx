@@ -6,7 +6,7 @@ import { useSteps } from 'react-step-builder';
 
 import styles from '../../../scss/components/Desctop/Ordering.module.scss';
 
-const PhoneMask = '+{0}-000-000-000-0';
+const PhoneMask = '+{0}-000-000-00-00';
 
 const Contacts = () => {
   const navigate = useNavigate();
