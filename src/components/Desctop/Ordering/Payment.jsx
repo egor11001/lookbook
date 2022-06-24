@@ -137,7 +137,7 @@ const Payment = () => {
       </div>
 
       <button onClick={handleNext} className={styles.next_btn}>
-        Адрес доставки
+        Оформить заказ
       </button>
     </div>
   );

@@ -119,7 +119,7 @@ const Address = () => {
       </div>
 
       <button onClick={handleNext} className={styles.next_btn}>
-        Адрес доставки
+        Способ доставки
       </button>
     </div>
   );
