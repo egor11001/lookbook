@@ -45,7 +45,7 @@ const BasketPage = () => {
     <div className={styles.wrapper}>
       <div className={styles.top}>
         <div className={styles.block}>
-          <button onClick={() => navigate('/')} className={styles.back}>
+          <button onClick={() => navigate(-1)} className={styles.back}>
             <ArrowBackIcon className={styles.back_icon} />
           </button>
 
