@@ -3,7 +3,7 @@
 
 .wrapper {
   width: 100%;
-  height: 100%;
+  height: calc(100% + 120px);
   background-image: url('../../../assets/octopusMobile.png');
   background-position: -384px -224px;
   display: flex;
