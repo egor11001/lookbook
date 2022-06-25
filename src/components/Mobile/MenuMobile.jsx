@@ -39,33 +39,29 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
         <div className={styles.content}>
           <ul className={styles.ul}>
             <li className={styles.li}>
-              <Link to={'/contacts'} className={styles.link}>
-                Контакты
+              <Link to={'/about'} className={styles.link}>
+                О нас
               </Link>
             </li>
+
             <li className={styles.li}>
               <Link to={'/delivery'} className={styles.link}>
                 Доставка
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/investors'} className={styles.link}>
-                Инвесторам
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link to={'/privacy-policy'} className={styles.link}>
-                Политика конфиденциальности
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link to={'/about'} className={styles.link}>
-                О нас
-              </Link>
-            </li>
-            <li className={styles.li}>
               <Link to={'/payment'} className={styles.link}>
                 Оплата
+              </Link>
+            </li>
+            <li className={styles.li}>
+              <Link to={'/contacts'} className={styles.link}>
+                Контакты
+              </Link>
+            </li>
+            <li className={styles.li}>
+              <Link to={'/investors'} className={styles.link}>
+                Инвесторам
               </Link>
             </li>
             <li className={styles.li}>
@@ -78,12 +74,20 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
                 Помощь и FAQ
               </Link>
             </li>
+            <li className={styles.li}>
+              <Link to={'/privacy-policy'} className={styles.link}>
+                Политика конфиденциальности
+              </Link>
+            </li>
           </ul>
         </div>
 
         <hr />
 
         <div className={styles.set_lng}>
+          <button onClick={handleChangeLang} className={styles.lng}>
+            {lang}
+          </button>
           {showLang
             ? languages.map((item, index) =>
                 item !== lang ? (
@@ -93,9 +97,6 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
                 ) : null,
               )
             : null}
-          <button onClick={handleChangeLang} className={styles.lng}>
-            {lang}
-          </button>
         </div>
       </div>
     </Div100vh>
