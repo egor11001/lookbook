@@ -7,7 +7,7 @@ html {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-@font-face {
+/* @font-face {
   // название шрифта(чтобы не запутаться лучше указать название папки со шрифтом)
   font-family: 'Helvetica';
   // адрес шрифта и тип
@@ -30,7 +30,7 @@ html {
   src: url('./helvetica_light.ttf') format('truetype');
   font-style: normal;
   font-weight: 200;
-}
+} */
 
 * {
   padding: 0;

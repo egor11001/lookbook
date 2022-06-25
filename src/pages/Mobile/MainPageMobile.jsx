@@ -1,35 +1,20 @@
 import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router';
 
 import 'swiper/css';
-import 'swiper/css/navigation';
 import styles from '../../scss/components/Mobile/MainPageMobile.module.scss';
 
 const Hello = () => {
   const navigate = useNavigate();
 
   return (
-    <div id="MainPage" className={styles.wrapper}>
+    <div id="MainPageMobile" className={styles.wrapper}>
       <h1 className={styles.timer}>11:11:11:11</h1>
+      <h5 className={styles.presale}>presale</h5>
       <div className={styles.content}>
-        <button id="prev" className={styles.prev}>
-          <ArrowBackIcon className={styles.icon} />
-        </button>
-        <Swiper
-          slidesPerView={3}
-          spaceBetween={40}
-          navigation={{
-            nextEl: '#next',
-            prevEl: '#prev',
-          }}
-          loop={true}
-          modules={[Navigation]}
-          className={styles.swiper}>
+        <Swiper loop={true} className={styles.swiper}>
           <SwiperSlide onClick={() => navigate('/item')} className={styles.slide}>
             <img
               className={styles.photo}
@@ -58,10 +43,6 @@ const Hello = () => {
             <h2 className={styles.title}>Кепка</h2>
           </SwiperSlide>
         </Swiper>
-
-        <button id="next" className={styles.next}>
-          <ArrowForwardIcon className={styles.icon} />
-        </button>
       </div>
     </div>
   );
