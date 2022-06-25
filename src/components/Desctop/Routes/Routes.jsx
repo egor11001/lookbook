@@ -17,6 +17,7 @@ import PrivacyPolicyPage from '../../../pages/infos/PrivacyPolicyPage';
 import Ordering from '../../../pages/Ordering';
 import MainPageMobile from '../../../pages/Mobile/MainPageMobile';
 import LayoutMobile from '../../Mobile/LayoutMobile';
+import ItemPageMobile from '../../../pages/Mobile/ItemPageMobile';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -45,6 +46,7 @@ const Routes = () => {
       ) : isMobile ? (
         <Route path="/" element={<LayoutMobile />}>
           <Route path="" element={<MainPageMobile />} />
+          <Route path="item" element={<ItemPageMobile />} />
         </Route>
       ) : (
         console.log(' wow new technology !')
