@@ -1,0 +1,122 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  width: 100%;
+  padding: 32px 104px 96px 104px;
+  min-height: 906px;
+  max-height: fit-content;
+
+  .inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .top {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .top_left {
+        display: flex;
+        align-items: center;
+
+        .back {
+          width: 100px;
+          height: 100px;
+          margin-right: 80px;
+
+          .back_icon {
+            width: 48px;
+            height: 48px;
+            color: $pink;
+          }
+        }
+
+        .title {
+          font-weight: 600;
+          font-size: 24px;
+        }
+      }
+
+      .top_right {
+        display: flex;
+
+        .title_small {
+          font-weight: 600;
+          font-size: 24px;
+          text-align: right;
+        }
+      }
+    }
+
+    .content {
+      width: 1420px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 80px;
+      margin-left: 90px;
+
+      @media (max-width: 1620px) {
+        width: 1200px;
+        margin-left: 45px;
+      }
+
+      @media (max-width: 1350px) {
+        width: 1000px;
+      }
+
+      .text {
+        font-weight: 400;
+        font-size: 24px;
+        margin-bottom: 90px;
+      }
+
+      .block {
+        display: flex;
+        height: 360px;
+
+        .left {
+          display: flex;
+          flex-direction: column;
+          margin-right: 200px;
+
+          .item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 72px;
+
+            &:nth-last-of-type(1) {
+              margin-bottom: 0;
+            }
+
+            .item_icon {
+              width: 36px;
+              height: 36px;
+              color: $grey;
+              margin-right: 36px;
+            }
+
+            .item_title {
+              font-weight: 600;
+              font-size: 20px;
+              white-space: nowrap;
+            }
+          }
+        }
+
+        .right {
+          align-self: flex-end;
+          font-weight: 600;
+          font-size: 24px;
+          width: 670px;
+          line-height: 38px;
+        }
+      }
+    }
+  }
+}
