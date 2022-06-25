@@ -15,7 +15,8 @@ import CollaborationInfoPage from '../../../pages/infos/CollaborationInfoPage';
 import InvestorsInfoPage from '../../../pages/infos/InvestorsInfoPage';
 import PrivacyPolicyPage from '../../../pages/infos/PrivacyPolicyPage';
 import Ordering from '../../../pages/Ordering';
-import Hello from '../../Mobile/Hello';
+import MainPageMobile from '../../../pages/Mobile/MainPageMobile';
+import LayoutMobile from '../../Mobile/LayoutMobile';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -42,7 +43,9 @@ const Routes = () => {
           <Route path="FAQ" element={<FAQPage />} />
         </Route>
       ) : isMobile ? (
-        <Route path="/" element={<Hello />}></Route>
+        <Route path="/" element={<LayoutMobile />}>
+          <Route path="" element={<MainPageMobile />} />
+        </Route>
       ) : (
         console.log(' wow new technology !')
       )}
