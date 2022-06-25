@@ -2,7 +2,7 @@
 @import '../../variables';
 
 .wrapper {
-  width: 100vw;
+  width: 100%;
   height: 100%;
   background-color: $black;
   z-index: 1000;
@@ -13,6 +13,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 00px !important;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: none;
+  }
 
   .top {
     width: 100%;
@@ -70,7 +82,7 @@
     align-items: center;
     align-self: flex-start;
     margin-left: 40px;
-    margin-top: 22px;
+    margin-top: 32px;
     margin-bottom: 24px;
 
     .lng {
