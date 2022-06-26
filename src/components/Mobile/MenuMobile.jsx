@@ -39,11 +39,10 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
         <div className={styles.content}>
           <ul className={styles.ul}>
             <li className={styles.li}>
-              <Link to={'/about'} className={styles.link}>
+              <Link onClick={() => setShowMenu(!showMenu)} to={'/about'} className={styles.link}>
                 О нас
               </Link>
             </li>
-
             <li className={styles.li}>
               <Link onClick={() => setShowMenu(!showMenu)} to={'/delivery'} className={styles.link}>
                 Доставка
