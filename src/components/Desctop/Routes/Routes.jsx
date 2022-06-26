@@ -26,7 +26,7 @@ const Routes = () => {
     query: '(min-width: 1224px)',
   });
   const isMobile = useMediaQuery({
-    query: '(max-width: 480px)',
+    query: '(max-width: 1223px)',
   });
   return (
     <Switch>
