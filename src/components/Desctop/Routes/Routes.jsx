@@ -20,6 +20,7 @@ import LayoutMobile from '../../Mobile/LayoutMobile';
 import ItemPageMobile from '../../../pages/Mobile/ItemPageMobile';
 import BasketPageMobile from '../../../pages/Mobile/BasketPageMobile';
 import OrderingMobile from '../../../pages/Mobile/OrderingMobile';
+import FAQPageMobile from '../../../pages/Mobile/FAQPageMobile';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -51,6 +52,7 @@ const Routes = () => {
           <Route path="item" element={<ItemPageMobile />} />
           <Route path="basket" element={<BasketPageMobile />} />
           <Route path="ordering" element={<OrderingMobile />} />
+          <Route path="FAQ" element={<FAQPageMobile />} />
         </Route>
       ) : (
         console.log(' wow new technology !')

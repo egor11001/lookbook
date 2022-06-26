@@ -45,37 +45,46 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
             </li>
 
             <li className={styles.li}>
-              <Link to={'/delivery'} className={styles.link}>
+              <Link onClick={() => setShowMenu(!showMenu)} to={'/delivery'} className={styles.link}>
                 Доставка
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/payment'} className={styles.link}>
+              <Link onClick={() => setShowMenu(!showMenu)} to={'/payment'} className={styles.link}>
                 Оплата
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/contacts'} className={styles.link}>
+              <Link onClick={() => setShowMenu(!showMenu)} to={'/contacts'} className={styles.link}>
                 Контакты
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/investors'} className={styles.link}>
+              <Link
+                onClick={() => setShowMenu(!showMenu)}
+                to={'/investors'}
+                className={styles.link}>
                 Инвесторам
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/collaboration'} className={styles.link}>
+              <Link
+                onClick={() => setShowMenu(!showMenu)}
+                to={'/collaboration'}
+                className={styles.link}>
                 Сотрудничество
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/FAQ'} className={styles.link}>
+              <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.link}>
                 Помощь и FAQ
               </Link>
             </li>
             <li className={styles.li}>
-              <Link to={'/privacy-policy'} className={styles.link}>
+              <Link
+                onClick={() => setShowMenu(!showMenu)}
+                to={'/privacy-policy'}
+                className={styles.link}>
                 Политика конфиденциальности
               </Link>
             </li>
