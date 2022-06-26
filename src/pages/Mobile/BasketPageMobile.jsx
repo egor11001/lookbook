@@ -57,7 +57,6 @@ const BasketPageMobile = () => {
 
       <div className={styles.content}>
         <Swiper
-          onClick={() => navigate('/item')}
           pagination={{
             dynamicBullets: true,
           }}
@@ -67,7 +66,7 @@ const BasketPageMobile = () => {
           modules={[Pagination]}
           className={styles.swiper}>
           {items.map((item, index) => (
-            <SwiperSlide className={styles.slide} key={index}>
+            <SwiperSlide onClick={() => navigate('/item')} className={styles.slide} key={index}>
               <Icon icon={'akar-icons:trash-can'} className={styles.remove_icon} />
               <img src={item.photo} alt="IMG" className={styles.photo} />
               <h1 className={styles.brand}>{item.brand}</h1>
