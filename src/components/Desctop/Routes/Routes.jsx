@@ -21,6 +21,13 @@ import ItemPageMobile from '../../../pages/Mobile/ItemPageMobile';
 import BasketPageMobile from '../../../pages/Mobile/BasketPageMobile';
 import OrderingMobile from '../../../pages/Mobile/OrderingMobile';
 import FAQPageMobile from '../../../pages/Mobile/FAQPageMobile';
+import AboutUsPageMobile from '../../../pages/Mobile/infos/AboutUsPageMobile';
+import ContactsPageMobile from '../../../pages/Mobile/infos/ContactsPageMobile';
+import PaymentInfoPageMobile from '../../../pages/Mobile/infos/PaymentInfoPageMobile';
+import DeliveryInfoPageMobile from '../../../pages/Mobile/infos/DeliveryInfoPageMobile';
+import CollaborationInfoPageMobile from '../../../pages/Mobile/infos/CollaborationInfoPageMobile';
+import InvestorsInfoPageMobile from '../../../pages/Mobile/infos/InvestorsInfoPageMobile';
+import PrivacyPolicyPageMobile from '../../../pages/Mobile/infos/PrivacyPolicyPageMobile';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -53,6 +60,13 @@ const Routes = () => {
           <Route path="basket" element={<BasketPageMobile />} />
           <Route path="ordering" element={<OrderingMobile />} />
           <Route path="FAQ" element={<FAQPageMobile />} />
+          <Route path="about" element={<AboutUsPageMobile />} />
+          <Route path="contacts" element={<ContactsPageMobile />} />
+          <Route path="payment" element={<PaymentInfoPageMobile />} />
+          <Route path="delivery" element={<DeliveryInfoPageMobile />} />
+          <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
+          <Route path="investors" element={<InvestorsInfoPageMobile />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
         </Route>
       ) : (
         console.log(' wow new technology !')

@@ -1,0 +1,116 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  width: 100%;
+
+  .inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    padding: 0 20px;
+
+    .top {
+      display: flex;
+      width: 100%;
+      margin-top: 32px;
+      justify-content: center;
+      align-items: top;
+
+      .back {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 20px;
+
+        .back_icon {
+          width: 32px;
+          height: 32px;
+          color: $pink;
+        }
+      }
+
+      .title {
+        font-weight: 600;
+        font-size: 20px;
+        width: 260px;
+        text-align: center;
+        margin-top: 4px;
+      }
+    }
+
+    .content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 60px;
+      align-items: center;
+
+      .payment_title {
+        font-weight: 800;
+        font-size: 16px;
+        width: 248px;
+        margin-bottom: 8px;
+        line-height: 25px;
+        text-align: center;
+      }
+
+      .text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 25px;
+        text-align: center;
+        margin-top: 40px;
+      }
+
+      .block {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-top: 32px;
+
+        .item {
+          display: flex;
+          align-items: center;
+          margin-bottom: 48px;
+          justify-content: flex-start;
+
+          &:nth-last-of-type(1) {
+            margin-bottom: 0;
+          }
+
+          .item_icon {
+            width: 36px;
+            height: 36px;
+            color: $grey;
+            margin-right: 36px;
+          }
+
+          .item_title {
+            font-weight: 600;
+            font-size: 16px;
+          }
+        }
+      }
+
+      .tg_bot {
+        font-weight: 400;
+        font-size: 16px;
+        text-align: center;
+        line-height: 25px;
+        margin-bottom: 60px;
+        margin-top: 40px;
+
+        span {
+          font-weight: 800;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
