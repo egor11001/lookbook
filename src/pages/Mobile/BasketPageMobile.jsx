@@ -57,6 +57,7 @@ const BasketPageMobile = () => {
 
       <div className={styles.content}>
         <Swiper
+          onClick={() => navigate('/item')}
           pagination={{
             type: 'fraction',
           }}
