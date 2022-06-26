@@ -59,7 +59,7 @@ const BasketPageMobile = () => {
         <Swiper
           onClick={() => navigate('/item')}
           pagination={{
-            type: 'fraction',
+            dynamicBullets: true,
           }}
           spaceBetween={60}
           slidesPerView={'auto'}
