@@ -117,7 +117,10 @@ const DeliveryMobile = () => {
               <h4>
                 Способ доставки:
                 <span> {!active ? null : items.filter((item) => item.id === active)[0].type}</span>
-                <b> {!active ? null : items.filter((item) => item.id === active)[0].time} дня</b>
+                <b>
+                  {' '}
+                  {!active ? null : items.filter((item) => item.id === active)[0].time + ' дня'}
+                </b>
               </h4>
             </div>
           </div>
