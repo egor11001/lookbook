@@ -17,7 +17,7 @@
     padding-right: 8px;
 
     .back {
-      width: 40px;
+      width: 40px !important;
       height: 40px;
       display: flex;
       justify-content: center;
@@ -42,6 +42,10 @@
         max-width: 235px;
         text-align: right;
         margin-bottom: 8px;
+
+        @media (max-width: 350px) {
+          width: fit-content;
+        }
       }
 
       .type {
@@ -49,6 +53,9 @@
         font-size: 16px;
         width: 190px;
         text-align: right;
+        @media (max-width: 350px) {
+          width: fit-content;
+        }
       }
     }
   }
@@ -182,6 +189,10 @@
           @extend .info_btn;
           border-bottom: 2px solid $black;
           color: $black;
+        }
+
+        @media (max-width: 350px) {
+          width: 80px;
         }
       }
     }
