@@ -99,18 +99,21 @@ const ItemPageMobile = () => {
       <div className={styles.info_block}>
         <div className={styles.buttons}>
           <button
+            disabled={activeInfo === 'composition'}
             onClick={onChangeInfo('composition')}
-            className={activeInfo === 'composition' ? styles.info_btn_active : styles.info_btn}>
+            className={styles.info_btn}>
             Состав
           </button>
           <button
+            disabled={activeInfo === 'care'}
             onClick={onChangeInfo('care')}
-            className={activeInfo === 'care' ? styles.info_btn_active : styles.info_btn}>
+            className={styles.info_btn}>
             Уход
           </button>
           <button
+            disabled={activeInfo === 'shipping'}
             onClick={onChangeInfo('shipping')}
-            className={activeInfo === 'shipping' ? styles.info_btn_active : styles.info_btn}>
+            className={styles.info_btn}>
             Доставка
           </button>
         </div>

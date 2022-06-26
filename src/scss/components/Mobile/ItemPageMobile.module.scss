@@ -159,6 +159,7 @@
     .buttons {
       display: flex;
       align-items: center;
+      justify-content: center;
       margin-bottom: 32px;
 
       .info_btn {
@@ -177,7 +178,7 @@
           margin-right: 0;
         }
 
-        &_active {
+        &:disabled {
           @extend .info_btn;
           border-bottom: 2px solid $black;
           color: $black;
