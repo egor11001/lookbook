@@ -1,10 +1,10 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-
-import styles from '../../../scss/components/Desctop/Ordering.module.scss';
 import { useNavigate } from 'react-router';
 
-const Confirm = () => {
+import styles from '../../../scss/components/Desctop/Ordering.module.scss';
+
+const Confirm = ({ info, setInfo }) => {
   const navigate = useNavigate();
   return (
     <div className={styles.inner}>
@@ -23,7 +23,7 @@ const Confirm = () => {
             Спасибо за заказ!
             <br />
             Вся информация о доставке отправлена на почту
-            <span> bebra2022@yandex.ru</span>
+            <span> {info.contacts.email}</span>
           </h1>
         </div>
       </div>

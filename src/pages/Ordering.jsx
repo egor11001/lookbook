@@ -14,11 +14,12 @@ const Ordering = () => {
     },
     address: null,
     delivery: {
+      id: null,
       type: null,
       price: null,
       time: null,
     },
-    payment: null,
+    payment: { id: null, type: null },
   });
 
   return (

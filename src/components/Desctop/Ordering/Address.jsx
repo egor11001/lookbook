@@ -18,9 +18,9 @@ const Dropdown = ({ options, handleChangeOption }) => {
   );
 };
 
-const Address = () => {
+const Address = ({ info, setInfo }) => {
   const { next, prev } = useSteps();
-  const [address, setAddress] = useState('');
+  const [address, setAddress] = useState(info.address || '');
   const [ind, setInd] = useState('');
   const [coord, setCoord] = useState(null);
   const [options, setOptions] = useState([]);
@@ -54,6 +54,7 @@ const Address = () => {
   };
 
   const handleNext = () => {
+    setInfo({ ...info, address: address });
     next();
   };
   return (

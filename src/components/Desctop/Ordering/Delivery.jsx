@@ -10,66 +10,48 @@ const items = [
     id: 1,
     img: 'https://static.tildacdn.com/tild6265-6463-4339-a662-323931623666/loso_shar.jpg',
     type: 'СДЭК',
-    time: '1-2',
+    time: '10 фев. - 29 сент.',
     price: 'free',
   },
   {
     id: 2,
     img: 'https://mr-tools.ru/wp-content/uploads/2021/06/boxberry-logo-1568x1568.jpg',
     type: 'Boxberry',
-    time: '1-4',
+    time: '26 мая - 29 июня',
     price: 300,
   },
   {
     id: 3,
     img: 'https://avatars.mds.yandex.net/get-zen_doc/99845/pub_5ada1dc78c8be3ca3a0d73c3_5ada1f72dcaf8e45d4791859/scale_1200',
     type: 'Почта России',
-    time: '14-30',
+    time: '3 янв. - 8 март.',
     price: 50,
   },
   {
     id: 4,
     img: 'https://static10.tgstat.ru/channels/_0/18/18cfd931f77b16dc9b00602bbae2990c.jpg',
     type: 'PickPoint',
-    time: '2',
-    price: 250,
-  },
-  {
-    id: 5,
-    img: 'https://static.tildacdn.com/tild6265-6463-4339-a662-323931623666/loso_shar.jpg',
-    type: 'СДЭК',
-    time: '1-2',
-    price: 'free',
-  },
-  {
-    id: 6,
-    img: 'https://mr-tools.ru/wp-content/uploads/2021/06/boxberry-logo-1568x1568.jpg',
-    type: 'Boxberry',
-    time: '1-4',
-    price: 300,
-  },
-  {
-    id: 7,
-    img: 'https://avatars.mds.yandex.net/get-zen_doc/99845/pub_5ada1dc78c8be3ca3a0d73c3_5ada1f72dcaf8e45d4791859/scale_1200',
-    type: 'Почта России',
-    time: '14-30',
-    price: 50,
-  },
-  {
-    id: 8,
-    img: 'https://static10.tgstat.ru/channels/_0/18/18cfd931f77b16dc9b00602bbae2990c.jpg',
-    type: 'PickPoint',
-    time: '2',
+    time: '10 фев. - 5 апр.',
     price: 250,
   },
 ];
 
-const Delivery = () => {
+const Delivery = ({ info, setInfo }) => {
   const { next, prev } = useSteps();
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(info.delivery.id);
 
   const handleNext = () => {
     if (active) {
+      const item = items.filter((item) => item.id === active)[0];
+      setInfo({
+        ...info,
+        delivery: {
+          id: item.id,
+          type: item.type,
+          price: item.price,
+          time: item.time,
+        },
+      });
       next();
     }
   };
@@ -94,7 +76,7 @@ const Delivery = () => {
                 className={active === item.id ? styles.delivery_item_acitve : styles.delivery_item}>
                 <img src={item.img} alt="LOGO" className={styles.delivery_img} />
                 <h2 className={styles.delivery_type}>{item.type}</h2>
-                <h3 className={styles.delivery_time}>{item.time} дня</h3>
+                <h3 className={styles.delivery_time}>{item.time}</h3>
                 <h3 className={styles.delivery_price}>
                   {item.price === 'free' ? 'Бесплатно' : `${item.price} ₽`}
                 </h3>
@@ -104,10 +86,31 @@ const Delivery = () => {
               </div>
             ))}
           </div>
-
           <div className={styles.delivery_address}>
-            <h1>Адрес доставки</h1>
-            <h3>Россия, Красноярск, ул.Вильского 16ж, 143кв, 655150</h3>
+            <div className={styles.delivery_col}>
+              <div className={styles.left}>
+                <h1 className={styles.delivery_title}>Контактные данные:</h1>
+                <h3 className={styles.delivery_text}>
+                  Имя: <span>{info.contacts.name}</span>
+                  <br />
+                  Фамилия: <span>{info.contacts.lastName}</span>
+                  <br />
+                  Email: <span>{info.contacts.email}</span>
+                  <br />
+                  Телефон: <span>{info.contacts.phone}</span>
+                  <br />
+                </h3>
+              </div>
+              <div className={styles.right}>
+                <h1 className={styles.delivery_title}>Адрес доставки:</h1>
+                <h3 className={styles.delivery_text}>{info.address}</h3>
+                <h1 className={styles.delivery_title}>Способ доставки:</h1>
+                <h3 className={styles.delivery_text}>
+                  <span>{!active ? null : items.filter((item) => item.id === active)[0].type}</span>
+                  <b>{!active ? null : items.filter((item) => item.id === active)[0].time}</b>
+                </h3>
+              </div>
+            </div>
           </div>
         </div>
       </div>
