@@ -4,7 +4,7 @@ import { Icon } from '@iconify/react';
 
 import styles from '../../../scss/components/Mobile/OrderingMobile.module.scss';
 
-const ConfirmMobile = () => {
+const ConfirmMobile = ({ info, setInfo }) => {
   const navigate = useNavigate();
   return (
     <div className={styles.inner}>
@@ -21,7 +21,7 @@ const ConfirmMobile = () => {
             Спасибо за заказ!
             <br />
             Вся информация о доставке отправлена на почту
-            <span> bebra2022@yandex.ru</span>
+            <span> {info.contacts.email}</span>
           </h1>
         </div>
       </div>

@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useSteps } from 'react-step-builder';
 import { Icon } from '@iconify/react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper';
 
 import styles from '../../../scss/components/Mobile/OrderingMobile.module.scss';
 
@@ -38,12 +36,22 @@ const items = [
   },
 ];
 
-const DeliveryMobile = () => {
+const DeliveryMobile = ({ info, setInfo }) => {
   const { next, prev } = useSteps();
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(info.delivery.id);
 
   const handleNext = () => {
     if (active) {
+      const item = items.filter((item) => item.id === active)[0];
+      setInfo({
+        ...info,
+        delivery: {
+          id: item.id,
+          type: item.type,
+          price: item.price,
+          time: item.time,
+        },
+      });
       next();
     }
   };
@@ -81,13 +89,24 @@ const DeliveryMobile = () => {
 
           <div className={styles.delivery_address}>
             <div className={styles.delivery_col}>
-              <h1>Адрес доставки</h1>
-              <h3>Россия, Красноярск, ул.Вильского 16ж, 143кв, 655150</h3>
-              <h4>
-                Способ доставки:
-                <span> {!active ? null : items.filter((item) => item.id === active)[0].type}</span>
-                <b> {!active ? null : items.filter((item) => item.id === active)[0].time}</b>
-              </h4>
+              <h1 className={styles.delivery_title}>Контактные данные:</h1>
+              <h3 className={styles.delivery_text}>
+                Имя: <span>{info.contacts.name}</span>
+                <br />
+                Фамилия: <span>{info.contacts.lastName}</span>
+                <br />
+                Email: <span>{info.contacts.email}</span>
+                <br />
+                Телефон: <span>{info.contacts.phone}</span>
+                <br />
+              </h3>
+              <h1 className={styles.delivery_title}>Адрес доставки:</h1>
+              <h3 className={styles.delivery_text}>{info.address}</h3>
+              <h1 className={styles.delivery_title}>Способ доставки:</h1>
+              <h3 className={styles.delivery_text}>
+                <span>{!active ? null : items.filter((item) => item.id === active)[0].type}</span>
+                <b>{!active ? null : items.filter((item) => item.id === active)[0].time}</b>
+              </h3>
             </div>
           </div>
         </div>

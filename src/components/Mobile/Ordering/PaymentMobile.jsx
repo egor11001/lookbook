@@ -28,9 +28,9 @@ const items = [
   },
 ];
 
-const PaymentMobile = () => {
+const PaymentMobile = ({ info, setInfo }) => {
   const { next, prev } = useSteps();
-  const [active, setActive] = useState(null);
+  const [active, setActive] = useState(info.payment.id);
   const [visiblePromo, setVisiblePromo] = useState(false);
   const [valuePromo, setValuePromo] = useState('');
   const [correctPromo, setCorrectPromo] = useState(null);
@@ -53,6 +53,8 @@ const PaymentMobile = () => {
 
   const handleNext = () => {
     if (active) {
+      const item = items.filter((item) => item.id === active)[0];
+      setInfo({ ...info, payment: { id: item.id, type: item.type } });
       next();
     }
   };
@@ -125,6 +127,34 @@ const PaymentMobile = () => {
               </>
             ) : null}
           </div>
+
+          <div className={styles.delivery_address}>
+            <div className={styles.delivery_col}>
+              <h1 className={styles.delivery_title}>Контактные данные:</h1>
+              <h3 className={styles.delivery_text}>
+                Имя: <span>{info.contacts.name}</span>
+                <br />
+                Фамилия: <span>{info.contacts.lastName}</span>
+                <br />
+                Email: <span>{info.contacts.email}</span>
+                <br />
+                Телефон: <span>{info.contacts.phone}</span>
+                <br />
+              </h3>
+              <h1 className={styles.delivery_title}>Адрес доставки:</h1>
+              <h3 className={styles.delivery_text}>{info.address}</h3>
+              <h1 className={styles.delivery_title}>Способ доставки:</h1>
+              <h3 className={styles.delivery_text}>
+                <span>{info.delivery.type}</span>
+                <b>{info.delivery.time}</b>
+              </h3>
+              <h1 className={styles.delivery_title}>Метод оплаты:</h1>
+              <h3 className={styles.delivery_text}>
+                {active ? <span>{items.filter((item) => item.id === active)[0].type}</span> : null}
+              </h3>
+            </div>
+          </div>
+
           <h2 className={styles.counts}>
             <span>{items.length}</span> товаров
           </h2>
