@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useForm } from 'react-hook-form';
 
-import styles from '../../scss/components/Desctop/AboutUsPage.module.scss';
-import { emailRegexp } from '../../utils/regExps';
-import emailFormImg from '../../assets/emailFormImg.png';
+import styles from '../../../scss/components/Desctop/AboutUsPage.module.scss';
+import { emailRegexp } from '../../../utils/regExps';
+import emailFormImg from '../../../assets/emailFormImg.png';
 
 const AboutUsPage = () => {
   const {

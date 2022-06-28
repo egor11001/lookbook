@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Icon } from '@iconify/react';
 
-import styles from '../../scss/components/Desctop/PaymentInfoPage.module.scss';
+import styles from '../../../scss/components/Desctop/PaymentInfoPage.module.scss';
 
 const PaymentInfoPage = () => {
   const navigate = useNavigate();

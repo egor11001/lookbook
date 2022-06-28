@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import styles from '../../scss/components/Desctop/PrivacyPolicyPage.module.scss';
+import styles from '../../../scss/components/Desctop/PrivacyPolicyPage.module.scss';
 
 const PrivacyPolicyPage = () => {
   const navigate = useNavigate();

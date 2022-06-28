@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import styles from '../../scss/components/Desctop/CollaborationInfoPage.module.scss';
+import styles from '../../../scss/components/Desctop/InvestorsInfoPage.module.scss';
 
-const CollaborationInfoPage = () => {
+const InvestorsInfoPage = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
@@ -14,7 +14,7 @@ const CollaborationInfoPage = () => {
             <button onClick={() => navigate(-1)} className={styles.back}>
               <ArrowBackIcon className={styles.back_icon} />
             </button>
-            <h3 className={styles.title}>Сотрудничество</h3>
+            <h3 className={styles.title}>Инвесторам</h3>
           </div>
         </div>
 
@@ -24,4 +24,4 @@ const CollaborationInfoPage = () => {
   );
 };
 
-export default CollaborationInfoPage;
+export default InvestorsInfoPage;
