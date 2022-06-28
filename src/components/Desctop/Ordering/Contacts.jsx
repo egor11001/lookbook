@@ -123,7 +123,7 @@ const Contacts = ({ info, setInfo }) => {
               }
             />
             {phoneErr && isSubmitted ? (
-              <h5 className={styles.input_error}>Неверный номер</h5>
+              <h5 className={styles.input_error_last}>Неверный номер</h5>
             ) : null}
           </div>
         </div>

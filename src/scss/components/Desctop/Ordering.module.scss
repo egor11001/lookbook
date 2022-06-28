@@ -107,16 +107,17 @@
           }
         }
 
-        .input_error {
+        .input_error,
+        .input_error_last {
           color: $pink;
           position: relative;
           font-weight: 400;
           font-size: 14px;
           bottom: 24px;
+        }
 
-          &:nth-last-of-type(1) {
-            bottom: -16px;
-          }
+        .input_error_last {
+          bottom: -16px;
         }
       }
     }
@@ -180,10 +181,6 @@
             font-weight: 400;
             font-size: 14px;
             bottom: 24px;
-
-            &:nth-last-of-type(1) {
-              bottom: -16px;
-            }
           }
         }
       }
