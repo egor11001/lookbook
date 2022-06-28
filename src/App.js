@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Routes from './components/Desctop/Routes/Routes';
+import Routes from './components/Routes/Routes';
 
 import 'swiper/css/bundle';
 import './scss/app.scss';

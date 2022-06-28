@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Steps, StepsProvider } from 'react-step-builder';
 
-import styles from '../scss/components/Desctop/Ordering.module.scss';
-import { Address, Contacts, Delivery, Payment, Confirm } from '../components/Desctop/Ordering/';
+import styles from '../../scss/components/Desctop/Ordering.module.scss';
+import { Address, Contacts, Delivery, Payment, Confirm } from '../../components/Desctop/Ordering/';
 
 const Ordering = () => {
   const [info, setInfo] = useState({

@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-import styles from '../scss/components/Desctop/ItemPage.module.scss';
-import SelectInput from '../components/Desctop/Item/SelectInput';
-import SizesModal from '../components/Desctop/Modals/SizesModal';
+import styles from '../../scss/components/Desctop/ItemPage.module.scss';
+import SelectInput from '../../components/Desctop/Item/SelectInput';
+import SizesModal from '../../components/Desctop/Modals/SizesModal';
 
 const infos = {
   composition: 'Хлопок 100%, Мясо 100%, Резина 20%',

@@ -4,7 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
-import styles from '../scss/components/Desctop/FAQ.module.scss';
+import styles from '../../scss/components/Desctop/FAQ.module.scss';
 
 const items = [
   {

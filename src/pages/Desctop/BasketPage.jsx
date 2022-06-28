@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import styles from '../scss/components/Desctop/BasketPage.module.scss';
-import BasketItem from '../components/Desctop/BasketItem';
+import styles from '../../scss/components/Desctop/BasketPage.module.scss';
+import BasketItem from '../../components/Desctop/BasketItem';
 
 const items = [
   {

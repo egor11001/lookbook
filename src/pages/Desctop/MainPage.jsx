@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import styles from '../scss/components/Desctop/MainPage.module.scss';
+import styles from '../../scss/components/Desctop/MainPage.module.scss';
 
 const MainPage = () => {
   const navigate = useNavigate();
