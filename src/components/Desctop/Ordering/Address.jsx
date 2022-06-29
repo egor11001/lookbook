@@ -18,6 +18,31 @@ const Dropdown = ({ options, handleChangeOption }) => {
   );
 };
 
+const YMap = React.memo(({ coord }) => {
+  return (
+    <div className={styles.map}>
+      <YMaps>
+        <Map
+          className={styles.ymap}
+          state={{
+            center: coord ? coord : [55.997133054742, 92.79591978437796],
+            zoom: 16,
+            controls: ['zoomControl'],
+          }}
+          modules={['control.ZoomControl']}>
+          <Placemark
+            geometry={coord ? coord : [55.997133054742, 92.79591978437796]}
+            options={{
+              iconColor: '#c21857',
+              preset: 'islands#redDotIcon',
+            }}
+          />
+        </Map>
+      </YMaps>
+    </div>
+  );
+});
+
 const Address = ({ info, setInfo }) => {
   const { next, prev } = useSteps();
   const [address, setAddress] = useState(info.address || '');
@@ -70,26 +95,7 @@ const Address = ({ info, setInfo }) => {
 
       <div className={styles.content}>
         <div className={styles.address_block}>
-          <div className={styles.map}>
-            <YMaps>
-              <Map
-                className={styles.ymap}
-                state={{
-                  center: coord ? coord : [55.997133054742, 92.79591978437796],
-                  zoom: 16,
-                  controls: ['zoomControl'],
-                }}
-                modules={['control.ZoomControl']}>
-                <Placemark
-                  geometry={coord ? coord : [55.997133054742, 92.79591978437796]}
-                  options={{
-                    iconColor: '#c21857',
-                    preset: 'islands#redDotIcon',
-                  }}
-                />
-              </Map>
-            </YMaps>
-          </div>
+          <YMap coord={coord} />
 
           <div className={styles.fields}>
             <h2>Введите адрес доставки</h2>
