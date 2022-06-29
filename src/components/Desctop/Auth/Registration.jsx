@@ -47,7 +47,7 @@ const Registration = () => {
             className={valid ? styles.field : styles.field_err}
           />
           <button onClick={onSubmit} className={styles.submit}>
-            Войти
+            Зарегистрироваться
           </button>
         </>
       ) : (
