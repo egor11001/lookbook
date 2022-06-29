@@ -14,7 +14,7 @@ const Hello = () => {
 
   return (
     <div id="MainPageMobile" className={styles.wrapper}>
-      <Countdown date={new Date('2022-07-11T01:24:11')} className={styles.timer}>
+      <Countdown date={1657473851000} className={styles.timer}>
         <Completionist />
       </Countdown>
       <h5 className={styles.presale}>presale</h5>
