@@ -54,7 +54,7 @@
   }
 
   .content {
-    margin-top: 140px;
+    margin-top: 135px;
     width: 1036px;
     height: 160px;
     padding: 20px 64px;
@@ -67,6 +67,14 @@
     box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
     border-radius: 15px;
     background-color: white;
+    text-align: left;
+    transition: 0.5s;
+
+    &:disabled {
+      opacity: 0;
+      z-index: -1;
+      transition: 0.5s;
+    }
   }
 
   .back_btn {

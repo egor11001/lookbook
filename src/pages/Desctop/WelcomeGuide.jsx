@@ -49,19 +49,21 @@ const WelcomeGuide = () => {
           onMouseEnter={() => setValue(texts.delivery)}
           onMouseLeave={() => setValue(null)}
           className={styles.item}>
-          <Icon className={styles.item_icon} icon={'clarity:map-marker-line'} />
+          <Icon className={styles.item_icon} icon={'bx:map'} />
           {value === texts.delivery ? <h3 className={styles.item_desc}>Адреса отправки</h3> : null}
         </button>
         <button
           onMouseEnter={() => setValue(texts.questions)}
           onMouseLeave={() => setValue(null)}
           className={styles.item}>
-          <Icon className={styles.item_icon} icon={'ion:help-circle-outline'} />
+          <Icon className={styles.item_icon} icon={'fluent:question-circle-12-regular'} />
           {value === texts.questions ? <h3 className={styles.item_desc}>Помощь и FAQ</h3> : null}
         </button>
       </div>
 
-      {value ? <div className={styles.content}>{value}</div> : null}
+      <button disabled={!Boolean(value)} className={styles.content}>
+        {value}
+      </button>
 
       <button onClick={() => navigate('/home')} className={styles.back_btn}>
         <Icon icon={'bi:arrow-right'} className={styles.back_icon} />
