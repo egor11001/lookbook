@@ -46,6 +46,9 @@
 
   .dropdown {
     width: 336px;
+    min-height: fit-content;
+    max-height: 200px;
+    overflow-y: auto;
     border-radius: 0 0 5px 5px;
     border: 2px solid $light;
     display: flex;
@@ -54,6 +57,21 @@
     background-color: white;
     margin-top: 54px;
     z-index: 300;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 10px !important;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+      border-radius: 10px;
+      background-clip: content-box;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $light;
+      border-radius: 10px;
+    }
 
     .item {
       display: flex;

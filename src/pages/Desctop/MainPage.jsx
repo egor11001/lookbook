@@ -5,16 +5,23 @@ import { Navigation } from 'swiper';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router';
+import Countdown from 'react-countdown';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from '../../scss/components/Desctop/MainPage.module.scss';
 
+const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</h1>;
+
 const MainPage = () => {
   const navigate = useNavigate();
+  console.log(Date.parse('2022-07-11 01:11:11'));
   return (
     <div id="MainPage" className={styles.wrapper}>
-      <h1 className={styles.timer}>11:11:11:11</h1>
+      <Countdown date={new Date('2022-07-11T01:19:11')} className={styles.timer}>
+        <Completionist />
+      </Countdown>
+
       <div className={styles.content}>
         <button id="prev" className={styles.prev}>
           <ArrowBackIcon className={styles.icon} />

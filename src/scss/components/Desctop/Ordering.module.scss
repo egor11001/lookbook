@@ -512,7 +512,7 @@
       .payment_right {
         display: flex;
         flex-direction: column;
-        margin-top: 20px;
+
         height: 440px;
 
         .promo {
@@ -526,6 +526,7 @@
           align-items: center;
           padding: 25px 35px;
           justify-content: space-between;
+          margin-top: 20px;
 
           h1 {
             font-weight: 400;
@@ -538,7 +539,7 @@
             width: 100%;
             font-weight: 400;
             font-size: 16px;
-            margin-top: 32px;
+            margin-top: 20px;
             text-align: center;
           }
 
@@ -556,7 +557,7 @@
           .promo_info_false {
             display: inline-block;
             margin-top: 4px;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             height: 20px;
             font-weight: 400;
             font-size: 14px;
@@ -694,7 +695,7 @@
   background: #ffffff;
   box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
   border-radius: 10px;
-  padding: 18px 32px 18px 20px;
+  padding: 16px 20px 16px 20px;
 
   .delivery_col {
     display: flex;
@@ -715,7 +716,7 @@
         font-weight: 400;
         font-size: 16px;
         letter-spacing: 0.02em;
-        margin-top: 12px;
+        margin-top: 8px;
         margin-bottom: 16px;
         line-height: 30px;
 
@@ -745,7 +746,6 @@
 .payment_price {
   font-weight: 600;
   font-size: 24px;
-  align-self: flex-start;
   margin-left: 16%;
 
   span {

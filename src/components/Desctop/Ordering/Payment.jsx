@@ -102,6 +102,39 @@ const Payment = ({ info, setInfo }) => {
           </div>
 
           <div className={styles.payment_right}>
+            <div className={styles.delivery_address}>
+              <div className={styles.delivery_col}>
+                <div className={styles.left}>
+                  <h1 className={styles.delivery_title}>Контактные данные:</h1>
+                  <h3 className={styles.delivery_text}>
+                    Имя: <span>{info.contacts.name}</span>
+                    <br />
+                    Фамилия: <span>{info.contacts.lastName}</span>
+                    <br />
+                    Email: <span>{info.contacts.email}</span>
+                    <br />
+                    Телефон: <span>{info.contacts.phone}</span>
+                    <br />
+                  </h3>
+                  <h1 className={styles.delivery_title}>Метод оплаты:</h1>
+                  <h3 className={styles.delivery_text}>
+                    {active ? (
+                      <span>{items.filter((item) => item.id === active)[0].type}</span>
+                    ) : null}
+                  </h3>
+                </div>
+                <div className={styles.right}>
+                  <h1 className={styles.delivery_title}>Адрес доставки:</h1>
+                  <h3 className={styles.delivery_text}>{info.address}</h3>
+                  <h1 className={styles.delivery_title}>Способ доставки:</h1>
+                  <h3 className={styles.delivery_text}>
+                    <span>{info.delivery.type}</span>
+                    <b>{info.delivery.time}</b>
+                  </h3>
+                </div>
+              </div>
+            </div>
+
             <div className={styles.promo}>
               <h1>Промокод / Сертификат</h1>
               <input
@@ -130,39 +163,6 @@ const Payment = ({ info, setInfo }) => {
                   </button>
                 </>
               ) : null}
-            </div>
-
-            <div className={styles.delivery_address}>
-              <div className={styles.delivery_col}>
-                <div className={styles.left}>
-                  <h1 className={styles.delivery_title}>Контактные данные:</h1>
-                  <h3 className={styles.delivery_text}>
-                    Имя: <span>{info.contacts.name}</span>
-                    <br />
-                    Фамилия: <span>{info.contacts.lastName}</span>
-                    <br />
-                    Email: <span>{info.contacts.email}</span>
-                    <br />
-                    Телефон: <span>{info.contacts.phone}</span>
-                    <br />
-                  </h3>
-                </div>
-                <div className={styles.right}>
-                  <h1 className={styles.delivery_title}>Адрес доставки:</h1>
-                  <h3 className={styles.delivery_text}>{info.address}</h3>
-                  <h1 className={styles.delivery_title}>Способ доставки:</h1>
-                  <h3 className={styles.delivery_text}>
-                    <span>{info.delivery.type}</span>
-                    <b>{info.delivery.time}</b>
-                  </h3>
-                  <h1 className={styles.delivery_title}>Метод оплаты:</h1>
-                  <h3 className={styles.delivery_text}>
-                    {active ? (
-                      <span>{items.filter((item) => item.id === active)[0].type}</span>
-                    ) : null}
-                  </h3>
-                </div>
-              </div>
             </div>
           </div>
         </div>
