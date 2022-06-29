@@ -2,16 +2,21 @@ import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
+import Countdown from 'react-countdown';
 
 import 'swiper/css';
 import styles from '../../scss/components/Mobile/MainPageMobile.module.scss';
+
+const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</h1>;
 
 const Hello = () => {
   const navigate = useNavigate();
 
   return (
     <div id="MainPageMobile" className={styles.wrapper}>
-      <h1 className={styles.timer}>11:11:11:11</h1>
+      <Countdown date={new Date('2022-07-11T01:24:11')} className={styles.timer}>
+        <Completionist />
+      </Countdown>
       <h5 className={styles.presale}>presale</h5>
       <div className={styles.content}>
         <Swiper loop={true} className={styles.swiper}>

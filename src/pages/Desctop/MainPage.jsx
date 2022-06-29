@@ -15,10 +15,10 @@ const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</
 
 const MainPage = () => {
   const navigate = useNavigate();
-  console.log(Date.parse('2022-07-11 01:11:11'));
+
   return (
     <div id="MainPage" className={styles.wrapper}>
-      <Countdown date={new Date('2022-07-11T01:19:11')} className={styles.timer}>
+      <Countdown date={new Date('2022-07-11T01:24:11')} className={styles.timer}>
         <Completionist />
       </Countdown>
 
