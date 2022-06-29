@@ -28,6 +28,10 @@ import DeliveryInfoPageMobile from '../../pages/Mobile/infos/DeliveryInfoPageMob
 import CollaborationInfoPageMobile from '../../pages/Mobile/infos/CollaborationInfoPageMobile';
 import InvestorsInfoPageMobile from '../../pages/Mobile/infos/InvestorsInfoPageMobile';
 import PrivacyPolicyPageMobile from '../../pages/Mobile/infos/PrivacyPolicyPageMobile';
+import AuthPage from '../../pages/Desctop/AuthPage';
+import MainLK from '../../pages/Desctop/MainLK';
+import WelcomeLK from '../../pages/Desctop/WelcomeLK';
+import WelcomeGuide from '../../pages/Desctop/WelcomeGuide';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -52,6 +56,10 @@ const Routes = () => {
           <Route path="investors" element={<InvestorsInfoPage />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="FAQ" element={<FAQPage />} />
+          <Route path="authorization" element={<AuthPage />} />
+          <Route path="home" element={<MainLK />} />
+          <Route path="welcome" element={<WelcomeLK />} />
+          <Route path="guide" element={<WelcomeGuide />} />
         </Route>
       ) : isMobile ? (
         <Route path="/" element={<LayoutMobile />}>
