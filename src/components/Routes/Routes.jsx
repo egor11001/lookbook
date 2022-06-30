@@ -32,6 +32,7 @@ import AuthPage from '../../pages/Desctop/AuthPage';
 import MainLK from '../../pages/Desctop/MainLK';
 import WelcomeLK from '../../pages/Desctop/WelcomeLK';
 import WelcomeGuide from '../../pages/Desctop/WelcomeGuide';
+import NotificationsLK from '../../pages/Desctop/NotificationsLK';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -60,6 +61,7 @@ const Routes = () => {
           <Route path="home" element={<MainLK />} />
           <Route path="welcome" element={<WelcomeLK />} />
           <Route path="guide" element={<WelcomeGuide />} />
+          <Route path="notifications" element={<NotificationsLK />} />
         </Route>
       ) : isMobile ? (
         <Route path="/" element={<LayoutMobile />}>

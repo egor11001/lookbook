@@ -22,7 +22,11 @@ const WelcomeGuide = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>Всё самое необходимое в одном месте</h1>
+      <h1 className={styles.title}>
+        Полина рулит
+        <br />
+        Егор показывает куда
+      </h1>
       <div className={styles.items}>
         <button
           onMouseEnter={() => setValue(texts.profile)}
