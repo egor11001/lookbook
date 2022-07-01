@@ -13,7 +13,7 @@ const MainLK = () => {
       </div>
 
       <div className={styles.content}>
-        <div className={styles.statistic}>
+        <div onClick={() => navigate('/statistic')} className={styles.statistic}>
           <div className={styles.left}>
             <Icon className={styles.statistic_icon} icon={'akar-icons:statistic-up'} />
             <h2 className={styles.description}>Продажи</h2>
