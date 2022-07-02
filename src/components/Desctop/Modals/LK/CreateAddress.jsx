@@ -83,7 +83,7 @@ const CreateAddress = ({ visible, setVisible }) => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Название"
+              placeholder="Имя"
               className={styles.name_input}
             />
           </div>
