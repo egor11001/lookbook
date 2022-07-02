@@ -13,6 +13,14 @@
   .presale {
     font-weight: 300;
     font-size: 32px;
+    justify-self: flex-start;
+  }
+
+  .logo {
+    position: absolute;
+    left: 44.9%;
+    display: flex;
+    justify-content: center;
   }
 
   .buttons_block {
@@ -50,6 +58,32 @@
         @extend .icon;
         width: 32px;
         height: 32px;
+      }
+
+      &:hover {
+        .icon {
+          @extend .icon;
+          color: $black;
+        }
+      }
+    }
+
+    .btn {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 32px;
+
+      &:nth-last-of-type(1) {
+        margin-right: 0;
+      }
+
+      .icon {
+        color: $grey;
+        width: 28px;
+        height: 28px;
       }
 
       &:hover {

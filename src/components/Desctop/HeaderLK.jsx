@@ -5,25 +5,28 @@ import { LogoIcon } from '../../assets';
 
 import styles from '../../scss/components/Desctop/Header.module.scss';
 
-const Header = () => {
+const HeaderLK = () => {
   return (
     <div className={styles.wrapper}>
       <Link to={'/'} className={styles.presale}>
         presale
       </Link>
-      <Link to={'/'} className={styles.logo}>
+      <Link to={'/lk/home'} className={styles.logo}>
         <LogoIcon />
       </Link>
       <div className={styles.buttons_block}>
-        <Link to={'/basket'} className={styles.basket_btn}>
-          <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
+        <Link to={'/lk/profile'} className={styles.btn}>
+          <Icon className={styles.icon} icon="ci:user-circle" />
         </Link>
-        <Link to={'/FAQ'} className={styles.info_btn}>
-          <Icon className={styles.icon} icon="ion:help-circle-outline" />
+        <Link to={'/FAQ'} className={styles.btn}>
+          <Icon className={styles.icon} icon="fluent:question-circle-12-regular" />
+        </Link>
+        <Link to={'/'} className={styles.btn}>
+          <Icon className={styles.icon} icon="ic:twotone-logout" />
         </Link>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default HeaderLK;

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
-import DoDisturbOnIcon from '@mui/icons-material/DoDisturbOn';
 
 import styles from '../../scss/components/Desctop/StatisticLK.module.scss';
+import Empty from '../../components/Desctop/Empty';
+import OrderLK from '../../components/Desctop/Modals/LK/OrderLK';
+import ReturnOrderLK from '../../components/Desctop/Modals/LK/ReturnOrderLK';
 
 const itemsSales = [
   {
@@ -153,7 +155,7 @@ const statusBlock = (status, time) => {
       <>
         <h1 className={styles.time}>Отменено {time}</h1>
 
-        <DoDisturbOnIcon className={styles.status_icon_canceled} />
+        <Icon icon={'ic:baseline-cancel'} className={styles.status_icon_canceled} />
       </>
     );
   }
@@ -171,6 +173,8 @@ const statusBlock = (status, time) => {
 
 const StatisticLK = () => {
   const [activeSection, setActiveSection] = useState('sales');
+  const [visibleOrder, setVisibleOrder] = useState(false);
+  const [visibleReturnOrder, setVisibleReturnOrder] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -202,9 +206,13 @@ const StatisticLK = () => {
           Возвраты
         </button>
 
-        {activeSection === 'sales'
-          ? itemsSales.map((item, index) => (
-              <div key={index} className={styles.item}>
+        {activeSection === 'sales' ? (
+          itemsSales.length > 0 ? (
+            itemsSales.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => setVisibleOrder(!visibleOrder)}
+                className={styles.item}>
                 <h1 className={styles.title}>Заказ #{item.id}</h1>
                 <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
                 <div className={styles.bottom}>
@@ -213,17 +221,31 @@ const StatisticLK = () => {
                 </div>
               </div>
             ))
-          : itemsReturns.map((item, index) => (
-              <div key={index} className={styles.item}>
-                <h1 className={styles.title}>Заказ #{item.id}</h1>
-                <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
-                <div className={styles.bottom}>
-                  <h4 className={styles.counts}>{item.counts} товаров</h4>
-                  <h1 className={styles.price}>{item.total_price} ₽</h1>
-                </div>
+          ) : (
+            <Empty />
+          )
+        ) : itemsReturns.length > 0 ? (
+          itemsReturns.map((item, index) => (
+            <div
+              key={index}
+              onClick={() => setVisibleReturnOrder(!visibleReturnOrder)}
+              className={styles.item}>
+              <h1 className={styles.title}>Заказ #{item.id}</h1>
+              <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
+              <div className={styles.bottom}>
+                <h4 className={styles.counts}>{item.counts} товаров</h4>
+                <h1 className={styles.price}>{item.total_price} ₽</h1>
               </div>
-            ))}
+            </div>
+          ))
+        ) : (
+          <Empty />
+        )}
       </div>
+      {visibleOrder ? <OrderLK visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
+      {visibleReturnOrder ? (
+        <ReturnOrderLK visible={visibleReturnOrder} setVisible={setVisibleReturnOrder} />
+      ) : null}
     </div>
   );
 };

@@ -1,0 +1,17 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 44.77%;
+  left: 44.77%;
+
+  .text {
+    margin-top: 64px;
+    font-weight: 800;
+    font-size: 24px;
+  }
+}

@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 
 import styles from '../../scss/components/Desctop/MainLK.module.scss';
 import { useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
 
 const MainLK = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const MainLK = () => {
       </div>
 
       <div className={styles.content}>
-        <div onClick={() => navigate('/statistic')} className={styles.statistic}>
+        <div onClick={() => navigate('/lk/statistic')} className={styles.statistic}>
           <div className={styles.left}>
             <Icon className={styles.statistic_icon} icon={'akar-icons:statistic-up'} />
             <h2 className={styles.description}>Продажи</h2>
@@ -37,7 +38,7 @@ const MainLK = () => {
         </div>
 
         <div className={styles.column}>
-          <div onClick={() => navigate('/notifications')} className={styles.notifications}>
+          <div onClick={() => navigate('/lk/notifications')} className={styles.notifications}>
             <div className={styles.container_top}>
               <h1 className={styles.container_title}>Уведомления</h1>
               <Icon icon={'bi:arrow-right'} className={styles.container_right_icon} />
@@ -49,7 +50,7 @@ const MainLK = () => {
             <h3 className={styles.description_light}>не прочитано</h3>
           </div>
 
-          <div onClick={() => navigate('/addresses')} className={styles.address}>
+          <div onClick={() => navigate('/lk/addresses')} className={styles.address}>
             <div className={styles.container_top}>
               <h1 className={styles.container_title}>Адрес</h1>
               <Icon icon={'bi:arrow-right'} className={styles.container_right_icon} />

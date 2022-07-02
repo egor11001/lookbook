@@ -1,0 +1,253 @@
+@import '../../../libs/normalize';
+@import '../../../variables';
+
+.left {
+  width: 316px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-weight: 800;
+    font-size: 24px;
+    text-align: center;
+    align-self: center;
+    margin-bottom: 53px;
+  }
+
+  .counts {
+    font-weight: 400;
+    font-size: 16px;
+    color: $grey;
+    margin-bottom: 40px;
+  }
+
+  .total_price {
+    font-weight: 800;
+    font-size: 20px;
+    margin-bottom: 40px;
+  }
+
+  .time {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 62px;
+  }
+
+  .left_row_line {
+    width: 348px;
+    height: 1px;
+    background-color: #c4c4c4;
+    position: relative;
+    margin-left: -32px;
+    margin-bottom: 32px;
+  }
+
+  .payment_title {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .payment_type {
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+
+  .address_title {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+
+  .address_value {
+    font-weight: 400;
+    font-size: 16px;
+  }
+}
+
+.column_line {
+  width: 1px;
+  background-color: #c4c4c4;
+  height: 100%;
+  margin-right: 64px;
+  margin-left: 16px;
+}
+
+.right {
+  width: 664px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .customer_name {
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 12px;
+    span {
+      margin-right: 16px;
+    }
+  }
+
+  .customer_phone {
+    font-weight: 400;
+    font-size: 16px;
+    color: $grey;
+    margin-bottom: 48px;
+  }
+
+  .statuses {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+
+    .status_item {
+      display: flex;
+      align-items: center;
+      margin-right: 32px;
+      cursor: pointer;
+
+      &:nth-last-of-type(1) {
+        margin-right: 0;
+      }
+
+      .status_icon {
+        width: 28px;
+        height: 28px;
+        border: 2px solid $light;
+        border-radius: 50px;
+        color: white;
+        margin-right: 16px;
+      }
+
+      .status_icon_active {
+        @extend .status_icon;
+        background-color: $green;
+        border: none;
+        color: white;
+      }
+      .status_icon_canceled {
+        @extend .status_icon;
+        border: none !important;
+        color: $pink;
+      }
+
+      .status_title {
+        font-weight: 800;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .right_row_line {
+    width: 100%;
+    height: 1px;
+    background-color: #c4c4c4;
+    margin-bottom: 40px;
+  }
+
+  .items {
+    width: 650px;
+    padding-right: 26px;
+    height: 362px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      height: 10px !important;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+      border-radius: 10px;
+      background-clip: content-box;
+      margin-left: 20px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $light;
+      border-radius: 10px;
+    }
+
+    .item {
+      display: flex;
+      padding-right: 40px;
+      width: 624px;
+      height: 140px;
+      background: #ffffff;
+      overflow: hidden;
+      margin-bottom: 24px;
+
+      .item_photo {
+        width: 133px;
+        height: 140px;
+        object-fit: scale-down;
+        margin-right: 25px;
+      }
+
+      .item_content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .item_top {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 16px;
+          margin-bottom: 20px;
+
+          .item_brand {
+            font-weight: 800;
+            font-size: 20px;
+            color: $light;
+          }
+
+          .item_article {
+            font-weight: 800;
+            font-size: 16px;
+            color: $light;
+          }
+        }
+
+        .item_center {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+
+          .item_type {
+            font-weight: 400;
+            font-size: 16px;
+          }
+
+          .item_price {
+            font-weight: 400;
+            font-size: 20px;
+          }
+        }
+
+        .item_bottom {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .item_count {
+            font-weight: 800;
+            font-size: 16px;
+          }
+
+          .item_size {
+            font-weight: 800;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

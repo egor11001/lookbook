@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes as Switch, Route } from 'react-router-dom';
+import { Routes as Switch, Route, Navigate } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
 import BasketPage from '../../pages/Desctop/BasketPage';
@@ -35,6 +35,7 @@ import WelcomeGuide from '../../pages/Desctop/WelcomeGuide';
 import NotificationsLK from '../../pages/Desctop/NotificationsLK';
 import StatisticLK from '../../pages/Desctop/StatisticLK';
 import AddressesLK from '../../pages/Desctop/AddressesLK';
+import LK from '../../pages/Desctop/LK';
 
 const Routes = () => {
   const isDesktop = useMediaQuery({
@@ -46,27 +47,32 @@ const Routes = () => {
   return (
     <Switch>
       {isDesktop ? (
-        <Route path="/" element={<Layout />}>
-          <Route path="" element={<MainPage />} />
-          <Route path="item" element={<ItemPage />} />
-          <Route path="basket" element={<BasketPage />} />
-          <Route path="ordering" element={<Ordering />} />
-          <Route path="about" element={<AboutUsPage />} />
-          <Route path="contacts" element={<ContactsPage />} />
-          <Route path="payment" element={<PaymentInfoPage />} />
-          <Route path="delivery" element={<DeliveryInfoPage />} />
-          <Route path="collaboration" element={<CollaborationInfoPage />} />
-          <Route path="investors" element={<InvestorsInfoPage />} />
-          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="FAQ" element={<FAQPage />} />
-          <Route path="authorization" element={<AuthPage />} />
-          <Route path="home" element={<MainLK />} />
-          <Route path="welcome" element={<WelcomeLK />} />
-          <Route path="guide" element={<WelcomeGuide />} />
-          <Route path="notifications" element={<NotificationsLK />} />
-          <Route path="statistic" element={<StatisticLK />} />
-          <Route path="addresses" element={<AddressesLK />} />
-        </Route>
+        <>
+          <Route path="/" element={<Layout />}>
+            <Route path="" element={<MainPage />} />
+            <Route path="item" element={<ItemPage />} />
+            <Route path="basket" element={<BasketPage />} />
+            <Route path="ordering" element={<Ordering />} />
+            <Route path="about" element={<AboutUsPage />} />
+            <Route path="contacts" element={<ContactsPage />} />
+            <Route path="payment" element={<PaymentInfoPage />} />
+            <Route path="delivery" element={<DeliveryInfoPage />} />
+            <Route path="collaboration" element={<CollaborationInfoPage />} />
+            <Route path="investors" element={<InvestorsInfoPage />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="FAQ" element={<FAQPage />} />
+            <Route path="lk/*" element={<LK />}>
+              <Route path="" element={<Navigate to={'/lk/home'} />} />
+              <Route path="authorization" element={<AuthPage />} />
+              <Route path="home" element={<MainLK />} />
+              <Route path="welcome" element={<WelcomeLK />} />
+              <Route path="guide" element={<WelcomeGuide />} />
+              <Route path="notifications" element={<NotificationsLK />} />
+              <Route path="statistic" element={<StatisticLK />} />
+              <Route path="addresses" element={<AddressesLK />} />
+            </Route>
+          </Route>
+        </>
       ) : isMobile ? (
         <Route path="/" element={<LayoutMobile />}>
           <Route path="" element={<MainPageMobile />} />

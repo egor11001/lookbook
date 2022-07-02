@@ -4,6 +4,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import styles from '../../scss/components/Desctop/BasketPage.module.scss';
 import BasketItem from '../../components/Desctop/BasketItem';
+import Empty from '../../components/Desctop/Empty';
 
 const items = [
   {
@@ -61,16 +62,20 @@ const BasketPage = () => {
       </div>
 
       <div className={styles.content}>
-        {items.map((item, index) => (
-          <BasketItem
-            key={index}
-            photo={item.photo}
-            type={item.type}
-            brand={item.brand}
-            price={item.price}
-            count={item.count}
-          />
-        ))}
+        {items.length > 0 ? (
+          items.map((item, index) => (
+            <BasketItem
+              key={index}
+              photo={item.photo}
+              type={item.type}
+              brand={item.brand}
+              price={item.price}
+              count={item.count}
+            />
+          ))
+        ) : (
+          <Empty />
+        )}
       </div>
 
       <button onClick={() => navigate('/ordering')} className={styles.submit}>
