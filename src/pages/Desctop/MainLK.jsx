@@ -49,7 +49,7 @@ const MainLK = () => {
             <h3 className={styles.description_light}>не прочитано</h3>
           </div>
 
-          <div className={styles.address}>
+          <div onClick={() => navigate('/addresses')} className={styles.address}>
             <div className={styles.container_top}>
               <h1 className={styles.container_title}>Адрес</h1>
               <Icon icon={'bi:arrow-right'} className={styles.container_right_icon} />
