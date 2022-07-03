@@ -3,9 +3,9 @@ import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
 import AddIcon from '@mui/icons-material/Add';
 
-import styles from '../../scss/components/Desctop/AddressesLK.module.scss';
-import DeleteAddress from '../../components/Desctop/Modals/LK/DeleteAddress';
-import CreateAddress from '../../components/Desctop/Modals/LK/CreateAddress';
+import styles from '../../../scss/components/Desctop/LK/AddressesLK.module.scss';
+import DeleteAddress from '../../../components/Desctop/Modals/LK/DeleteAddress';
+import CreateAddress from '../../../components/Desctop/Modals/LK/CreateAddress';
 
 const items = [
   {

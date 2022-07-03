@@ -92,6 +92,12 @@
         font-weight: 800;
         font-size: 16px;
         color: white;
+        transition: 0.2s;
+
+        &:hover {
+          background: $black;
+          transition: 0.2s;
+        }
       }
 
       .back_btn {

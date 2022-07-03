@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 
-import styles from '../../../scss/components/Desctop/AuthPage.module.scss';
-import { emailRegexp, phoneRegexp } from '../../../utils/regExps';
+import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
+import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
 import { useNavigate } from 'react-router';
 
 const Login = () => {

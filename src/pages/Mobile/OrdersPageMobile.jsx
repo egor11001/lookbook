@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
 
-import styles from '../../scss/components/Desctop/StatisticLK.module.scss';
+import styles from '../../scss/components/Desctop/LK/StatisticLK.module.scss';
 import Empty from '../../components/Desctop/Empty';
-import OrderLK from '../../components/Desctop/Modals/LK/OrderLK';
-import ReturnOrderLK from '../../components/Desctop/Modals/LK/ReturnOrderLK';
+import Order from '../../components/Desctop/Modals/Presale/Order';
 
 const itemsSales = [
   {
@@ -122,23 +121,6 @@ const itemsSales = [
   },
 ];
 
-const itemsReturns = [
-  {
-    id: 3212,
-    status: 'canceled',
-    time: '24.07.22',
-    counts: 5,
-    total_price: 7850,
-  },
-  {
-    id: 4441,
-    status: 'canceled',
-    time: '22.07.22',
-    counts: 1,
-    total_price: 1240,
-  },
-];
-
 const statusBlock = (status, time) => {
   if (status === 'completed') {
     return (
@@ -171,10 +153,8 @@ const statusBlock = (status, time) => {
   }
 };
 
-const StatisticLK = () => {
-  const [activeSection, setActiveSection] = useState('sales');
+const OrdersPageMobile = () => {
   const [visibleOrder, setVisibleOrder] = useState(false);
-  const [visibleReturnOrder, setVisibleReturnOrder] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -185,51 +165,14 @@ const StatisticLK = () => {
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
 
-          <h3 className={styles.title}>Статистика</h3>
-        </div>
-        <div className={styles.top_right}>
-          <h1 className={styles.total_price}>Итого: 8650 ₽</h1>
+          <h3 className={styles.title}>Заказы</h3>
         </div>
       </div>
 
       <div className={styles.content}>
-        <button
-          onClick={() => setActiveSection('sales')}
-          disabled={activeSection === 'sales'}
-          className={styles.sales_btn}>
-          Продажи
-        </button>
-        <button
-          onClick={() => setActiveSection('returns')}
-          disabled={activeSection === 'returns'}
-          className={styles.returns_btn}>
-          Возвраты
-        </button>
-
-        {activeSection === 'sales' ? (
-          itemsSales.length > 0 ? (
-            itemsSales.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => setVisibleOrder(!visibleOrder)}
-                className={styles.item}>
-                <h1 className={styles.title}>Заказ #{item.id}</h1>
-                <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
-                <div className={styles.bottom}>
-                  <h4 className={styles.counts}>{item.counts} товаров</h4>
-                  <h1 className={styles.price}>{item.total_price} ₽</h1>
-                </div>
-              </div>
-            ))
-          ) : (
-            <Empty />
-          )
-        ) : itemsReturns.length > 0 ? (
-          itemsReturns.map((item, index) => (
-            <div
-              key={index}
-              onClick={() => setVisibleReturnOrder(!visibleReturnOrder)}
-              className={styles.item}>
+        {itemsSales.length > 0 ? (
+          itemsSales.map((item, index) => (
+            <div key={index} onClick={() => setVisibleOrder(!visibleOrder)} className={styles.item}>
               <h1 className={styles.title}>Заказ #{item.id}</h1>
               <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
               <div className={styles.bottom}>
@@ -242,12 +185,9 @@ const StatisticLK = () => {
           <Empty />
         )}
       </div>
-      {visibleOrder ? <OrderLK visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
-      {visibleReturnOrder ? (
-        <ReturnOrderLK visible={visibleReturnOrder} setVisible={setVisibleReturnOrder} />
-      ) : null}
+      {visibleOrder ? <Order visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
     </div>
   );
 };
 
-export default StatisticLK;
+export default OrdersPageMobile;

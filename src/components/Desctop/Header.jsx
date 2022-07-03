@@ -15,11 +15,14 @@ const Header = () => {
         <LogoIcon />
       </Link>
       <div className={styles.buttons_block}>
-        <Link to={'/basket'} className={styles.basket_btn}>
+        <Link to={'/my'} className={styles.btn}>
+          <Icon className={styles.icon} icon="ci:user-circle" />
+        </Link>
+        <Link to={'/my/basket'} className={styles.btn}>
           <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
         </Link>
-        <Link to={'/FAQ'} className={styles.info_btn}>
-          <Icon className={styles.icon} icon="ion:help-circle-outline" />
+        <Link to={'/FAQ'} className={styles.btn}>
+          <Icon className={styles.icon} icon="fluent:question-circle-12-regular" />
         </Link>
       </div>
     </div>

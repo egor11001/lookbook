@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-
-import styles from '../../scss/components/Desctop/NotificationsLK.module.scss';
 import { useNavigate } from 'react-router';
-import Empty from '../../components/Desctop/Empty';
-import { FooterIcon } from '../../assets';
+
+import styles from '../../../scss/components/Desctop/LK/NotificationsLK.module.scss';
+import Empty from '../../../components/Desctop/Empty';
+import { FooterIcon } from '../../../assets';
 
 const items = [
-  /*  {
+  {
     id: 2220,
     type: 'new_order',
   },
@@ -28,7 +28,7 @@ const items = [
   {
     id: 2224,
     type: 'new_order',
-  }, */
+  },
 ];
 
 const NotificationsLK = () => {

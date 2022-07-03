@@ -41,7 +41,7 @@ const Footer = () => {
           </li>
           <li className={styles.li}>
             <Link to={'/investors'} className={styles.link}>
-              Инвесторам
+              Возвраты
             </Link>
           </li>
           <li className={styles.li}>
@@ -61,7 +61,7 @@ const Footer = () => {
           </li>
           <li className={styles.li}>
             <Link to={'/collaboration'} className={styles.link}>
-              Сотрудничество
+              Партнерам
             </Link>
           </li>
           <li className={styles.li}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Login from '../../components/Desctop/Auth/Login';
-import Registration from '../../components/Desctop/Auth/Registration';
+import Login from '../../components/Desctop/Auth/Presale/Login';
+import Registration from '../../components/Desctop/Auth/Presale/Registration';
 
 import styles from '../../scss/components/Desctop/AuthPage.module.scss';
 

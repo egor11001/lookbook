@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-
-import styles from '../../scss/components/Desctop/WelcomeGuide.module.scss';
 import { useNavigate } from 'react-router';
+
+import styles from '../../../scss/components/Desctop/LK/WelcomeGuide.module.scss';
 
 const texts = {
   profile: 'Вся информация о бренде и что-то еще idk',

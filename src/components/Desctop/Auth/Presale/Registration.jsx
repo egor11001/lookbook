@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 
-import styles from '../../../scss/components/Desctop/AuthPage.module.scss';
-import { emailRegexp, phoneRegexp } from '../../../utils/regExps';
+import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
+import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
 import { useNavigate } from 'react-router';
 
 const Registration = () => {
@@ -33,7 +33,7 @@ const Registration = () => {
   };
 
   const onReg = () => {
-    return navigate('/welcome');
+    return navigate('/my');
   };
 
   return (
@@ -41,7 +41,7 @@ const Registration = () => {
       {!stepCode ? (
         <>
           <input
-            placeholder="Email или номер телефона"
+            placeholder="Номер телефона"
             value={value}
             onChange={(e) => handleChange(e.target.value)}
             className={valid ? styles.field : styles.field_err}

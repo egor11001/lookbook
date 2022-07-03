@@ -1,9 +1,9 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
-
-import styles from '../../scss/components/Desctop/Welcome.module.scss';
-import { FooterIcon } from '../../assets';
 import { useNavigate } from 'react-router';
+
+import styles from '../../../scss/components/Desctop/LK/Welcome.module.scss';
+import { FooterIcon } from '../../../assets';
 
 const WelcomeLK = () => {
   const navigate = useNavigate();

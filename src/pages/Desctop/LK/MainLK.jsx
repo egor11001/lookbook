@@ -1,9 +1,8 @@
 import React from 'react';
 import { Icon } from '@iconify/react';
 
-import styles from '../../scss/components/Desctop/MainLK.module.scss';
+import styles from '../../../scss/components/Desctop/LK/MainLK.module.scss';
 import { useNavigate } from 'react-router';
-import { Link } from 'react-router-dom';
 
 const MainLK = () => {
   const navigate = useNavigate();
