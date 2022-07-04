@@ -16,7 +16,7 @@ const ScrollButton = () => {
   };
 
   const scrollToTop = () => {
-    document.body.scrollTo({
+    window.scrollTo({
       top: 0,
       behavior: 'smooth',
       /* you can also use 'auto' behaviour
@@ -24,7 +24,7 @@ const ScrollButton = () => {
     });
   };
 
-  window.addEventListener('scroll', toggleVisible);
+  window.addEventListener('touchmove', toggleVisible);
 
   return (
     <div
