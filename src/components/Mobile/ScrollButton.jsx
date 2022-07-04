@@ -16,7 +16,7 @@ const ScrollButton = () => {
   };
 
   const scrollToTop = () => {
-    window.scrollTo({
+    window.body.root.scrollTo({
       top: 0,
       behavior: 'smooth',
       /* you can also use 'auto' behaviour
