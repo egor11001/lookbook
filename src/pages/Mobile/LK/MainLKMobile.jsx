@@ -12,7 +12,7 @@ const MainLKMobile = () => {
         <h3 className={styles.title}>Артур Пирожков</h3>
         <button onClick={() => navigate('/lk/notifications')} className={styles.notifications}>
           <Icon icon={'mi:notification'} className={styles.notifications_icon} />
-          <div className={styles.new_notifications} />
+          <div className={styles.notifications_new} />
         </button>
       </div>
 
