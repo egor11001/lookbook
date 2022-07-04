@@ -9,7 +9,7 @@ const texts = {
   notification:
     'Оставайтесь на связи! Все необходимые уведомления о новых заказах, и еще многое другое будут в уведомлениях вот так вот!',
   statistic:
-    'Статистика прожад и возвратов. Статистика прибыли и расходов на рекламу. Сюда тоже бы текст придумать было бы супер',
+    'Статистика продаж и возвратов. Статистика прибыли и расходов на рекламу. Сюда тоже бы текст придумать было бы супер',
   delivery:
     'Укажите один или несколько адресов отправки товара. Меняйте адрес в зависимости от обстоятельств (переезд склада, открытие новой точки и т.п)',
   questions: 'Ответы на самые частозадаваемые вопросы.',
@@ -22,11 +22,7 @@ const WelcomeGuide = () => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.title}>
-        Полина рулит
-        <br />
-        Егор показывает куда
-      </h1>
+      <h1 className={styles.title}>Всё самое необходимое в одном месте</h1>
       <div className={styles.items}>
         <button
           onMouseEnter={() => setValue(texts.profile)}
@@ -69,7 +65,7 @@ const WelcomeGuide = () => {
         {value}
       </button>
 
-      <button onClick={() => navigate('/home')} className={styles.back_btn}>
+      <button onClick={() => navigate('/lk/home')} className={styles.back_btn}>
         <Icon icon={'bi:arrow-right'} className={styles.back_icon} />
       </button>
     </div>

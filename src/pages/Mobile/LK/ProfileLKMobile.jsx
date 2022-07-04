@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Icon } from '@iconify/react';
 import { IMaskInput } from 'react-imask';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/ProfileLKMobile.module.scss';
 import { emailRegexp, phoneRegexp } from '../../../utils/regExps';
@@ -68,19 +69,17 @@ const ProfileLKMobile = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <div className={styles.top_left}>
-          <button onClick={() => navigate(-1)} className={styles.back}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
+        <button onClick={() => navigate(-1)} className={styles.back}>
+          <ChevronLeftIcon className={styles.back_icon} />
+        </button>
+
+        <h3 className={styles.title}>Профиль</h3>
+
+        {!activeEdit ? (
+          <button onClick={() => setActiveEdit(true)} className={styles.edit_btn}>
+            <Icon icon={'eva:edit-2-outline'} className={styles.edit_icon} />
           </button>
-
-          <h3 className={styles.title}>Профиль</h3>
-
-          {!activeEdit ? (
-            <button onClick={() => setActiveEdit(true)} className={styles.edit_btn}>
-              <Icon icon={'eva:edit-2-outline'} className={styles.edit_icon} />
-            </button>
-          ) : null}
-        </div>
+        ) : null}
       </div>
 
       <div className={styles.content}>

@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { LogoIconMobile } from '../../assets';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import styles from '../../scss/components/Mobile/HeaderMobile.module.scss';
 import MenuMobile from './MenuMobile';
+import MenuMobileLK from './MenuMobileLK';
 
 const HeaderMobile = () => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (showMenu) {
@@ -24,16 +26,28 @@ const HeaderMobile = () => {
         <button onClick={() => setShowMenu(true)} className={styles.menu}>
           <Icon className={styles.menu_icon} icon={'icon-park-outline:hamburger-button'} />
         </button>
-        <button onClick={() => navigate('/')}>
-          <LogoIconMobile className={styles.logo} />
+        <button className={styles.logo} onClick={() => navigate('/')}>
+          <LogoIconMobile />
         </button>
         <div className={styles.buttons_block}>
-          <Link to={'/my/basket'} className={styles.basket_btn}>
-            <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
-          </Link>
+          {location.pathname.slice(0, 3) === '/lk' ? (
+            <Link to={'/lk/profile'} className={styles.profile_btn}>
+              <Icon className={styles.icon} icon="ci:user-circle" />
+            </Link>
+          ) : (
+            <Link to={'/my/basket'} className={styles.basket_btn}>
+              <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
+            </Link>
+          )}
         </div>
 
-        {showMenu ? <MenuMobile showMenu={showMenu} setShowMenu={setShowMenu} /> : null}
+        {showMenu ? (
+          location.pathname.slice(0, 3) === '/lk' ? (
+            <MenuMobileLK showMenu={showMenu} setShowMenu={setShowMenu} />
+          ) : (
+            <MenuMobile showMenu={showMenu} setShowMenu={setShowMenu} />
+          )
+        ) : null}
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ const WelcomeLK = () => {
         <h3 className={styles.text}>Если у Вас остались вопросы, свяжитесь с нашей поддержкой</h3>
         <h4 className={styles.email}>lookbook.rf@inbox.ru</h4>
 
-        <button onClick={() => navigate('/guide')} className={styles.back_btn}>
+        <button onClick={() => navigate('/lk/guide')} className={styles.back_btn}>
           <Icon icon={'bi:arrow-right'} className={styles.back_icon} />
         </button>
       </div>

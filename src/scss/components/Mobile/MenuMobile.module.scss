@@ -90,6 +90,75 @@
         }
       }
     }
+
+    .ul_lk {
+      width: calc(100% - 20px);
+      margin-bottom: 16px;
+
+      .li_lk {
+        width: 100%;
+        height: 64px;
+        padding-left: 40px;
+        display: flex;
+        align-items: center;
+
+        .icon {
+          width: 32px;
+          height: 32px;
+          color: white;
+          margin-right: 24px;
+        }
+
+        .link_lk {
+          display: inline-block;
+          width: calc(100% - 76px);
+          font-weight: 400;
+          font-size: 18px;
+          color: white;
+        }
+      }
+    }
+    hr {
+      width: calc(100% - 80px);
+      background-color: #c4c4c4;
+      height: 1px;
+      margin-left: 40px;
+    }
+    .ul_more {
+      @extend .ul_lk;
+      margin-top: 32px;
+      margin-bottom: 32px;
+
+      .li_more {
+        @extend .li_lk;
+
+        .icon {
+          @extend .icon;
+        }
+
+        .link_more {
+          @extend .link_lk;
+          font-weight: 200;
+          font-size: 18px;
+          color: white;
+        }
+      }
+    }
+
+    .contacts {
+      display: flex;
+      width: calc(100% - 40px);
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 24px;
+      padding-left: 40px;
+
+      span {
+        font-weight: 400;
+        font-size: 14px;
+        color: white;
+      }
+    }
   }
 
   /*  .set_lng {

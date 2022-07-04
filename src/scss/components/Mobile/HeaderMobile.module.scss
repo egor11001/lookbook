@@ -5,6 +5,7 @@
   width: 100vw;
   height: 64px;
   z-index: 300;
+
   .inner {
     width: 100vw;
     height: 64px;
@@ -33,6 +34,15 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 34%;
+
       svg {
         width: 122px !important;
         height: 16px !important;
@@ -54,6 +64,19 @@
           color: $black;
           width: 20px;
           height: 20px;
+        }
+      }
+
+      .profile_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 12px;
+
+        .icon {
+          color: $black;
+          width: 24px;
+          height: 24px;
         }
       }
     }
