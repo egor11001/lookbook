@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
 import AddIcon from '@mui/icons-material/Add';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/AddressesLKMobile.module.scss';
 import DeleteAddress from '../../../components/Desctop/Modals/LK/DeleteAddress';
 import CreateAddress from '../../../components/Desctop/Modals/LK/CreateAddress';
+import ScrollButton from '../../../components/Mobile/ScrollButton';
 
 const items = [
   {
@@ -99,13 +101,11 @@ const AddressesLKMobile = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <div className={styles.top_left}>
-          <button onClick={() => navigate(-1)} className={styles.back}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
-          </button>
+        <button onClick={() => navigate(-1)} className={styles.back}>
+          <ChevronLeftIcon className={styles.back_icon} />
+        </button>
 
-          <h3 className={styles.title}>Адреса отправки товара</h3>
-        </div>
+        <h3 className={styles.title}>Адреса отправки товара</h3>
       </div>
 
       <div className={styles.content}>
@@ -138,6 +138,8 @@ const AddressesLKMobile = () => {
       ) : null}
 
       {activeCreate ? <CreateAddress visible={activeCreate} setVisible={setActiveCreate} /> : null}
+
+      <ScrollButton />
     </div>
   );
 };

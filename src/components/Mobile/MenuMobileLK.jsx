@@ -71,7 +71,7 @@ const MenuMobileLK = ({ showMenu, setShowMenu }) => {
                 onClick={() => setShowMenu(!showMenu)}
                 to={'/collaboration'}
                 className={styles.link_more}>
-                Помощь и FAQ
+                Партнерам
               </Link>
             </li>
             <li className={styles.li_more}>

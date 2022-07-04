@@ -1,6 +1,6 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import styles from '../../../scss/components/Mobile/LK/WelcomeMobile.module.scss';
 import { ReactComponent as FooterIcon } from '../../../assets/footerLogo.svg';
@@ -17,13 +17,11 @@ const WelcomeLKMobile = () => {
           Вы можете отслеживать статистику продаж, управлять статусом заказа, изменять и добавлять
           адреса складов, а также получать уведомления о новых заказах!
         </h3>
-
+        <button onClick={() => navigate('/lk/guide')} className={styles.back_btn}>
+          <ChevronRightIcon className={styles.back_icon} />
+        </button>
         <h3 className={styles.text}>Если у Вас остались вопросы, свяжитесь с нашей поддержкой</h3>
         <h4 className={styles.email}>lookbook.rf@inbox.ru</h4>
-
-        <button onClick={() => navigate('/guide')} className={styles.back_btn}>
-          <Icon icon={'bi:arrow-right'} className={styles.back_icon} />
-        </button>
       </div>
     </div>
   );

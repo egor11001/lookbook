@@ -3,9 +3,10 @@ import { Icon } from '@iconify/react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { useNavigate } from 'react-router';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
 import styles from '../../../scss/components/Mobile/LK/NotificationsLKMobile.module.scss';
-import EmptyMobile from '../../../components/Mobile/EmptyMobile';
 import { ReactComponent as FooterIcon } from '../../../assets/footerLogo.svg';
 
 const items = [
@@ -40,7 +41,7 @@ const NotificationsLKMobile = () => {
       <div className={styles.top}>
         <div className={styles.top_left}>
           <button onClick={() => navigate(-1)} className={styles.back}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
+            <ChevronLeftIcon className={styles.back_icon} />
           </button>
 
           <h3 className={styles.title}>Уведомления</h3>
@@ -61,12 +62,15 @@ const NotificationsLKMobile = () => {
                 <h3 className={styles.item_description}>Подтвердите начало сбора заказа</h3>
               </div>
               <button onClick={() => console.log('OPEN MODAL')} className={styles.item_open}>
-                <Icon icon={'bi:arrow-right'} className={styles.item_open_icon} />
+                <ChevronRightIcon className={styles.item_open_icon} />
               </button>
             </div>
           ))
         ) : (
-          <EmptyMobile />
+          <div className={styles.empty}>
+            <FooterIcon width={100} height={100} className={styles.logo} />
+            <h1 className={styles.empty_text}>Тут пока пусто...</h1>
+          </div>
         )}
       </div>
       <button onClick={() => setActiveArchive(!activeArchive)} className={styles.title_archive}>
@@ -92,7 +96,7 @@ const NotificationsLKMobile = () => {
                   <h3 className={styles.item_description}>Подтвердите начало сбора заказа</h3>
                 </div>
                 <button onClick={() => console.log('OPEN MODAL')} className={styles.item_open}>
-                  <Icon icon={'bi:arrow-right'} className={styles.item_open_icon} />
+                  <ChevronRightIcon className={styles.item_open_icon} />
                 </button>
               </div>
             ))

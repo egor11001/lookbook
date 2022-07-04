@@ -3,69 +3,55 @@
 
 .wrapper {
   width: 100%;
-  padding: 32px 0 96px 0;
-  min-height: 920px;
-  max-height: 100%;
+  padding: 0 20px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .top {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    width: 100%;
+    margin-top: 32px;
+    justify-content: center;
+    align-items: top;
 
-    .top_left {
+    .back {
+      width: 40px;
+      height: 40px;
       display: flex;
+      justify-content: center;
       align-items: center;
-      margin-left: 104px;
+      position: absolute;
+      left: 20px;
+      margin-top: -2px;
 
-      .back {
-        width: 100px;
-        height: 100px;
-        margin-right: 80px;
-
-        .back_icon {
-          width: 48px;
-          height: 48px;
-          color: $pink;
-        }
-      }
-
-      .title {
-        font-weight: 800;
-        font-size: 24px;
+      .back_icon {
+        width: 32px;
+        height: 32px;
+        color: $pink;
       }
     }
 
-    .top_right {
-      display: flex;
-      margin-right: 200px;
-
-      .total_price {
-        font-weight: 800;
-        font-size: 24px;
-      }
+    .title {
+      font-weight: 800;
+      font-size: 20px;
+      width: 67.5%;
+      text-align: center;
+      margin-top: 4px;
     }
   }
 
   .content {
-    margin-top: 40px;
-    width: 1296px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 40px;
-    justify-items: center;
-    @media (max-width: 1430px) {
-      grid-template-columns: repeat(3, 1fr);
-      column-gap: 40px;
-      width: 1000px;
-    }
+    width: 100%;
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
 
     .add_btn {
-      margin-bottom: 64px;
-      cursor: pointer;
+      margin-bottom: 48px;
       outline: none;
       transition: 0.3s;
       padding: 0;
@@ -105,7 +91,7 @@
       background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
       background-position: 0 0, 0 0, 100% 0, 0 100%;
       background-repeat: no-repeat;
-      height: 168px;
+      height: 104px;
       width: 264px;
 
       border-radius: 10px;
@@ -122,7 +108,7 @@
         transition: 0.3s;
       }
 
-      &:hover {
+      &:active {
         background-color: #c4c4c4;
         transition: 0.3s;
         .plus_icon {
@@ -134,7 +120,7 @@
     }
 
     .item {
-      margin-bottom: 64px;
+      margin-bottom: 24px;
       background: #ffffff;
       box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
       border-radius: 10px;

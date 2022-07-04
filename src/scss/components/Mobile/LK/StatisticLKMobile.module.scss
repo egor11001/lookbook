@@ -50,40 +50,30 @@
     flex-direction: column;
     margin-bottom: 20px;
 
-    .sales_btn {
-      position: fixed;
-      z-index: 500;
-      width: 330px;
-      height: 88px;
-      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
-      border-radius: 0px 10px 10px 0px;
-      left: 0px;
-      top: 360px;
-      font-weight: 400;
-      font-size: 20px;
-      color: $grey;
-      text-align: end;
-      padding-right: 88px;
+    .block_btns {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 48px;
 
-      &:disabled {
+      .sales_btn {
+        border-bottom: 2px solid transparent;
+        color: $light;
+        padding: 8px 12px;
         font-weight: 800;
-      }
-
-      @media (max-width: 1715px) {
-        width: 250px;
-      }
-
-      @media (max-width: 1570px) {
         font-size: 16px;
-        text-align: center;
-        width: 150px;
-        padding: 0;
-      }
-    }
 
-    .returns_btn {
-      @extend .sales_btn;
-      top: 510px !important;
+        &:disabled {
+          border-bottom: 2px solid $black;
+          color: $black;
+        }
+      }
+
+      .returns_btn {
+        @extend .sales_btn;
+        margin-left: 40px;
+      }
     }
 
     .item {
@@ -132,8 +122,8 @@
           color: white;
           background-color: $green;
           border-radius: 50px;
-          width: 27px;
-          height: 27px;
+          width: 28px;
+          height: 28px;
         }
         .status_icon_canceled {
           color: $pink;

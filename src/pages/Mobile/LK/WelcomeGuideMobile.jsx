@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
+import 'swiper/css';
+import 'swiper/css/pagination';
 import styles from '../../../scss/components/Mobile/LK/WelcomeGuideMobile.module.scss';
 
 const texts = {
@@ -9,68 +14,57 @@ const texts = {
   notification:
     'Оставайтесь на связи! Все необходимые уведомления о новых заказах, и еще многое другое будут в уведомлениях вот так вот!',
   statistic:
-    'Статистика прожад и возвратов. Статистика прибыли и расходов на рекламу. Сюда тоже бы текст придумать было бы супер',
+    'Статистика продаж и возвратов. Статистика прибыли и расходов на рекламу. Сюда тоже бы текст придумать было бы супер',
   delivery:
     'Укажите один или несколько адресов отправки товара. Меняйте адрес в зависимости от обстоятельств (переезд склада, открытие новой точки и т.п)',
   questions: 'Ответы на самые частозадаваемые вопросы.',
 };
 
 const WelcomeGuideMobile = () => {
-  const [value, setValue] = useState(null);
-
   const navigate = useNavigate();
 
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>
-        Полина рулит
-        <br />
-        Егор показывает куда
-      </h1>
-      <div className={styles.items}>
-        <button
-          onMouseEnter={() => setValue(texts.profile)}
-          onMouseLeave={() => setValue(null)}
-          className={styles.item}>
+    <div id="BasketMobile" className={styles.wrapper}>
+      <h1 className={styles.title}>Всё самое необходимое одном месте</h1>
+
+      <Swiper
+        pagination={{
+          dynamicBullets: true,
+        }}
+        spaceBetween={40}
+        slidesPerView={'auto'}
+        centeredSlides={true}
+        modules={[Pagination]}
+        className={styles.swiper}>
+        <SwiperSlide className={styles.item}>
           <Icon className={styles.item_icon} icon={'gg:profile'} />
-          {value === texts.profile ? <h3 className={styles.item_desc}>Профиль</h3> : null}
-        </button>
-        <button
-          onMouseEnter={() => setValue(texts.notification)}
-          onMouseLeave={() => setValue(null)}
-          className={styles.item}>
+          <h1 className={styles.item_title}>Профиль</h1>
+          <h3 className={styles.item_desc}>{texts.profile}</h3>
+        </SwiperSlide>
+        <SwiperSlide className={styles.item}>
           <Icon className={styles.item_icon} icon={'mi:notification'} />
-          {value === texts.notification ? <h3 className={styles.item_desc}>Уведомления</h3> : null}
-        </button>
-        <button
-          onMouseEnter={() => setValue(texts.statistic)}
-          onMouseLeave={() => setValue(null)}
-          className={styles.item}>
+          <h1 className={styles.item_title}>Уведомления</h1>
+          <h3 className={styles.item_desc}>{texts.notification}</h3>
+        </SwiperSlide>
+        <SwiperSlide className={styles.item}>
           <Icon className={styles.item_icon} icon={'akar-icons:statistic-up'} />
-          {value === texts.statistic ? <h3 className={styles.item_desc}>Статистика</h3> : null}
-        </button>
-        <button
-          onMouseEnter={() => setValue(texts.delivery)}
-          onMouseLeave={() => setValue(null)}
-          className={styles.item}>
+          <h1 className={styles.item_title}>Статистика</h1>
+          <h3 className={styles.item_desc}>{texts.statistic}</h3>
+        </SwiperSlide>
+        <SwiperSlide className={styles.item}>
           <Icon className={styles.item_icon} icon={'bx:map'} />
-          {value === texts.delivery ? <h3 className={styles.item_desc}>Адреса отправки</h3> : null}
-        </button>
-        <button
-          onMouseEnter={() => setValue(texts.questions)}
-          onMouseLeave={() => setValue(null)}
-          className={styles.item}>
+          <h1 className={styles.item_title}>Адреса отправки</h1>
+          <h3 className={styles.item_desc}>{texts.delivery}</h3>
+        </SwiperSlide>
+        <SwiperSlide className={styles.item}>
           <Icon className={styles.item_icon} icon={'fluent:question-circle-12-regular'} />
-          {value === texts.questions ? <h3 className={styles.item_desc}>Помощь и FAQ</h3> : null}
-        </button>
-      </div>
+          <h1 className={styles.item_title}>Помощь и FAQ</h1>
+          <h3 className={styles.item_desc}>{texts.questions}</h3>
+        </SwiperSlide>
+      </Swiper>
 
-      <button disabled={!Boolean(value)} className={styles.content}>
-        {value}
-      </button>
-
-      <button onClick={() => navigate('/home')} className={styles.back_btn}>
-        <Icon icon={'bi:arrow-right'} className={styles.back_icon} />
+      <button onClick={() => navigate('/lk/home')} className={styles.back_btn}>
+        <ChevronRightIcon className={styles.back_icon} />
       </button>
     </div>
   );

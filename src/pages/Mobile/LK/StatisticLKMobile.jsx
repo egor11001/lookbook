@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
 import EmptyMobile from '../../../components/Mobile/EmptyMobile';
 import OrderLK from '../../../components/Desctop/Modals/LK/OrderLK';
 import ReturnOrderLK from '../../../components/Desctop/Modals/LK/ReturnOrderLK';
+import ScrollButton from '../../../components/Mobile/ScrollButton';
 
 const itemsSales = [
   {
@@ -180,31 +182,28 @@ const StatisticLKMobile = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <div className={styles.top_left}>
-          <button onClick={() => navigate(-1)} className={styles.back}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
-          </button>
+        <button onClick={() => navigate(-1)} className={styles.back}>
+          <ChevronLeftIcon className={styles.back_icon} />
+        </button>
 
-          <h3 className={styles.title}>Статистика</h3>
-        </div>
-        <div className={styles.top_right}>
-          <h1 className={styles.total_price}>Итого: 8650 ₽</h1>
-        </div>
+        <h3 className={styles.title}>Статистика</h3>
       </div>
 
       <div className={styles.content}>
-        <button
-          onClick={() => setActiveSection('sales')}
-          disabled={activeSection === 'sales'}
-          className={styles.sales_btn}>
-          Продажи
-        </button>
-        <button
-          onClick={() => setActiveSection('returns')}
-          disabled={activeSection === 'returns'}
-          className={styles.returns_btn}>
-          Возвраты
-        </button>
+        <div className={styles.block_btns}>
+          <button
+            onClick={() => setActiveSection('sales')}
+            disabled={activeSection === 'sales'}
+            className={styles.sales_btn}>
+            Продажи
+          </button>
+          <button
+            onClick={() => setActiveSection('returns')}
+            disabled={activeSection === 'returns'}
+            className={styles.returns_btn}>
+            Возвраты
+          </button>
+        </div>
 
         {activeSection === 'sales' ? (
           itemsSales.length > 0 ? (
@@ -246,6 +245,8 @@ const StatisticLKMobile = () => {
       {visibleReturnOrder ? (
         <ReturnOrderLK visible={visibleReturnOrder} setVisible={setVisibleReturnOrder} />
       ) : null}
+
+      <ScrollButton />
     </div>
   );
 };
