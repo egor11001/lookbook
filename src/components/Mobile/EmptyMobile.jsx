@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../scss/components/Desctop/Empty.module.scss';
+import styles from '../../scss/components/Mobile/EmptyMobile.module.scss';
 import { FooterIcon } from '../../assets';
 
 const EmptyMobile = () => {

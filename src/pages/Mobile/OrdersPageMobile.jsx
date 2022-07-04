@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
-import Empty from '../../components/Desctop/Empty';
+import EmptyMobile from '../../components/Mobile/EmptyMobile';
 import Order from '../../components/Desctop/Modals/Presale/Order';
 import ScrollButton from '../../components/Mobile/ScrollButton';
 
@@ -182,7 +182,7 @@ const OrdersPageMobile = () => {
             </div>
           ))
         ) : (
-          <Empty />
+          <EmptyMobile />
         )}
       </div>
       {visibleOrder ? <Order visible={visibleOrder} setVisible={setVisibleOrder} /> : null}

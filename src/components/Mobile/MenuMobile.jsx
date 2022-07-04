@@ -37,6 +37,10 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
           </button>
         </div>
         <div className={styles.content}>
+          <Link onClick={() => setShowMenu(!showMenu)} to={'/my'} className={styles.profile}>
+            Войти
+          </Link>
+          <hr />
           <ul className={styles.ul}>
             <li className={styles.li}>
               <Link onClick={() => setShowMenu(!showMenu)} to={'/about'} className={styles.link}>
@@ -63,7 +67,7 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
                 onClick={() => setShowMenu(!showMenu)}
                 to={'/investors'}
                 className={styles.link}>
-                Инвесторам
+                Партнерам
               </Link>
             </li>
             <li className={styles.li}>
@@ -71,7 +75,7 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
                 onClick={() => setShowMenu(!showMenu)}
                 to={'/collaboration'}
                 className={styles.link}>
-                Сотрудничество
+                Возвраты
               </Link>
             </li>
             <li className={styles.li}>
@@ -88,23 +92,6 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
               </Link>
             </li>
           </ul>
-        </div>
-
-        <hr />
-
-        <div className={styles.set_lng}>
-          <button onClick={handleChangeLang} className={styles.lng}>
-            {lang}
-          </button>
-          {showLang
-            ? languages.map((item, index) =>
-                item !== lang ? (
-                  <button onClick={onChangeLang(item)} key={index} className={styles.lng_item}>
-                    {item}
-                  </button>
-                ) : null,
-              )
-            : null}
         </div>
       </div>
     </Div100vh>

@@ -33,7 +33,7 @@
     align-items: center;
     padding: 32px 36px 22px 40px;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 4px;
 
     .close_btn {
       width: 80px;
@@ -55,6 +55,24 @@
     height: fit-content;
     margin-bottom: 16px;
 
+    .profile {
+      width: 100%;
+      height: 64px;
+      padding-left: 40px;
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      font-size: 18px;
+      color: white;
+    }
+
+    hr {
+      width: calc(100% - 80px);
+      background-color: #c4c4c4;
+      height: 1px;
+      margin-left: 40px;
+    }
+
     .ul {
       width: 100%;
 
@@ -74,13 +92,7 @@
     }
   }
 
-  hr {
-    width: calc(100% - 80px);
-    background-color: #c4c4c4;
-    height: 1px;
-  }
-
-  .set_lng {
+  /*  .set_lng {
     display: flex;
     align-items: center;
     align-self: flex-start;
@@ -107,5 +119,5 @@
       font-weight: 400;
       text-decoration: none;
     }
-  }
+  } */
 }
