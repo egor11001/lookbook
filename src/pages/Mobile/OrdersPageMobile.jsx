@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
 import Empty from '../../components/Desctop/Empty';
@@ -162,7 +163,7 @@ const OrdersPageMobile = () => {
     <div className={styles.wrapper}>
       <div className={styles.top}>
         <button onClick={() => navigate(-1)} className={styles.back}>
-          <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
+          <ChevronLeftIcon className={styles.back_icon} />
         </button>
 
         <h3 className={styles.title}>Заказы</h3>
