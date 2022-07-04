@@ -28,7 +28,7 @@ const HeaderMobile = () => {
           <LogoIconMobile className={styles.logo} />
         </button>
         <div className={styles.buttons_block}>
-          <Link to={'/basket'} className={styles.basket_btn}>
+          <Link to={'/my/basket'} className={styles.basket_btn}>
             <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
           </Link>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router';
 import { Icon } from '@iconify/react';
 
-import styles from '../../scss/components/Desctop/Home.module.scss';
+import styles from '../../scss/components/Desctop/LK/Home.module.scss';
 
 const Home = () => {
   const navigate = useNavigate();

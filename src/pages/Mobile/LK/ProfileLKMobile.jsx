@@ -2,28 +2,22 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Icon } from '@iconify/react';
 import { IMaskInput } from 'react-imask';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import styles from '../../scss/components/Mobile/LK/ProfileLKMobile.module.scss';
-import { emailRegexp, phoneRegexp } from '../../utils/regExps';
+import styles from '../../../scss/components/Mobile/LK/ProfileLKMobile.module.scss';
+import { emailRegexp, phoneRegexp } from '../../../utils/regExps';
 
 const PhoneMask = '+{0}-000-000-00-00';
 
 const info = {
-  name: 'Стикс',
-  lastName: 'Власов',
-  email: 'мягкиелапки@yandex.ru',
+  brand: 'Беларусский трикотаж',
+  email: 'bebra2022@yandex.ru',
   phone: '+7-999-888-00-22',
 };
 
-const ProfileMobile = () => {
+const ProfileLKMobile = () => {
   const [activeEdit, setActiveEdit] = useState(false);
-  const [name, setName] = useState({
-    value: info.name || '',
-    error: false,
-  });
-  const [lastName, setLastName] = useState({
-    value: info.lastName || '',
+  const [brand, setBrand] = useState({
+    value: info.brand || '',
     error: false,
   });
   const [email, setEmail] = useState({
@@ -38,19 +32,11 @@ const ProfileMobile = () => {
   const [activePhone, setActivePhone] = useState(false);
   const navigate = useNavigate();
 
-  const handleChangeName = (value) => {
+  const handleChangeBrand = (value) => {
     if (value.length < 1) {
-      setName({ value: value, error: 'Обязательное поле' });
+      setBrand({ value: value, error: 'Обязательное поле' });
     } else {
-      setName({ value: value, error: false });
-    }
-  };
-
-  const handleChangeLastName = (value) => {
-    if (value.length < 1) {
-      setLastName({ value: value, error: 'Обязательное поле' });
-    } else {
-      setLastName({ value: value, error: false });
+      setBrand({ value: value, error: false });
     }
   };
 
@@ -73,8 +59,8 @@ const ProfileMobile = () => {
   };
 
   const onSubmit = () => {
-    if (!name.error && !email.error && !phone.error) {
-      console.log(name, email, phone);
+    if (!brand.error && !email.error && !phone.error) {
+      console.log(brand, email, phone);
       setActiveEdit(false);
     }
   };
@@ -82,39 +68,31 @@ const ProfileMobile = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <button onClick={() => navigate(-1)} className={styles.back}>
-          <ChevronLeftIcon className={styles.back_icon} />
-        </button>
-
-        <h3 className={styles.title}>Профиль</h3>
-
-        {!activeEdit ? (
-          <button onClick={() => setActiveEdit(true)} className={styles.edit_btn}>
-            <Icon icon={'eva:edit-2-outline'} className={styles.edit_icon} />
+        <div className={styles.top_left}>
+          <button onClick={() => navigate(-1)} className={styles.back}>
+            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
-        ) : null}
+
+          <h3 className={styles.title}>Профиль</h3>
+
+          {!activeEdit ? (
+            <button onClick={() => setActiveEdit(true)} className={styles.edit_btn}>
+              <Icon icon={'eva:edit-2-outline'} className={styles.edit_icon} />
+            </button>
+          ) : null}
+        </div>
       </div>
 
       <div className={styles.content}>
         <input
           disabled={!activeEdit}
-          value={name.value}
-          onChange={(e) => handleChangeName(e.target.value)}
-          placeholder="Имя"
+          value={brand.value}
+          onChange={(e) => handleChangeBrand(e.target.value)}
+          placeholder="Название бренда"
           type="text"
-          className={name.error ? styles.input_err : styles.input}
+          className={brand.error ? styles.input_err : styles.input}
         />
-        <h5 className={styles.input_error}>{name.error ? name.error : null}</h5>
-
-        <input
-          disabled={!activeEdit}
-          value={lastName.value}
-          onChange={(e) => handleChangeLastName(e.target.value)}
-          placeholder="Фамилия"
-          type="text"
-          className={lastName.error ? styles.input_err : styles.input}
-        />
-        <h5 className={styles.input_error}>{lastName.error ? lastName.error : null}</h5>
+        <h5 className={styles.input_error}>{brand.error ? brand.error : null}</h5>
 
         <input
           disabled={!activeEdit}
@@ -165,4 +143,4 @@ const ProfileMobile = () => {
   );
 };
 
-export default ProfileMobile;
+export default ProfileLKMobile;

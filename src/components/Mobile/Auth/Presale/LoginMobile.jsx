@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Icon } from '@iconify/react';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
-import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
+import styles from '../../../../scss/components/Mobile/AuthPageMobile.module.scss';
 import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
 import { useNavigate } from 'react-router';
 
-const Login = () => {
+const LoginMobile = () => {
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
   const [stepCode, setStepCode] = useState(false);
@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   const onLogin = () => {
-    return navigate('/lk/home');
+    return navigate('/my');
   };
 
   return (
@@ -41,7 +41,7 @@ const Login = () => {
       {!stepCode ? (
         <>
           <input
-            placeholder="Email или номер телефона"
+            placeholder="Номер телефона"
             value={value}
             onChange={(e) => handleChange(e.target.value)}
             className={valid ? styles.field : styles.field_err}
@@ -53,10 +53,10 @@ const Login = () => {
       ) : (
         <>
           <button onClick={() => setStepCode(false)} className={styles.back_btn}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
+            <ChevronLeftIcon className={styles.back_icon} />
           </button>
           <input
-            placeholder="Введите код с полученного письма"
+            placeholder="SMS код"
             value={code}
             onChange={(e) => handleChangeCode(e.target.value)}
             className={valid ? styles.field : styles.field_err}
@@ -71,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginMobile;

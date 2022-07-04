@@ -1,0 +1,224 @@
+@import '../../../libs/normalize';
+@import '../../../variables';
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 900px;
+
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 80px;
+    width: 1025px;
+    margin-bottom: 100px;
+
+    .title {
+      font-weight: 800;
+      font-size: 24px;
+    }
+  }
+
+  .content {
+    width: 1025px;
+    margin-right: 100px;
+    display: flex;
+
+    .statistic {
+      width: 536px;
+      height: 502px;
+      display: flex;
+      justify-content: space-between;
+      padding: 72px 64px 0 72px;
+      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+      border-radius: 10px;
+      background-color: white;
+      transition: 0.3s;
+      cursor: pointer;
+      margin-right: 152px;
+
+      .left {
+        display: flex;
+        flex-direction: column;
+
+        .statistic_icon {
+          width: 40px;
+          height: 40px;
+          color: $pink;
+          align-self: center;
+          margin-bottom: 24px;
+        }
+
+        .description {
+          font-weight: 600;
+          font-size: 24px;
+          margin-bottom: 32px;
+        }
+
+        .money {
+          font-weight: 800;
+          font-size: 32px;
+          margin-bottom: 20px;
+        }
+
+        .counts {
+          display: flex;
+          align-items: center;
+          font-weight: 400;
+          font-size: 20px;
+          margin-bottom: 20px;
+
+          .counts_icon {
+            width: 24px;
+            height: 24px;
+            color: $grey;
+            margin-right: 12px;
+          }
+        }
+
+        .time {
+          font-weight: 400;
+          font-size: 16px;
+          color: $light;
+        }
+      }
+
+      .right {
+        @extend .left;
+      }
+
+      .right_icon {
+        width: 48px;
+        height: 48px;
+        color: $pink;
+        align-self: flex-end;
+        position: absolute;
+        margin-left: 172px;
+        margin-top: -56px;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        background-color: #fbf9f9;
+        transition: 0.3s;
+
+        .right_icon {
+          width: 64px;
+          height: 64px;
+          margin-left: 164px;
+          margin-top: -48px;
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      width: 345px;
+
+      .notifications {
+        box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+        border-radius: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 32px 0 0 48px;
+        margin-bottom: 40px;
+        width: 345px;
+        height: 231px;
+        transition: 0.3s;
+        cursor: pointer;
+
+        .container_top {
+          margin-bottom: 32px;
+          display: flex;
+          align-items: center;
+
+          .container_title {
+            font-weight: 600;
+            font-size: 24px;
+            margin-right: 24px;
+          }
+
+          .container_right_icon {
+            transition: 0.3s;
+            position: absolute;
+            margin-left: 180px;
+            width: 32px;
+            height: 32px;
+            color: $pink;
+          }
+        }
+
+        .inner {
+          display: flex;
+          align-items: center;
+          margin-bottom: 12px;
+
+          .notifications_icon {
+            width: 40px;
+            height: 40px;
+            color: $pink;
+            margin-right: 16px;
+          }
+
+          .notifications_count {
+            font-weight: 600;
+            font-size: 40px;
+          }
+        }
+
+        .description_light {
+          font-weight: 400;
+          font-size: 20px;
+          color: $light;
+        }
+
+        &:hover {
+          transition: 0.3s;
+          background-color: #fbf9f9;
+
+          .container_right_icon {
+            transition: 0.3s;
+            width: 40px;
+            height: 40px;
+            color: $pink;
+          }
+        }
+      }
+
+      .address {
+        @extend .notifications;
+
+        .container_right_icon {
+          margin-left: 97px !important;
+        }
+
+        .inner {
+          height: 52px;
+          margin-bottom: 24px;
+          .address_icon {
+            width: 40px;
+            height: 40px;
+            color: $pink;
+            margin-right: 8px;
+          }
+
+          .address_value {
+            width: 226px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 25px;
+          }
+        }
+      }
+    }
+  }
+}

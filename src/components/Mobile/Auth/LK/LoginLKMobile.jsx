@@ -5,7 +5,7 @@ import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
 import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
 import { useNavigate } from 'react-router';
 
-const Login = () => {
+const LoginLKMobile = () => {
   const [value, setValue] = useState('');
   const [valid, setValid] = useState(true);
   const [stepCode, setStepCode] = useState(false);
@@ -71,4 +71,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginLKMobile;

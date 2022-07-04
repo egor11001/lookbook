@@ -51,7 +51,7 @@ const Contacts = ({ info, setInfo }) => {
     <div className={styles.inner}>
       <div className={styles.top}>
         <div className={styles.top_left}>
-          <button onClick={() => navigate('/basket')} className={styles.back}>
+          <button onClick={() => navigate(-1)} className={styles.back}>
             <ArrowBackIcon className={styles.back_icon} />
           </button>
           <h3 className={styles.title}>Контактные данные</h3>

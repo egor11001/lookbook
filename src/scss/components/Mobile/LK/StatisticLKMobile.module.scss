@@ -1,0 +1,176 @@
+@import '../../../libs/normalize';
+@import '../../../variables';
+
+.wrapper {
+  width: 100%;
+  padding: 32px 0 96px 0;
+  min-height: 920px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .top_left {
+      display: flex;
+      align-items: center;
+      margin-left: 104px;
+
+      .back {
+        width: 100px;
+        height: 100px;
+        margin-right: 80px;
+
+        .back_icon {
+          width: 48px;
+          height: 48px;
+          color: $pink;
+        }
+      }
+
+      .title {
+        font-weight: 800;
+        font-size: 24px;
+      }
+    }
+
+    .top_right {
+      display: flex;
+      margin-right: 200px;
+
+      .total_price {
+        font-weight: 800;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .content {
+    margin-top: 40px;
+    width: 1018px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 40px;
+    justify-items: center;
+
+    @media (max-width: 1340px) {
+      margin-left: 100px;
+    }
+
+    .sales_btn {
+      position: fixed;
+      z-index: 500;
+      width: 330px;
+      height: 88px;
+      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+      border-radius: 0px 10px 10px 0px;
+      left: 0px;
+      top: 360px;
+      font-weight: 400;
+      font-size: 20px;
+      color: $grey;
+      text-align: end;
+      padding-right: 88px;
+
+      &:disabled {
+        font-weight: 800;
+      }
+
+      @media (max-width: 1715px) {
+        width: 250px;
+      }
+
+      @media (max-width: 1570px) {
+        font-size: 16px;
+        text-align: center;
+        width: 150px;
+        padding: 0;
+      }
+    }
+
+    .returns_btn {
+      @extend .sales_btn;
+      top: 510px !important;
+    }
+
+    .item {
+      width: 286px;
+      height: 166px;
+      margin-bottom: 65px;
+      display: flex;
+      flex-direction: column;
+      padding: 16px 24px;
+      background: #ffffff;
+      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+      border-radius: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: #fbf9f9;
+        transition: 0.2s;
+      }
+
+      .title {
+        font-weight: 800;
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 26px;
+
+        .time {
+          font-weight: 400;
+          font-size: 14px;
+          color: $grey;
+        }
+
+        .status_icon_complete,
+        .status_icon_canceled,
+        .status_icon_process {
+          width: 32px;
+          height: 32px;
+        }
+        .status_icon_complete {
+          color: white;
+          background-color: $green;
+          border-radius: 50px;
+          width: 27px;
+          height: 27px;
+        }
+        .status_icon_canceled {
+          color: $pink;
+        }
+        .status_icon_process {
+          color: $light;
+        }
+      }
+
+      .bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .counts {
+          font-weight: 400;
+          font-size: 16px;
+          color: $grey;
+        }
+        .price {
+          font-weight: 800;
+          font-size: 16px;
+          text-align: right;
+        }
+      }
+    }
+  }
+}

@@ -18,6 +18,17 @@ import CollaborationInfoPageMobile from '../../pages/Mobile/infos/CollaborationI
 import InvestorsInfoPageMobile from '../../pages/Mobile/infos/InvestorsInfoPageMobile';
 import PrivacyPolicyPageMobile from '../../pages/Mobile/infos/PrivacyPolicyPageMobile';
 import My from '../../pages/My';
+import LK from '../../pages//Mobile/LK/LK';
+import AuthPageLKMobile from '../../pages/Mobile/LK/AuthPageLKMobile';
+import MainLKMobile from '../../pages/Mobile/LK/MainLKMobile';
+import WelcomeLKMobile from '../../pages/Mobile/LK/WelcomeLKMobile';
+import WelcomeGuideMobile from '../../pages/Mobile/LK/WelcomeGuideMobile';
+import NotificationsLKMobile from '../../pages/Mobile/LK/NotificationsLKMobile';
+import StatisticLKMobile from '../../pages/Mobile/LK/StatisticLKMobile';
+import AddressesLKMobile from '../../pages/Mobile/LK/AddressesLKMobile';
+import ProfileLKMobile from '../../pages/Mobile/LK/ProfileLKMobile';
+import FAQLKMobile from '../../pages/Mobile/LK/FAQLKMobile';
+import AuthPageMobile from '../../pages/Mobile/AuthPageMobile';
 
 const RoutesMobile = () => {
   const userAuth = true;
@@ -27,6 +38,7 @@ const RoutesMobile = () => {
       <Route path="/" element={<LayoutMobile />}>
         <Route path="" element={<MainPageMobile />} />
         <Route path="item" element={<ItemPageMobile />} />
+        <Route path="authorization" element={<AuthPageMobile />} />
         <Route path="FAQ" element={<FAQPageMobile />} />
         <Route path="about" element={<AboutUsPageMobile />} />
         <Route path="contacts" element={<ContactsPageMobile />} />
@@ -47,6 +59,23 @@ const RoutesMobile = () => {
           </Route>
         ) : (
           <Route path="my/*" element={<Navigate to={'/authorization'} />} />
+        )}
+
+        {vendorAuth ? (
+          <Route path="lk/*" element={<LK />}>
+            <Route path="" element={<Navigate to={'/lk/home'} />} />
+            <Route path="authorization" element={<AuthPageLKMobile />} />
+            <Route path="home" element={<MainLKMobile />} />
+            <Route path="welcome" element={<WelcomeLKMobile />} />
+            <Route path="guide" element={<WelcomeGuideMobile />} />
+            <Route path="notifications" element={<NotificationsLKMobile />} />
+            <Route path="statistic" element={<StatisticLKMobile />} />
+            <Route path="addresses" element={<AddressesLKMobile />} />
+            <Route path="profile" element={<ProfileLKMobile />} />
+            <Route path="FAQ" element={<FAQLKMobile />} />
+          </Route>
+        ) : (
+          <Route path="lk/*" element={<Navigate to={'/lk/authorization'} />} />
         )}
       </Route>
     </Switch>

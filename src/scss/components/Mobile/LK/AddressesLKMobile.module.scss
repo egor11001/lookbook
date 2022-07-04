@@ -1,0 +1,194 @@
+@import '../../../libs/normalize';
+@import '../../../variables';
+
+.wrapper {
+  width: 100%;
+  padding: 32px 0 96px 0;
+  min-height: 920px;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .top_left {
+      display: flex;
+      align-items: center;
+      margin-left: 104px;
+
+      .back {
+        width: 100px;
+        height: 100px;
+        margin-right: 80px;
+
+        .back_icon {
+          width: 48px;
+          height: 48px;
+          color: $pink;
+        }
+      }
+
+      .title {
+        font-weight: 800;
+        font-size: 24px;
+      }
+    }
+
+    .top_right {
+      display: flex;
+      margin-right: 200px;
+
+      .total_price {
+        font-weight: 800;
+        font-size: 24px;
+      }
+    }
+  }
+
+  .content {
+    margin-top: 40px;
+    width: 1296px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 40px;
+    justify-items: center;
+    @media (max-width: 1430px) {
+      grid-template-columns: repeat(3, 1fr);
+      column-gap: 40px;
+      width: 1000px;
+    }
+
+    .add_btn {
+      margin-bottom: 64px;
+      cursor: pointer;
+      outline: none;
+      transition: 0.3s;
+      padding: 0;
+      color: $light;
+      background-image: repeating-linear-gradient(
+          29deg,
+          #c4c4c4,
+          #c4c4c4 21px,
+          transparent 21px,
+          transparent 39px,
+          #c4c4c4 39px
+        ),
+        repeating-linear-gradient(
+          119deg,
+          #c4c4c4,
+          #c4c4c4 21px,
+          transparent 21px,
+          transparent 39px,
+          #c4c4c4 39px
+        ),
+        repeating-linear-gradient(
+          209deg,
+          #c4c4c4,
+          #c4c4c4 21px,
+          transparent 21px,
+          transparent 39px,
+          #c4c4c4 39px
+        ),
+        repeating-linear-gradient(
+          299deg,
+          #c4c4c4,
+          #c4c4c4 21px,
+          transparent 21px,
+          transparent 39px,
+          #c4c4c4 39px
+        );
+      background-size: 2px 100%, 100% 2px, 2px 100%, 100% 2px;
+      background-position: 0 0, 0 0, 100% 0, 0 100%;
+      background-repeat: no-repeat;
+      height: 168px;
+      width: 264px;
+
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .plus_icon {
+        background-color: #f1f1f1;
+        border-radius: 5px;
+        color: white;
+        width: 40px;
+        height: 40px;
+        transition: 0.3s;
+      }
+
+      &:hover {
+        background-color: #c4c4c4;
+        transition: 0.3s;
+        .plus_icon {
+          background-color: #c4c4c4;
+          transition: 0.3s;
+          color: #f1f1f1;
+        }
+      }
+    }
+
+    .item {
+      margin-bottom: 64px;
+      background: #ffffff;
+      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+      border-radius: 10px;
+      height: 168px;
+      width: 264px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 25px;
+      cursor: pointer;
+
+      .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 22px;
+
+        .name {
+          font-weight: 600;
+          font-size: 16px;
+          color: $black;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        .status_icon {
+          width: 20px;
+          height: 20px;
+          color: white;
+          background-color: $green;
+          border-radius: 50px;
+        }
+      }
+
+      .address {
+        height: 42px;
+        margin-bottom: 14px;
+        font-weight: 600;
+        font-size: 12px;
+        color: $black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .remove_icon {
+        width: 20px;
+        height: 20px;
+        color: $light;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          color: $black;
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+}
