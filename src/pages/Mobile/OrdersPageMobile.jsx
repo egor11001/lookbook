@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
 
-import styles from '../../scss/components/Desctop/LK/StatisticLK.module.scss';
+import styles from '../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
 import Empty from '../../components/Desctop/Empty';
 import Order from '../../components/Desctop/Modals/Presale/Order';
+import ScrollButton from '../../components/Mobile/ScrollButton';
 
 const itemsSales = [
   {
@@ -160,13 +161,11 @@ const OrdersPageMobile = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
-        <div className={styles.top_left}>
-          <button onClick={() => navigate(-1)} className={styles.back}>
-            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
-          </button>
+        <button onClick={() => navigate(-1)} className={styles.back}>
+          <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
+        </button>
 
-          <h3 className={styles.title}>Заказы</h3>
-        </div>
+        <h3 className={styles.title}>Заказы</h3>
       </div>
 
       <div className={styles.content}>
@@ -186,6 +185,7 @@ const OrdersPageMobile = () => {
         )}
       </div>
       {visibleOrder ? <Order visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
+      <ScrollButton />
     </div>
   );
 };
