@@ -1,19 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
 import styles from '../../scss/components/Mobile/ScrollButton.module.scss';
 
 const ScrollButton = () => {
   const [visible, setVisible] = useState(false);
-
-  const toggleVisible = () => {
-    const scrolled = document.documentElement.scrollTop;
-    if (scrolled > 300) {
-      setVisible(true);
-    } else if (scrolled <= 300) {
-      setVisible(false);
-    }
-  };
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -24,7 +15,15 @@ const ScrollButton = () => {
     });
   };
 
-  window.addEventListener('touchmove', toggleVisible);
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        setVisible(true);
+      } else {
+        setVisible(false);
+      }
+    });
+  }, []);
 
   return (
     <div
