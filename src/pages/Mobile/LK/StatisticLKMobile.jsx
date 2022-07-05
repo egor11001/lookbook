@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router';
+import { useNavigate, Link } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
@@ -208,9 +208,9 @@ const StatisticLKMobile = () => {
         {activeSection === 'sales' ? (
           itemsSales.length > 0 ? (
             itemsSales.map((item, index) => (
-              <div
+              <Link
                 key={index}
-                onClick={() => setVisibleOrder(!visibleOrder)}
+                to={{ pathname: `/lk/statistic/${item.id}`, state: { id: item.id } }}
                 className={styles.item}>
                 <h1 className={styles.title}>Заказ #{item.id}</h1>
                 <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
@@ -218,7 +218,7 @@ const StatisticLKMobile = () => {
                   <h4 className={styles.counts}>{item.counts} товаров</h4>
                   <h1 className={styles.price}>{item.total_price} ₽</h1>
                 </div>
-              </div>
+              </Link>
             ))
           ) : (
             <EmptyMobile />

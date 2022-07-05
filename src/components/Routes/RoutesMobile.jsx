@@ -29,6 +29,7 @@ import AddressesLKMobile from '../../pages/Mobile/LK/AddressesLKMobile';
 import ProfileLKMobile from '../../pages/Mobile/LK/ProfileLKMobile';
 import FAQLKMobile from '../../pages/Mobile/LK/FAQLKMobile';
 import AuthPageMobile from '../../pages/Mobile/AuthPageMobile';
+import OrderPageLKMobile from '../../pages/Mobile/LK/OrderPageLKMobile';
 
 const RoutesMobile = () => {
   const userAuth = true;
@@ -70,6 +71,7 @@ const RoutesMobile = () => {
             <Route path="guide" element={<WelcomeGuideMobile />} />
             <Route path="notifications" element={<NotificationsLKMobile />} />
             <Route path="statistic" element={<StatisticLKMobile />} />
+            <Route path="statistic/:id" element={<OrderPageLKMobile />} />
             <Route path="addresses" element={<AddressesLKMobile />} />
             <Route path="profile" element={<ProfileLKMobile />} />
             <Route path="FAQ" element={<FAQLKMobile />} />

@@ -116,7 +116,7 @@ const ReturnOrderLK = ({ visible, setVisible, id }) => {
 
           <h4 className={styles.payment_title}>Метод оплаты</h4>
           <h5 className={styles.payment_type}>{order.payment}</h5>
-          <h4 className={styles.address_title}>Метод оплаты</h4>
+          <h4 className={styles.address_title}>Адрес</h4>
           <h5 className={styles.address_value}>{order.address}</h5>
         </div>
 
