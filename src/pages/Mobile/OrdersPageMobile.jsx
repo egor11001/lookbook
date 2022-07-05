@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Icon } from '@iconify/react';
 import { useNavigate } from 'react-router';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
 import EmptyMobile from '../../components/Mobile/EmptyMobile';
-import Order from '../../components/Desctop/Modals/Presale/Order';
 import ScrollButton from '../../components/Mobile/ScrollButton';
+import { Link } from 'react-router-dom';
 
 const itemsSales = [
   {
@@ -156,7 +156,6 @@ const statusBlock = (status, time) => {
 };
 
 const OrdersPageMobile = () => {
-  const [visibleOrder, setVisibleOrder] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -172,20 +171,23 @@ const OrdersPageMobile = () => {
       <div className={styles.content}>
         {itemsSales.length > 0 ? (
           itemsSales.map((item, index) => (
-            <div key={index} onClick={() => setVisibleOrder(!visibleOrder)} className={styles.item}>
+            <Link
+              to={{ pathname: `/my/orders/${item.id}`, state: { id: item.id } }}
+              key={index}
+              className={styles.item}>
               <h1 className={styles.title}>Заказ #{item.id}</h1>
               <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
               <div className={styles.bottom}>
                 <h4 className={styles.counts}>{item.counts} товаров</h4>
                 <h1 className={styles.price}>{item.total_price} ₽</h1>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <EmptyMobile />
         )}
       </div>
-      {visibleOrder ? <Order visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
+
       <ScrollButton />
     </div>
   );

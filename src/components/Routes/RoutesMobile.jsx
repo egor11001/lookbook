@@ -30,6 +30,8 @@ import ProfileLKMobile from '../../pages/Mobile/LK/ProfileLKMobile';
 import FAQLKMobile from '../../pages/Mobile/LK/FAQLKMobile';
 import AuthPageMobile from '../../pages/Mobile/AuthPageMobile';
 import OrderPageLKMobile from '../../pages/Mobile/LK/OrderPageLKMobile';
+import OrderPageMobile from '../../pages/Mobile/OrderPageMobile';
+import CreateAddressMobile from '../../pages/Mobile/LK/CreateAddressMobile';
 
 const RoutesMobile = () => {
   const userAuth = true;
@@ -55,6 +57,7 @@ const RoutesMobile = () => {
             <Route path="home" element={<HomeMobile />} />
             <Route path="profile" element={<ProfileMobile />} />
             <Route path="orders" element={<OrdersPageMobile />} />
+            <Route path="orders/:id" element={<OrderPageMobile />} />
             <Route path="basket" element={<BasketPageMobile />} />
             <Route path="ordering" element={<OrderingMobile />} />
           </Route>
@@ -73,6 +76,7 @@ const RoutesMobile = () => {
             <Route path="statistic" element={<StatisticLKMobile />} />
             <Route path="statistic/:id" element={<OrderPageLKMobile />} />
             <Route path="addresses" element={<AddressesLKMobile />} />
+            <Route path="addresses/new" element={<CreateAddressMobile />} />
             <Route path="profile" element={<ProfileLKMobile />} />
             <Route path="FAQ" element={<FAQLKMobile />} />
           </Route>

@@ -5,8 +5,6 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/StatisticLKMobile.module.scss';
 import EmptyMobile from '../../../components/Mobile/EmptyMobile';
-import OrderLK from '../../../components/Desctop/Modals/LK/OrderLK';
-import ReturnOrderLK from '../../../components/Desctop/Modals/LK/ReturnOrderLK';
 import ScrollButton from '../../../components/Mobile/ScrollButton';
 
 const itemsSales = [
@@ -175,8 +173,6 @@ const statusBlock = (status, time) => {
 
 const StatisticLKMobile = () => {
   const [activeSection, setActiveSection] = useState('sales');
-  const [visibleOrder, setVisibleOrder] = useState(false);
-  const [visibleReturnOrder, setVisibleReturnOrder] = useState(false);
   const navigate = useNavigate();
 
   return (
@@ -225,9 +221,9 @@ const StatisticLKMobile = () => {
           )
         ) : itemsReturns.length > 0 ? (
           itemsReturns.map((item, index) => (
-            <div
+            <Link
               key={index}
-              onClick={() => setVisibleReturnOrder(!visibleReturnOrder)}
+              to={{ pathname: `/lk/statistic/${item.id}`, state: { id: item.id } }}
               className={styles.item}>
               <h1 className={styles.title}>Заказ #{item.id}</h1>
               <div className={styles.row}>{statusBlock(item.status, item.time)}</div>
@@ -235,16 +231,12 @@ const StatisticLKMobile = () => {
                 <h4 className={styles.counts}>{item.counts} товаров</h4>
                 <h1 className={styles.price}>{item.total_price} ₽</h1>
               </div>
-            </div>
+            </Link>
           ))
         ) : (
           <EmptyMobile />
         )}
       </div>
-      {visibleOrder ? <OrderLK visible={visibleOrder} setVisible={setVisibleOrder} /> : null}
-      {visibleReturnOrder ? (
-        <ReturnOrderLK visible={visibleReturnOrder} setVisible={setVisibleReturnOrder} />
-      ) : null}
 
       <ScrollButton />
     </div>

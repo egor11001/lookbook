@@ -5,9 +5,9 @@ import AddIcon from '@mui/icons-material/Add';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/LK/AddressesLKMobile.module.scss';
-import DeleteAddress from '../../../components/Desctop/Modals/LK/DeleteAddress';
-import CreateAddress from '../../../components/Desctop/Modals/LK/CreateAddress';
 import ScrollButton from '../../../components/Mobile/ScrollButton';
+import { Link } from 'react-router-dom';
+import DeleteAddressMobile from '../../../components/Mobile/LK/DeleteAddressMobile';
 
 const items = [
   {
@@ -86,7 +86,6 @@ const items = [
 
 const AddressesLKMobile = () => {
   const [activeDelete, setActiveDelete] = useState(false);
-  const [activeCreate, setActiveCreate] = useState(false);
   const [deleteInfo, setDeleteInfo] = useState(null);
   const navigate = useNavigate();
 
@@ -109,9 +108,9 @@ const AddressesLKMobile = () => {
       </div>
 
       <div className={styles.content}>
-        <button onClick={() => setActiveCreate(!activeCreate)} className={styles.add_btn}>
+        <Link to={'/lk/addresses/new'} className={styles.add_btn}>
           <AddIcon className={styles.plus_icon} />
-        </button>
+        </Link>
         {items.map((item, index) => (
           <div key={index} className={styles.item}>
             <div className={styles.head}>
@@ -128,7 +127,7 @@ const AddressesLKMobile = () => {
         ))}
       </div>
       {activeDelete ? (
-        <DeleteAddress
+        <DeleteAddressMobile
           name={deleteInfo.name}
           id={deleteInfo.id}
           visible={activeDelete}
@@ -136,8 +135,6 @@ const AddressesLKMobile = () => {
           onDelete={onDelete}
         />
       ) : null}
-
-      {activeCreate ? <CreateAddress visible={activeCreate} setVisible={setActiveCreate} /> : null}
 
       <ScrollButton />
     </div>
