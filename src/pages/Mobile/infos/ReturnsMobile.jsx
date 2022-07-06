@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../scss/components/Mobile/InvestorsInfoPageMobile.module.scss';
 
-const InvestorsInfoPageMobile = () => {
+const ReturnsMobile = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
@@ -14,7 +18,7 @@ const InvestorsInfoPageMobile = () => {
             <button onClick={() => navigate(-1)} className={styles.back}>
               <ChevronLeftIcon className={styles.back_icon} />
             </button>
-            <h3 className={styles.title}>Инвесторам</h3>
+            <h3 className={styles.title}>Возвраты</h3>
           </div>
         </div>
 
@@ -24,4 +28,4 @@ const InvestorsInfoPageMobile = () => {
   );
 };
 
-export default InvestorsInfoPageMobile;
+export default ReturnsMobile;

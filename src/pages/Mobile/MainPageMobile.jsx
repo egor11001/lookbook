@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
@@ -12,6 +12,9 @@ const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</
 const Hello = () => {
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div id="MainPageMobile" className={styles.wrapper}>
       <Countdown date={1657473851000} className={styles.timer}>

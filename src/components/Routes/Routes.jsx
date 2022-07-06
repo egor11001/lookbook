@@ -11,7 +11,7 @@ import ContactsPage from '../../pages/Desctop/infos/ContactsPage';
 import PaymentInfoPage from '../../pages/Desctop/infos/PaymentInfoPage';
 import DeliveryInfoPage from '../../pages/Desctop/infos/DeliveryInfoPage';
 import CollaborationInfoPage from '../../pages/Desctop/infos/CollaborationInfoPage';
-import InvestorsInfoPage from '../../pages/Desctop/infos/InvestorsInfoPage';
+import Returns from '../../pages/Desctop/infos/Returns';
 import PrivacyPolicyPage from '../../pages/Desctop/infos/PrivacyPolicyPage';
 import Ordering from '../../pages/Desctop/Ordering';
 import AuthPage from '../../pages/Desctop/AuthPage';
@@ -45,7 +45,7 @@ const Routes = () => {
         <Route path="payment" element={<PaymentInfoPage />} />
         <Route path="delivery" element={<DeliveryInfoPage />} />
         <Route path="collaboration" element={<CollaborationInfoPage />} />
-        <Route path="investors" element={<InvestorsInfoPage />} />
+        <Route path="returns" element={<Returns />} />
         <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="FAQ" element={<FAQPage />} />
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ScrollButton from '../../../components/Mobile/ScrollButton';
@@ -7,6 +7,10 @@ import styles from '../../../scss/components/Mobile/PrivacyPolicyPageMobile.modu
 
 const PrivacyPolicyPageMobile = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.wrapper}>
       <ScrollButton />

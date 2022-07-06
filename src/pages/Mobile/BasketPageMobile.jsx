@@ -8,6 +8,7 @@ import { Icon } from '@iconify/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from '../../scss/components/Mobile/BasketPageMobile.module.scss';
+import EmptyMobile from '../../components/Mobile/EmptyMobile';
 
 const items = [
   {
@@ -56,28 +57,32 @@ const BasketPageMobile = () => {
       </div>
 
       <div className={styles.content}>
-        <Swiper
-          pagination={{
-            dynamicBullets: true,
-          }}
-          spaceBetween={60}
-          slidesPerView={'auto'}
-          centeredSlides={true}
-          modules={[Pagination]}
-          className={styles.swiper}>
-          {items.map((item, index) => (
-            <SwiperSlide onClick={() => navigate('/item')} className={styles.slide} key={index}>
-              <Icon icon={'akar-icons:trash-can'} className={styles.remove_icon} />
-              <img src={item.photo} alt="IMG" className={styles.photo} />
-              <h1 className={styles.brand}>{item.brand}</h1>
-              <h3 className={styles.type}>{item.type}</h3>
-              <div className={styles.block}>
-                <h5 className={styles.count}>{item.count} шт.</h5>
-                <h2 className={styles.price}>{item.price}</h2>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {items ? (
+          <Swiper
+            pagination={{
+              dynamicBullets: true,
+            }}
+            spaceBetween={60}
+            slidesPerView={'auto'}
+            centeredSlides={true}
+            modules={[Pagination]}
+            className={styles.swiper}>
+            {items.map((item, index) => (
+              <SwiperSlide onClick={() => navigate('/item')} className={styles.slide} key={index}>
+                <Icon icon={'akar-icons:trash-can'} className={styles.remove_icon} />
+                <img src={item.photo} alt="IMG" className={styles.photo} />
+                <h1 className={styles.brand}>{item.brand}</h1>
+                <h3 className={styles.type}>{item.type}</h3>
+                <div className={styles.block}>
+                  <h5 className={styles.count}>{item.count} шт.</h5>
+                  <h2 className={styles.price}>{item.price}</h2>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <EmptyMobile />
+        )}
       </div>
 
       <h2 className={styles.counts}>

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
-import styles from '../../../scss/components/Desctop/InvestorsInfoPage.module.scss';
+import styles from '../../../scss/components/Desctop/Returns.module.scss';
 
-const InvestorsInfoPage = () => {
+const Returns = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.inner}>
@@ -14,7 +18,7 @@ const InvestorsInfoPage = () => {
             <button onClick={() => navigate(-1)} className={styles.back}>
               <ArrowBackIcon className={styles.back_icon} />
             </button>
-            <h3 className={styles.title}>Инвесторам</h3>
+            <h3 className={styles.title}>Возвраты</h3>
           </div>
         </div>
 
@@ -24,4 +28,4 @@ const InvestorsInfoPage = () => {
   );
 };
 
-export default InvestorsInfoPage;
+export default Returns;

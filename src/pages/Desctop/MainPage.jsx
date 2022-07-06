@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -14,6 +14,10 @@ const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</
 
 const MainPage = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div id="MainPage" className={styles.wrapper}>

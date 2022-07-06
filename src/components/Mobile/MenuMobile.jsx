@@ -12,7 +12,7 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
   const [lang, setLang] = useState(languages[0]);
   const [showLang, setShowLang] = useState(false);
 
-  const handleChangeLang = () => {
+  /* const handleChangeLang = () => {
     if (showLang) {
       setShowLang(false);
     } else {
@@ -26,7 +26,7 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
       setShowLang(false);
     }
   };
-
+ */
   return (
     <Div100vh>
       <div className={styles.wrapper}>
@@ -42,55 +42,37 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
           </Link>
           <hr />
           <ul className={styles.ul}>
-            <li className={styles.li}>
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/about'} className={styles.link}>
-                О нас
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/delivery'} className={styles.link}>
-                Доставка
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/payment'} className={styles.link}>
-                Оплата
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/contacts'} className={styles.link}>
-                Контакты
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/investors'}
-                className={styles.link}>
-                Партнерам
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/collaboration'}
-                className={styles.link}>
-                Возвраты
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.link}>
-                Помощь и FAQ
-              </Link>
-            </li>
-            <li className={styles.li}>
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/privacy-policy'}
-                className={styles.link}>
-                Политика конфиденциальности
-              </Link>
-            </li>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/about'} className={styles.li}>
+              <h1 className={styles.link}>О нас</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/payment'} className={styles.li}>
+              <h1 className={styles.link}>Оплата</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/delivery'} className={styles.li}>
+              <h1 className={styles.link}>Доставка</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/returns'} className={styles.li}>
+              <h1 className={styles.link}>Возвраты</h1>
+            </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/collaboration'}
+              className={styles.li}>
+              <h1 className={styles.link}>Партнерам</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/contacts'} className={styles.li}>
+              <h1 className={styles.link}>Контакты</h1>
+            </Link>
+
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/privacy-policy'}
+              className={styles.li}>
+              <h1 className={styles.link}>Политика конфиденциальности</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.li}>
+              <h1 className={styles.link}>Помощь и FAQ</h1>
+            </Link>
           </ul>
         </div>
       </div>

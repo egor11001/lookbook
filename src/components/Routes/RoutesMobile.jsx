@@ -15,7 +15,7 @@ import ContactsPageMobile from '../../pages/Mobile/infos/ContactsPageMobile';
 import PaymentInfoPageMobile from '../../pages/Mobile/infos/PaymentInfoPageMobile';
 import DeliveryInfoPageMobile from '../../pages/Mobile/infos/DeliveryInfoPageMobile';
 import CollaborationInfoPageMobile from '../../pages/Mobile/infos/CollaborationInfoPageMobile';
-import InvestorsInfoPageMobile from '../../pages/Mobile/infos/InvestorsInfoPageMobile';
+import ReturnsMobile from '../../pages/Mobile/infos/ReturnsMobile';
 import PrivacyPolicyPageMobile from '../../pages/Mobile/infos/PrivacyPolicyPageMobile';
 import My from '../../pages/My';
 import LK from '../../pages//Mobile/LK/LK';
@@ -48,7 +48,7 @@ const RoutesMobile = () => {
         <Route path="payment" element={<PaymentInfoPageMobile />} />
         <Route path="delivery" element={<DeliveryInfoPageMobile />} />
         <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
-        <Route path="investors" element={<InvestorsInfoPageMobile />} />
+        <Route path="returns" element={<ReturnsMobile />} />
         <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
 
         {userAuth ? (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -52,6 +52,10 @@ const CreateAddressMobile = () => {
     console.log(address);
     return navigate('/lk/addresses');
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>

@@ -18,71 +18,57 @@ const MenuMobileLK = ({ showMenu, setShowMenu }) => {
         </div>
         <div className={styles.content}>
           <ul className={styles.ul_lk}>
-            <li className={styles.li_lk}>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/lk/notifications'}
+              className={styles.li_lk}>
               <Icon className={styles.icon} icon={'mi:notification'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/lk/notifications'}
-                className={styles.link_lk}>
-                Уведомления
-              </Link>
-            </li>
-            <li className={styles.li_lk}>
+              <h1 className={styles.link_lk}>Уведомления</h1>
+            </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/lk/statistic'}
+              className={styles.li_lk}>
               <Icon className={styles.icon} icon={'akar-icons:statistic-up'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/lk/statistic'}
-                className={styles.link_lk}>
-                Статистика
-              </Link>
-            </li>
-            <li className={styles.li_lk}>
+              <h1 className={styles.link_lk}>Статистика</h1>
+            </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/lk/addresses'}
+              className={styles.li_lk}>
               <Icon className={styles.icon} icon={'bx:map'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/lk/addresses'}
-                className={styles.link_lk}>
-                Адреса отправки
-              </Link>
-            </li>
-            <li className={styles.li_lk}>
+              <h1 className={styles.link_lk}>Адреса отправки</h1>
+            </Link>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.li_lk}>
               <Icon className={styles.icon} icon={'fluent:question-circle-12-regular'} />
-              <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.link_lk}>
-                Помощь и FAQ
-              </Link>
-            </li>
-            <li className={styles.li_lk}>
+              <h1 className={styles.link_lk}>Помощь и FAQ</h1>
+            </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/lk/authorization'}
+              className={styles.li_lk}>
               <Icon className={styles.icon} icon={'ic:twotone-logout'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/lk/authorization'}
-                className={styles.link_lk}>
-                Выйти
-              </Link>
-            </li>
+              <h1 className={styles.link_lk}>Выйти</h1>
+            </Link>
           </ul>
 
           <hr />
 
           <ul className={styles.ul_more}>
-            <li className={styles.li_more}>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/collaboration'}
+              className={styles.li_more}>
               <Icon className={styles.icon} icon={'icon-park-outline:user-business'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/collaboration'}
-                className={styles.link_more}>
-                Партнерам
-              </Link>
-            </li>
-            <li className={styles.li_more}>
+              <h1 className={styles.link_more}>Партнерам</h1>
+            </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/privacy-policy'}
+              className={styles.li_more}>
               <Icon className={styles.icon} icon={'system-uicons:document-list'} />
-              <Link
-                onClick={() => setShowMenu(!showMenu)}
-                to={'/privacy-policy'}
-                className={styles.link_more}>
-                Политика конфиденциальности
-              </Link>
-            </li>
+              <h1 className={styles.link_more}>Политика конфиденциальности</h1>
+            </Link>
           </ul>
 
           <hr />

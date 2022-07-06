@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Icon } from '@iconify/react';
@@ -68,6 +68,10 @@ const OrderPageLKMobile = () => {
   const { state } = useLocation();
   const [activeStatus, setActiveStatus] = useState(order.status || 'ready');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div id="BasketMobile" className={styles.wrapper}>
       <div className={styles.top}>
