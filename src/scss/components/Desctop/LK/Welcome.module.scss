@@ -49,18 +49,14 @@
       font-size: 20px;
       text-align: center;
     }
-
-    .back_btn {
-      position: absolute;
-      align-self: flex-end;
-      margin-top: 288px;
-      margin-right: -200px !important;
-
-      .back_icon {
-        width: 40px;
-        height: 40px;
-        color: $pink;
-      }
+  }
+  .back_btn {
+    position: absolute;
+    margin-left: 1100px;
+    .back_icon {
+      width: 40px;
+      height: 40px;
+      color: $pink;
     }
   }
 }
