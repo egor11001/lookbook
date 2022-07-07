@@ -59,4 +59,9 @@
       color: $pink;
     }
   }
+
+  .back_btn_mac {
+    @extend .back_btn;
+    margin-left: 550px !important;
+  }
 }
