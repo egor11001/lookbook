@@ -55,6 +55,7 @@
   }
 
   .content {
+    margin-bottom: 80px;
     width: 100%;
     margin-top: 80px;
     display: flex;
@@ -80,8 +81,7 @@
     }
 
     .photo {
-      padding: 0 8px;
-      width: 100%;
+      width: calc(100% - 16px);
       position: relative;
       z-index: 50;
       object-fit: cover;
