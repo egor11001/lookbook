@@ -79,6 +79,8 @@ const RoutesMobile = () => {
             <Route path="addresses/new" element={<CreateAddressMobile />} />
             <Route path="profile" element={<ProfileLKMobile />} />
             <Route path="FAQ" element={<FAQLKMobile />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
+            <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
           </Route>
         ) : (
           <Route path="lk/*" element={<Navigate to={'/lk/authorization'} />} />

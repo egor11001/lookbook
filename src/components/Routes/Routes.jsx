@@ -74,6 +74,8 @@ const Routes = () => {
             <Route path="addresses" element={<AddressesLK />} />
             <Route path="profile" element={<ProfileLK />} />
             <Route path="FAQ" element={<FAQLK />} />
+            <Route path="collaboration" element={<CollaborationInfoPage />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           </Route>
         ) : (
           <Route path="lk/*" element={<Navigate to={'/lk/authorization'} />} />

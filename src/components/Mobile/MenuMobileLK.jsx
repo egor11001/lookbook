@@ -57,14 +57,14 @@ const MenuMobileLK = ({ showMenu, setShowMenu }) => {
           <ul className={styles.ul_more}>
             <Link
               onClick={() => setShowMenu(!showMenu)}
-              to={'/collaboration'}
+              to={'/lk/collaboration'}
               className={styles.li_more}>
               <Icon className={styles.icon} icon={'icon-park-outline:user-business'} />
               <h1 className={styles.link_more}>Партнерам</h1>
             </Link>
             <Link
               onClick={() => setShowMenu(!showMenu)}
-              to={'/privacy-policy'}
+              to={'/lk/privacy-policy'}
               className={styles.li_more}>
               <Icon className={styles.icon} icon={'system-uicons:document-list'} />
               <h1 className={styles.link_more}>Политика конфиденциальности</h1>

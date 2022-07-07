@@ -14,10 +14,10 @@ const FooterLK = () => {
           <h1 className={styles.item}>lookbook.rf@inbox.ru</h1>
         </div>
         <div className={styles.col}>
-          <Link to={'/privacy-policy'} className={styles.item}>
+          <Link to={'/lk/privacy-policy'} className={styles.item}>
             Политика конфиденциальности
           </Link>
-          <Link to={'/collaboration'} className={styles.item}>
+          <Link to={'/lk/collaboration'} className={styles.item}>
             Партнерам
           </Link>
         </div>
