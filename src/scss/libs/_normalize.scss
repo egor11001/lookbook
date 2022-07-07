@@ -39,11 +39,11 @@ html {
   outline: none;
   box-sizing: border-box;
   outline: none;
-  font-family: 'Manrope', 'Roboto';
+  font-family: 'Manrope', 'Montserrat', 'Roboto';
 }
 
 body {
-  font-family: 'Manrope', 'Roboto';
+  font-family: 'Manrope', 'Montserrat', 'Roboto';
   font-weight: 400;
   font-size: 16px;
   background-color: #ffffff;
@@ -64,7 +64,7 @@ input {
   margin: 0;
   padding: 0;
   color: $black;
-  font-family: 'Manrope', 'Roboto';
+  font-family: 'Manrope', 'Montserrat', 'Roboto';
 }
 
 button,

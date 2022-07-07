@@ -33,7 +33,7 @@ const Login = () => {
   };
 
   const onLogin = () => {
-    return navigate('/lk/home');
+    return navigate('/lk/welcome');
   };
 
   return (

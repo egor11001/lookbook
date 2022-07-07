@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import styles from '../../../scss/components/Desctop/CollaborationInfoPage.module.scss';
+import partnersBG from '../../../assets/partnersBG.png';
 
 const CollaborationInfoPage = () => {
   const navigate = useNavigate();
@@ -17,11 +18,24 @@ const CollaborationInfoPage = () => {
             <button onClick={() => navigate(-1)} className={styles.back}>
               <ArrowBackIcon className={styles.back_icon} />
             </button>
-            <h3 className={styles.title}>Сотрудничество</h3>
           </div>
         </div>
 
-        <div className={styles.content}></div>
+        <div className={styles.content}>
+          <img src={partnersBG} alt="IMG" className={styles.photo} />
+          <div className={styles.info}>
+            <h3 className={styles.text}>ЗАЯВИ О СЕБЕ ВМЕСТЕ С</h3>
+            <h1 className={styles.lb}>LOOKBOOK</h1>
+            <button
+              onClick={() =>
+                (window.location.href =
+                  'https://docs.google.com/forms/d/e/1FAIpQLSeaWTcvqjo9RTFPtNeQxrfKXanIIuVmVYtwcL7AzYTAYjc3Dw/viewform?usp=sf_link')
+              }
+              className={styles.submit}>
+              Присоединиться
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
