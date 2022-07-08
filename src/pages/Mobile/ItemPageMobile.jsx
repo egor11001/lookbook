@@ -121,7 +121,7 @@ const ItemPageMobile = () => {
       </div>
 
       <div className={styles.sizes_info}>
-        <h1 className={styles.sizes_title}>Размерная сетка</h1>
+        <h1 className={styles.sizes_title}>Гид по размерам</h1>
         <img src={sizesImg} alt="SIZES" className={styles.sizes_img} />
       </div>
     </div>

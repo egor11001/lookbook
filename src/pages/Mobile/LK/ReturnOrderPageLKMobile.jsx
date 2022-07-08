@@ -64,9 +64,9 @@ const order = {
   ],
 };
 
-const OrderPageLKMobile = () => {
+const ReturnOrderPageLKMobile = () => {
   const { state } = useLocation();
-  const [activeStatus, setActiveStatus] = useState(order.status || 'ready');
+  const [activeStatus, setActiveStatus] = useState(order.status || 'canceled');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,16 +86,16 @@ const OrderPageLKMobile = () => {
         <section className={styles.status_block}>
           <h1 className={styles.section_title}>Статус</h1>
           <div className={styles.statuses}>
-            <button onClick={() => setActiveStatus('ready')} className={styles.status}>
+            <button className={styles.status}>
               <Icon
                 icon={'bi:check'}
                 className={
                   activeStatus === 'ready' ? styles.status_icon_active : styles.status_icon
                 }
               />
-              <h3 className={styles.status_title}>Собран</h3>
+              <h3 className={styles.status_title}>Собрано</h3>
             </button>
-            <button onClick={() => setActiveStatus('forwarded')} className={styles.status}>
+            <button className={styles.status}>
               <Icon
                 icon={'bi:check'}
                 className={
@@ -111,7 +111,7 @@ const OrderPageLKMobile = () => {
                   activeStatus === 'process' ? styles.status_icon_active : styles.status_icon
                 }
               />
-              <h3 className={styles.status_title}>Отправлен</h3>
+              <h3 className={styles.status_title}>Отправленно</h3>
             </button>
             <button disabled className={styles.status}>
               <Icon
@@ -120,16 +120,16 @@ const OrderPageLKMobile = () => {
                   activeStatus === 'completed' ? styles.status_icon_active : styles.status_icon
                 }
               />
-              <h3 className={styles.status_title}>Доставлен</h3>
+              <h3 className={styles.status_title}>Доставленно</h3>
             </button>
-            <button onClick={() => setActiveStatus('canceled')} className={styles.status}>
+            <button className={styles.status}>
               <Icon
                 icon={'ic:baseline-cancel'}
                 className={
                   activeStatus === 'canceled' ? styles.status_icon_canceled : styles.status_icon
                 }
               />
-              <h3 className={styles.status_title}>Отменен</h3>
+              <h3 className={styles.status_title}>Отменено</h3>
             </button>
           </div>
         </section>
@@ -170,9 +170,19 @@ const OrderPageLKMobile = () => {
         </section>
 
         <section className={styles.infos_block}>
+          <h1 className={styles.section_title}>Контактные данные</h1>
+          <h2 className={styles.name}>
+            <span>{order.name}</span>
+            {order.lastName}
+          </h2>
+          <h2 className={styles.phone}>{order.phone}</h2>
           <div className={styles.info}>
             <h2 className={styles.info_title}>Метод оплаты</h2>
             <h3 className={styles.info_desc}>{order.payment}</h3>
+          </div>
+          <div className={styles.info}>
+            <h2 className={styles.info_title}>Адрес</h2>
+            <h3 className={styles.info_desc}>{order.address}</h3>
           </div>
         </section>
       </div>
@@ -180,4 +190,4 @@ const OrderPageLKMobile = () => {
   );
 };
 
-export default OrderPageLKMobile;
+export default ReturnOrderPageLKMobile;

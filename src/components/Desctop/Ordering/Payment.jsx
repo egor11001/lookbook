@@ -9,7 +9,7 @@ const items = [
   {
     id: 1,
     icon: 'bi:credit-card',
-    type: 'По карте при получении',
+    type: 'Картой при получении',
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const items = [
   {
     id: 4,
     icon: 'ic:baseline-book-online',
-    type: 'Онлайн по карте',
+    type: 'Картой онлайн',
   },
 ];
 

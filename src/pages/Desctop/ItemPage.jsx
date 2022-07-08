@@ -70,7 +70,7 @@ const ItemPage = () => {
             defaultValue={'Выберите размер'}
           />
           <button onClick={() => setVisible(true)} className={styles.modal_btn}>
-            Размерная сетка
+            Гид по размерам
           </button>
         </div>
         <button className={styles.buy}>В корзину</button>

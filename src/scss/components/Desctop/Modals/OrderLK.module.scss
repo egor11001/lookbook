@@ -71,15 +71,32 @@
   width: 1px;
   background-color: #c4c4c4;
   height: 100%;
-  margin-right: 64px;
+  margin-right: 16px;
   margin-left: 16px;
 }
 
 .right {
-  width: 664px;
+  width: 684px;
+  padding-right: 12px;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 10px !important;
+  }
+  &::-webkit-scrollbar-track {
+    background: none;
+    border-radius: 10px;
+    background-clip: content-box;
+    margin-left: 20px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $light;
+    border-radius: 10px;
+  }
 
   .customer_name {
     font-weight: 800;
@@ -97,53 +114,79 @@
     margin-bottom: 48px;
   }
 
+  .right_title {
+    font-weight: 800;
+    font-size: 24px;
+    margin-bottom: 48px;
+    margin-left: 48px;
+  }
+
   .statuses {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin-bottom: 15px;
+    display: grid;
+    width: 624px;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 63px;
+    margin-left: 48px;
 
-    .status_item {
+    .statuses_active {
+      width: 100%;
       display: flex;
-      align-items: center;
-      margin-right: 32px;
-      cursor: pointer;
+      flex-direction: column;
 
-      &:nth-last-of-type(1) {
-        margin-right: 0;
-      }
+      .status_item {
+        display: flex;
+        align-items: center;
+        margin-right: 32px;
+        cursor: pointer;
+        margin-bottom: 24px;
 
-      .status_icon {
-        width: 28px;
-        height: 28px;
-        border: 2px solid $light;
-        border-radius: 50px;
-        color: white;
-        margin-right: 16px;
-      }
+        &:nth-last-of-type(1) {
+          margin-right: 0;
+        }
 
-      .status_icon_active {
-        @extend .status_icon;
-        background-color: $green;
-        border: none;
-        color: white;
-      }
-      .status_icon_canceled {
-        @extend .status_icon;
-        border: none !important;
-        color: $pink;
-      }
+        .status_icon {
+          width: 28px;
+          height: 28px;
+          border: 2px solid $light;
+          border-radius: 50px;
+          color: white;
+          margin-right: 16px;
+        }
 
-      .status_title {
-        font-weight: 800;
-        font-size: 16px;
+        .status_icon_active {
+          @extend .status_icon;
+          background-color: $green;
+          border: none;
+          color: white;
+        }
+        .status_icon_canceled {
+          @extend .status_icon;
+          border: none !important;
+          color: $pink;
+        }
+
+        .status_title {
+          font-weight: 800;
+          font-size: 16px;
+        }
+
+        &:disabled {
+          .status_title {
+            color: $light;
+          }
+        }
       }
+    }
+
+    .statuses_disabled {
+      @extend .statuses_active;
     }
   }
 
   .right_row_line {
-    width: 100%;
+    width: 662px;
     height: 1px;
+    margin-right: 0;
     background-color: #c4c4c4;
     margin-bottom: 40px;
   }
@@ -151,9 +194,10 @@
   .items {
     width: 650px;
     padding-right: 26px;
-    height: 362px;
-    overflow-y: auto;
+    margin-left: 48px;
+
     overflow-x: hidden;
+    overflow-y: hidden;
 
     &::-webkit-scrollbar {
       width: 5px;

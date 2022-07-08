@@ -26,7 +26,7 @@ const order = {
   counts: 5,
   total_price: 19000,
   create: '24.07.22',
-  payment: 'По карте при получении',
+  payment: 'Картой при получении',
   address: 'Россия, Красноярск, ул.Петра Ломако 8, 45кв.',
   name: 'Aртур',
   lastName: 'Пирожков',
@@ -116,55 +116,62 @@ const OrderLK = ({ visible, setVisible, id }) => {
 
           <h4 className={styles.payment_title}>Метод оплаты</h4>
           <h5 className={styles.payment_type}>{order.payment}</h5>
-          <h4 className={styles.address_title}>Адрес</h4>
-          <h5 className={styles.address_value}>{order.address}</h5>
         </div>
 
         <div className={styles.column_line} />
 
         <div className={styles.right}>
-          <h1 className={styles.customer_name}>
-            <span>{order.name}</span>
-            {order.lastName}
-          </h1>
-          <h2 className={styles.customer_phone}>{order.phone}</h2>
-
+          <h1 className={styles.right_title}>Выберите статус</h1>
           <div className={styles.statuses}>
-            <div onClick={() => setActiveStatus('ready')} className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'ready' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Собрано</h3>
+            <div className={styles.statuses_active}>
+              <button onClick={() => setActiveStatus('ready')} className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'ready' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Собрано</h3>
+              </button>
+              <button onClick={() => setActiveStatus('forwarded')} className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'forwarded' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Передан в доставку</h3>
+              </button>
+              <button onClick={() => setActiveStatus('canceled')} className={styles.status_item}>
+                <Icon
+                  icon={'ic:baseline-cancel'}
+                  className={
+                    activeStatus === 'canceled' ? styles.status_icon_canceled : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Отменено</h3>
+              </button>
             </div>
-            <div onClick={() => setActiveStatus('process')} className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'process' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Отправленно</h3>
-            </div>
-            <div onClick={() => setActiveStatus('completed')} className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'completed' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Доставленно</h3>
-            </div>
-            <div onClick={() => setActiveStatus('canceled')} className={styles.status_item}>
-              <Icon
-                icon={'ic:baseline-cancel'}
-                className={
-                  activeStatus === 'canceled' ? styles.status_icon_canceled : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Отменено</h3>
+
+            <div className={styles.statuses_disabled}>
+              <button disabled className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'process' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Отправленно</h3>
+              </button>
+              <button disabled className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'completed' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Доставленно</h3>
+              </button>
             </div>
           </div>
 
