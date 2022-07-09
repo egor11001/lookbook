@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
 import Countdown from 'react-countdown';
+import { successCreateAddressNotification } from '../../components/Notifications';
 
 import 'swiper/css';
 import styles from '../../scss/components/Mobile/MainPageMobile.module.scss';
@@ -13,6 +14,7 @@ const Hello = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    successCreateAddressNotification('Основной');
     window.scrollTo(0, 0);
   }, []);
   return (
