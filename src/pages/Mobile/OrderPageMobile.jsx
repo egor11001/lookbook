@@ -82,7 +82,7 @@ const OrderPageMobile = () => {
         <section className={styles.status_block}>
           <h1 className={styles.section_title}>Статус</h1>
           <div className={styles.statuses}>
-            <div className={styles.status}>
+            <button className={styles.status}>
               <Icon
                 icon={'bi:check'}
                 className={
@@ -90,8 +90,17 @@ const OrderPageMobile = () => {
                 }
               />
               <h3 className={styles.status_title}>Собрано</h3>
-            </div>
-            <div className={styles.status}>
+            </button>
+            <button className={styles.status}>
+              <Icon
+                icon={'bi:check'}
+                className={
+                  activeStatus === 'forwarded' ? styles.status_icon_active : styles.status_icon
+                }
+              />
+              <h3 className={styles.status_title}>Передан в доставку</h3>
+            </button>
+            <button className={styles.status}>
               <Icon
                 icon={'bi:check'}
                 className={
@@ -99,8 +108,8 @@ const OrderPageMobile = () => {
                 }
               />
               <h3 className={styles.status_title}>Отправленно</h3>
-            </div>
-            <div className={styles.status}>
+            </button>
+            <button className={styles.status}>
               <Icon
                 icon={'bi:check'}
                 className={
@@ -108,8 +117,8 @@ const OrderPageMobile = () => {
                 }
               />
               <h3 className={styles.status_title}>Доставленно</h3>
-            </div>
-            <div className={styles.status}>
+            </button>
+            <button className={styles.status}>
               <Icon
                 icon={'ic:baseline-cancel'}
                 className={
@@ -117,7 +126,7 @@ const OrderPageMobile = () => {
                 }
               />
               <h3 className={styles.status_title}>Отменено</h3>
-            </div>
+            </button>
           </div>
         </section>
 

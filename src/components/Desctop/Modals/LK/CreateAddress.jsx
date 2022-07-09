@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { Icon } from '@iconify/react';
 import CloseIcon from '@mui/icons-material/Close';
 import OutsideClickHandler from 'react-outside-click-handler';
+import useDebounce from '../../../../hooks/useDebounce';
 
 import styles from '../../../../scss/components/Desctop/Modals/CreateAddress.module.scss';
 
@@ -41,27 +42,37 @@ const CreateAddress = ({ visible, setVisible }) => {
   const [address, setAddress] = useState('');
   const [options, setOptions] = useState([]);
   const [active, setActive] = useState(false);
+  const [outsideClicked, setOutsideClicked] = useState(false);
+  const debounced = useDebounce(address);
   const ymaps = window.ymaps;
 
-  const handleChangeAddress = async (value) => {
-    setAddress(value);
-
+  const searchOptions = async () => {
     if (!ymaps) {
       return;
     }
 
-    const res = await ymaps.suggest(value, { results: 5 });
+    const res = await ymaps.suggest(debounced, { results: 6 });
 
     setOptions(res);
   };
 
+  useEffect(() => {
+    if (debounced.length > 2 && !outsideClicked) {
+      searchOptions();
+    }
+    if (outsideClicked) {
+      setOutsideClicked(false);
+    }
+  }, [debounced]);
+
   const handleChangeOption = (value) => () => {
     setAddress(value);
-    setOptions([]);
+    onOutstide();
   };
 
   const onOutstide = () => {
     setOptions([]);
+    setOutsideClicked(true);
   };
 
   const handleCreate = () => {
@@ -92,7 +103,7 @@ const CreateAddress = ({ visible, setVisible }) => {
             <OutsideClickHandler disabled={options.length < 1} onOutsideClick={onOutstide}>
               <input
                 value={address}
-                onChange={(e) => handleChangeAddress(e.target.value)}
+                onChange={(e) => setAddress(e.target.value)}
                 placeholder="Адрес"
                 className={options.length > 0 ? styles.address_input_active : styles.address_input}
               />

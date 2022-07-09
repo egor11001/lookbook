@@ -3,6 +3,7 @@ import { Icon } from '@iconify/react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { useNavigate } from 'react-router';
+import useDebounce from '../../../hooks/useDebounce';
 
 import styles from '../../../scss/components/Mobile/LK/CreateAddressMobile.module.scss';
 
@@ -23,28 +24,38 @@ const CreateAddressMobile = () => {
   const [address, setAddress] = useState('');
   const [options, setOptions] = useState([]);
   const [active, setActive] = useState(false);
+  const [outsideClicked, setOutsideClicked] = useState(false);
+  const debounced = useDebounce(address);
   const navigate = useNavigate();
   const ymaps = window.ymaps;
 
-  const handleChangeAddress = async (value) => {
-    setAddress(value);
-
+  const searchOptions = async () => {
     if (!ymaps) {
       return;
     }
 
-    const res = await ymaps.suggest(value, { results: 4 });
+    const res = await ymaps.suggest(debounced, { results: 6 });
 
     setOptions(res);
   };
 
+  useEffect(() => {
+    if (debounced.length > 2 && !outsideClicked) {
+      searchOptions();
+    }
+    if (outsideClicked) {
+      setOutsideClicked(false);
+    }
+  }, [debounced]);
+
   const handleChangeOption = (value) => () => {
     setAddress(value);
-    setOptions([]);
+    onOutstide();
   };
 
   const onOutstide = () => {
     setOptions([]);
+    setOutsideClicked(true);
   };
 
   const handleCreate = () => {
@@ -84,7 +95,7 @@ const CreateAddressMobile = () => {
           <OutsideClickHandler disabled={options.length < 1} onOutsideClick={onOutstide}>
             <input
               value={address}
-              onChange={(e) => handleChangeAddress(e.target.value)}
+              onChange={(e) => setAddress(e.target.value)}
               placeholder="Адрес"
               className={options.length > 0 ? styles.address_input_active : styles.address_input}
             />

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSteps } from 'react-step-builder';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import OutsideClickHandler from 'react-outside-click-handler';
+import useDebounce from '../../../hooks/useDebounce';
 
 import styles from '../../../scss/components/Desctop/Ordering.module.scss';
 
@@ -49,27 +50,37 @@ const Address = ({ info, setInfo }) => {
   const [ind, setInd] = useState('');
   const [coord, setCoord] = useState(null);
   const [options, setOptions] = useState([]);
+  const [outsideClicked, setOutsideClicked] = useState(false);
+  const debounced = useDebounce(address);
   const ymaps = window.ymaps;
 
-  const handleChange = async (value) => {
-    setAddress(value);
-
+  const searchOptions = async () => {
     if (!ymaps) {
       return;
     }
 
-    const res = await ymaps.suggest(value, { results: 6 });
+    const res = await ymaps.suggest(debounced, { results: 6 });
 
     setOptions(res);
   };
 
+  useEffect(() => {
+    if (debounced.length > 2 && !outsideClicked) {
+      searchOptions();
+    }
+    if (outsideClicked) {
+      setOutsideClicked(false);
+    }
+  }, [debounced]);
+
   const handleChangeOption = (value) => () => {
     setAddress(value);
-    setOptions([]);
+    onOutstide();
   };
 
   const onOutstide = () => {
     setOptions([]);
+    setOutsideClicked(true);
   };
 
   const handleSearch = async () => {
@@ -104,7 +115,7 @@ const Address = ({ info, setInfo }) => {
                 placeholder="Адрес"
                 className={options.length > 0 ? styles.address_input_active : styles.address_input}
                 value={address}
-                onChange={(e) => handleChange(e.target.value)}
+                onChange={(e) => setAddress(e.target.value)}
                 type="text"
               />
               {options.length > 0 ? (

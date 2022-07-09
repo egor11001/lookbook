@@ -5,6 +5,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router';
 import Countdown from 'react-countdown';
+import { successCreateAddressNotification } from '../../components/Notifications';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -16,6 +17,7 @@ const MainPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    successCreateAddressNotification('Основной');
     window.scrollTo(0, 0);
   }, []);
 

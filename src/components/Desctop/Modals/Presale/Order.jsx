@@ -123,48 +123,57 @@ const OrderLK = ({ visible, setVisible, id }) => {
         <div className={styles.column_line} />
 
         <div className={styles.right}>
-          <h1 className={styles.customer_name}>
-            <span>{order.name}</span>
-            {order.lastName}
-          </h1>
-          <h2 className={styles.customer_phone}>{order.phone}</h2>
-
+          <h1 className={styles.right_title}>Выберите статус</h1>
           <div className={styles.statuses}>
-            <div className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'ready' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Собрано</h3>
+            <div className={styles.statuses_active}>
+              <button className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'ready' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Собрано</h3>
+              </button>
+              <button className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'forwarded' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Передан в доставку</h3>
+              </button>
+              <button className={styles.status_item}>
+                <Icon
+                  icon={'ic:baseline-cancel'}
+                  className={
+                    activeStatus === 'canceled' ? styles.status_icon_canceled : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Отменено</h3>
+              </button>
             </div>
-            <div className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'process' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Отправленно</h3>
-            </div>
-            <div className={styles.status_item}>
-              <Icon
-                icon={'bi:check'}
-                className={
-                  activeStatus === 'completed' ? styles.status_icon_active : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Доставленно</h3>
-            </div>
-            <div className={styles.status_item}>
-              <Icon
-                icon={'ic:baseline-cancel'}
-                className={
-                  activeStatus === 'canceled' ? styles.status_icon_canceled : styles.status_icon
-                }
-              />
-              <h3 className={styles.status_title}>Отменено</h3>
+
+            <div className={styles.statuses_disabled}>
+              <button className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'process' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Отправленно</h3>
+              </button>
+              <button className={styles.status_item}>
+                <Icon
+                  icon={'bi:check'}
+                  className={
+                    activeStatus === 'completed' ? styles.status_icon_active : styles.status_icon
+                  }
+                />
+                <h3 className={styles.status_title}>Доставленно</h3>
+              </button>
             </div>
           </div>
 
