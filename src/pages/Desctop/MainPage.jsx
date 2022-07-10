@@ -5,19 +5,23 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { useNavigate } from 'react-router';
 import Countdown from 'react-countdown';
-import { successCreateAddressNotification } from '../../components/Notifications';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from '../../scss/components/Desctop/MainPage.module.scss';
 
-const Completionist = () => <h1 className={styles.timer}>ура бебра !!!</h1>;
+const Completionist = () => (
+  <img
+    alt="KAIF"
+    src="https://sun9-60.userapi.com/impf/yN4LZMtvNHnirnMp207piMLdblj1SOlRaFVWwg/WaSzBz4H6h8.jpg?size=735x550&quality=96&sign=6e83472b9774de976600b1607f820bfc&type=album"
+    className={styles.kaif}
+  />
+);
 
 const MainPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    successCreateAddressNotification('Основной');
     window.scrollTo(0, 0);
   }, []);
 

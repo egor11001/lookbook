@@ -39,7 +39,7 @@ const MenuMobileLK = ({ showMenu, setShowMenu }) => {
               <Icon className={styles.icon} icon={'bx:map'} />
               <h1 className={styles.link_lk}>Адреса отправки</h1>
             </Link>
-            <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.li_lk}>
+            <Link onClick={() => setShowMenu(!showMenu)} to={'/lk/FAQ'} className={styles.li_lk}>
               <Icon className={styles.icon} icon={'fluent:question-circle-12-regular'} />
               <h1 className={styles.link_lk}>Помощь и FAQ</h1>
             </Link>

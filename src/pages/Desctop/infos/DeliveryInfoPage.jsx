@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 
 import styles from '../../../scss/components/Desctop/DeliveryInfoPage.module.scss';
 
@@ -16,7 +16,7 @@ const DeliveryInfoPage = () => {
         <div className={styles.top}>
           <div className={styles.top_left}>
             <button onClick={() => navigate(-1)} className={styles.back}>
-              <ArrowBackIcon className={styles.back_icon} />
+              <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
             </button>
             <h3 className={styles.title}>Доставка</h3>
           </div>

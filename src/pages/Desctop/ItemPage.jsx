@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { useNavigate } from 'react-router';
@@ -27,7 +27,7 @@ const ItemPage = () => {
   return (
     <div id="ItemPage" className={styles.wrapper}>
       <button onClick={() => navigate('/')} className={styles.back}>
-        <ArrowBackIcon className={styles.back_icon} />
+        <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
       </button>
       <div className={styles.photos_block}>
         <Swiper

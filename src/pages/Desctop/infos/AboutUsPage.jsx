@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 import { useForm } from 'react-hook-form';
 
 import styles from '../../../scss/components/Desctop/AboutUsPage.module.scss';
@@ -35,7 +35,7 @@ const AboutUsPage = () => {
         <div className={styles.top}>
           <div className={styles.top_left}>
             <button onClick={() => navigate(-1)} className={styles.back}>
-              <ArrowBackIcon className={styles.back_icon} />
+              <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
             </button>
             <h3 className={styles.title}>О нас</h3>
           </div>

@@ -1,5 +1,5 @@
-@import '../../../libs/normalize';
-@import '../../../variables';
+@import '../../libs/normalize';
+@import '../../variables';
 
 .wrapper {
   width: 100%;
@@ -15,6 +15,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1810px) {
+      margin-top: 20px;
+    }
 
     .top_left {
       display: flex;
@@ -25,6 +28,14 @@
         width: 100px;
         height: 100px;
         margin-right: 80px;
+        @media (max-width: 1920px) {
+          margin-right: calc((100vw - 1760px) / 2);
+        }
+        @media (max-width: 1810px) {
+          margin-right: 32px;
+          width: 64px;
+          height: 64px;
+        }
 
         .back_icon {
           width: 48px;
@@ -36,17 +47,30 @@
       .title {
         font-weight: 800;
         font-size: 24px;
+        margin-bottom: 8px;
       }
     }
   }
 
   .content {
-    width: 1211px;
+    max-width: 1220px;
+    min-width: fit-content;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 88px;
     margin-top: 40px;
-    margin-left: -120px;
+    align-self: flex-start;
+    margin-left: 287px;
+
+    @media (max-width: 1920px) {
+      margin-left: calc((100vw - 1346px) / 2);
+    }
+    @media (max-width: 1520px) {
+      margin-left: 116px;
+    }
+    @media (max-width: 1440px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     .item {
       margin-bottom: 60px;

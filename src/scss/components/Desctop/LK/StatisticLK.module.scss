@@ -15,6 +15,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1810px) {
+      margin-top: 20px;
+    }
 
     .top_left {
       display: flex;
@@ -25,6 +28,14 @@
         width: 100px;
         height: 100px;
         margin-right: 80px;
+        @media (max-width: 1920px) {
+          margin-right: calc((100vw - 1760px) / 2);
+        }
+        @media (max-width: 1810px) {
+          margin-right: 32px;
+          width: 64px;
+          height: 64px;
+        }
 
         .back_icon {
           width: 48px;
@@ -36,9 +47,9 @@
       .title {
         font-weight: 800;
         font-size: 24px;
+        margin-bottom: 8px;
       }
     }
-
     .top_right {
       display: flex;
       margin-right: 200px;
@@ -70,7 +81,7 @@
       box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
       border-radius: 0px 10px 10px 0px;
       left: 0px;
-      top: 360px;
+      top: 38%;
       font-weight: 400;
       font-size: 20px;
       color: $grey;
@@ -95,7 +106,7 @@
 
     .returns_btn {
       @extend .sales_btn;
-      top: 510px !important;
+      top: 54% !important;
     }
 
     .item {

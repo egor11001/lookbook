@@ -6,22 +6,34 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 32px 175px 96px 104px;
+  padding: 32px 0 96px 0;
 
   .top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1810px) {
+      margin-top: 20px;
+    }
 
-    .block {
+    .top_left {
       display: flex;
       align-items: center;
+      margin-left: 104px;
 
       .back {
         width: 100px;
         height: 100px;
         margin-right: 80px;
+        @media (max-width: 1920px) {
+          margin-right: calc((100vw - 1760px) / 2);
+        }
+        @media (max-width: 1810px) {
+          margin-right: 32px;
+          width: 64px;
+          height: 64px;
+        }
 
         .back_icon {
           width: 48px;
@@ -31,14 +43,70 @@
       }
 
       .title {
+        font-weight: 800;
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+    }
+
+    .top_right {
+      display: flex;
+      margin-right: 104px;
+      margin-bottom: 8px;
+
+      .title_small {
         font-weight: 600;
         font-size: 24px;
+        text-align: right;
+      }
+    }
+  }
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @media (max-width: 1810px) {
+      margin-top: 20px;
+    }
+
+    .block {
+      display: flex;
+      align-items: center;
+      margin-left: 104px;
+
+      .back {
+        width: 100px;
+        height: 100px;
+        margin-right: 80px;
+        @media (max-width: 1920px) {
+          margin-right: calc((100vw - 1760px) / 2);
+        }
+        @media (max-width: 1810px) {
+          margin-right: 32px;
+          width: 64px;
+          height: 64px;
+        }
+
+        .back_icon {
+          width: 48px;
+          height: 48px;
+          color: $pink;
+        }
+      }
+
+      .title {
+        font-weight: 800;
+        font-size: 24px;
+        margin-bottom: 8px;
       }
     }
 
     .counts {
       font-weight: 400;
       font-size: 20px;
+      position: absolute;
+      left: 47%;
 
       span {
         font-weight: 600;
@@ -49,6 +117,7 @@
     .total_price {
       font-weight: 600;
       font-size: 24px;
+      margin-right: 104px;
 
       span {
         font-weight: 600;

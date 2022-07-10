@@ -66,7 +66,10 @@ const NotificationsLK = () => {
             </div>
           ))
         ) : (
-          <Empty />
+          <div className={styles.empty}>
+            <FooterIcon width={100} height={100} color={'black'} />
+            <h1 className={styles.empty_text}>Тут пока пусто...</h1>
+          </div>
         )}
       </div>
       <button onClick={() => setActiveArchive(!activeArchive)} className={styles.title_archive}>

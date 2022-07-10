@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 import { IMaskInput } from 'react-imask';
 import { useSteps } from 'react-step-builder';
 import { useForm } from 'react-hook-form';
@@ -52,7 +52,7 @@ const Contacts = ({ info, setInfo }) => {
       <div className={styles.top}>
         <div className={styles.top_left}>
           <button onClick={() => navigate(-1)} className={styles.back}>
-            <ArrowBackIcon className={styles.back_icon} />
+            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <h3 className={styles.title}>Контактные данные</h3>
         </div>

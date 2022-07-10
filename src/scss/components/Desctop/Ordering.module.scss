@@ -19,6 +19,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media (max-width: 1810px) {
+        margin-top: 20px;
+      }
 
       .top_left {
         display: flex;
@@ -29,6 +32,14 @@
           width: 100px;
           height: 100px;
           margin-right: 80px;
+          @media (max-width: 1920px) {
+            margin-right: calc((100vw - 1760px) / 2);
+          }
+          @media (max-width: 1810px) {
+            margin-right: 32px;
+            width: 64px;
+            height: 64px;
+          }
 
           .back_icon {
             width: 48px;
@@ -38,24 +49,29 @@
         }
 
         .title {
-          font-weight: 600;
+          font-weight: 800;
           font-size: 24px;
-        }
-
-        .title_confirm {
-          @extend .title;
-          margin-left: 180px;
-          margin-top: 42px;
+          margin-bottom: 8px;
         }
       }
+
       .top_right {
         display: flex;
         margin-right: 104px;
+        margin-bottom: 8px;
+
+        @media (max-width: 1400px) {
+          margin-bottom: 4px;
+        }
 
         .title_small {
-          font-weight: 400;
-          font-size: 20px;
+          font-weight: 600;
+          font-size: 24px;
           text-align: right;
+
+          @media (max-width: 1400px) {
+            font-size: 20px;
+          }
         }
       }
     }

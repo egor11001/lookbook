@@ -18,9 +18,16 @@
 
   .logo {
     position: absolute;
-    left: 44.9%;
+    left: calc((100vw - 194px) / 2);
     display: flex;
     justify-content: center;
+
+    /* @media (min-width: 996px) {
+      margin-left: 104px;
+    }
+    @media (min-width: 1520px) {
+      margin-left: calc((100vw - 1346px) / 2);
+    } */
   }
 
   .buttons_block {

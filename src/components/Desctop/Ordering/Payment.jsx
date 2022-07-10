@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useSteps } from 'react-step-builder';
 import { Icon } from '@iconify/react';
 
@@ -78,7 +77,7 @@ const Payment = ({ info, setInfo }) => {
       <div className={styles.top}>
         <div className={styles.top_left}>
           <button onClick={prev} className={styles.back}>
-            <ArrowBackIcon className={styles.back_icon} />
+            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <h3 className={styles.title}>Метод оплаты</h3>
         </div>

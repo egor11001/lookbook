@@ -1,9 +1,11 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 
-import auth from './Auth/slice';
+import authSlice from './slices/authSlice';
 
-const rootReducer = combineReducers({ auth });
+const rootReducer = combineReducers({ UAuth: authSlice });
 
 export const store = configureStore({
   reducer: rootReducer,
 });
+
+/* concat(postApi.middleware, authApi.middleware, poolsApi.middleware) */

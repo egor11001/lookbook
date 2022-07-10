@@ -123,7 +123,7 @@ const OrderLK = ({ visible, setVisible, id }) => {
         <div className={styles.column_line} />
 
         <div className={styles.right}>
-          <h1 className={styles.right_title}>Выберите статус</h1>
+          <h1 className={styles.right_title}>Статус</h1>
           <div className={styles.statuses}>
             <div className={styles.statuses_active}>
               <button className={styles.status_item}>

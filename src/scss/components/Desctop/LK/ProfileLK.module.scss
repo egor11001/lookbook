@@ -15,6 +15,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 1810px) {
+      margin-top: 20px;
+    }
 
     .top_left {
       display: flex;
@@ -25,6 +28,14 @@
         width: 100px;
         height: 100px;
         margin-right: 80px;
+        @media (max-width: 1920px) {
+          margin-right: calc((100vw - 1760px) / 2);
+        }
+        @media (max-width: 1810px) {
+          margin-right: 32px;
+          width: 64px;
+          height: 64px;
+        }
 
         .back_icon {
           width: 48px;
@@ -36,6 +47,7 @@
       .title {
         font-weight: 800;
         font-size: 24px;
+        margin-bottom: 8px;
       }
 
       .edit_btn {
@@ -66,10 +78,20 @@
   }
 
   .content {
-    width: 1346px;
+    align-self: flex-start;
+
+    max-width: calc(100vw - 30vw);
+    min-width: 1200px;
     margin-top: 80px;
     display: flex;
     flex-direction: column;
+
+    @media (min-width: 996px) {
+      margin-left: 116px;
+    }
+    @media (min-width: 1520px) {
+      margin-left: calc((100vw - 1356px) / 2);
+    }
 
     .input,
     .input_err {

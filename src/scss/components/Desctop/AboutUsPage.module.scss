@@ -3,7 +3,7 @@
 
 .wrapper {
   width: 100%;
-  padding: 32px 104px 96px 104px;
+  padding: 32px 0 96px 0;
   min-height: 906px;
   max-height: fit-content;
 
@@ -20,15 +20,27 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @media (max-width: 1810px) {
+        margin-top: 20px;
+      }
 
       .top_left {
         display: flex;
         align-items: center;
+        margin-left: 104px;
 
         .back {
           width: 100px;
           height: 100px;
           margin-right: 80px;
+          @media (max-width: 1920px) {
+            margin-right: calc((100vw - 1760px) / 2);
+          }
+          @media (max-width: 1810px) {
+            margin-right: 32px;
+            width: 64px;
+            height: 64px;
+          }
 
           .back_icon {
             width: 48px;
@@ -38,13 +50,16 @@
         }
 
         .title {
-          font-weight: 600;
+          font-weight: 800;
           font-size: 24px;
+          margin-bottom: 8px;
         }
       }
 
       .top_right {
         display: flex;
+        margin-right: 104px;
+        margin-bottom: 8px;
 
         .title_small {
           font-weight: 600;

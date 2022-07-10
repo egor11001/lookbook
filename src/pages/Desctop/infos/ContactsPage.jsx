@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 
 import styles from '../../../scss/components/Desctop/ContactsPage.module.scss';
 
@@ -16,13 +16,19 @@ const ContactsPage = () => {
         <div className={styles.top}>
           <div className={styles.top_left}>
             <button onClick={() => navigate(-1)} className={styles.back}>
-              <ArrowBackIcon className={styles.back_icon} />
+              <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
             </button>
             <h3 className={styles.title}>Контакты</h3>
           </div>
         </div>
 
-        <div className={styles.content}></div>
+        <div className={styles.content}>
+          <h2 className={styles.text}>Свяжитесь с нами</h2>
+          <div className={styles.row}>
+            <Icon icon={'fluent:mail-16-regular'} className={styles.email_icon} />
+            <h1 className={styles.email}>lookbook.rf@inbox.ru</h1>
+          </div>
+        </div>
       </div>
     </div>
   );

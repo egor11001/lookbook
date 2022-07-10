@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 import { useSteps } from 'react-step-builder';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
 import OutsideClickHandler from 'react-outside-click-handler';
@@ -98,7 +98,7 @@ const Address = ({ info, setInfo }) => {
       <div className={styles.top}>
         <div className={styles.top_left}>
           <button onClick={prev} className={styles.back}>
-            <ArrowBackIcon className={styles.back_icon} />
+            <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <h3 className={styles.title}>Укажите, куда доставить заказ?</h3>
         </div>

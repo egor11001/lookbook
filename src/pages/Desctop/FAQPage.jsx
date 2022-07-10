@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Icon } from '@iconify/react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 
@@ -95,7 +95,7 @@ const FAQPage = () => {
         <div className={styles.top}>
           <div className={styles.top_left}>
             <button onClick={() => navigate(-1)} className={styles.back}>
-              <ArrowBackIcon className={styles.back_icon} />
+              <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
             </button>
             <h3 className={styles.title}>Помощь и FAQ</h3>
           </div>
