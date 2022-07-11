@@ -32,7 +32,7 @@ const PaymentInfoPage = () => {
             <div className={styles.left}>
               <div className={styles.item}>
                 <Icon icon={'bi:credit-card'} className={styles.item_icon} />
-                <h2 className={styles.item_title}>Картой при получении (VISA, MASTERCARD, МИР)</h2>
+                <h2 className={styles.item_title}>Картой (VISA, MASTERCARD, МИР)</h2>
               </div>
               <div className={styles.item}>
                 <Icon icon={'fa6-solid:money-bill-wave'} className={styles.item_icon} />

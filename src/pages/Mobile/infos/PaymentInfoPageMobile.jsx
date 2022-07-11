@@ -29,7 +29,7 @@ const PaymentInfoPageMobile = () => {
           <div className={styles.block}>
             <div className={styles.item}>
               <Icon icon={'bi:credit-card'} className={styles.item_icon} />
-              <h2 className={styles.item_title}>Картой при получении</h2>
+              <h2 className={styles.item_title}>Картой</h2>
             </div>
             <div className={styles.item}>
               <Icon icon={'fa6-solid:money-bill-wave'} className={styles.item_icon} />

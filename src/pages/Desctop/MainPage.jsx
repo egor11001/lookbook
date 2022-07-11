@@ -27,7 +27,7 @@ const MainPage = () => {
 
   return (
     <div id="MainPage" className={styles.wrapper}>
-      <Countdown date={1657473851000} className={styles.timer}>
+      <Countdown date={1662025479000} className={styles.timer}>
         <Completionist />
       </Countdown>
 
