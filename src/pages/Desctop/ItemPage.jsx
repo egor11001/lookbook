@@ -26,7 +26,7 @@ const ItemPage = () => {
   };
   return (
     <div id="ItemPage" className={styles.wrapper}>
-      <button onClick={() => navigate('/')} className={styles.back}>
+      <button onClick={() => navigate(-1)} className={styles.back}>
         <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
       </button>
       <div className={styles.photos_block}>

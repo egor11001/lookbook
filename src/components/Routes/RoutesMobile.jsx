@@ -32,6 +32,7 @@ import AuthPageMobile from '../../pages/Mobile/AuthPageMobile';
 import OrderPageLKMobile from '../../pages/Mobile/LK/OrderPageLKMobile';
 import OrderPageMobile from '../../pages/Mobile/OrderPageMobile';
 import CreateAddressMobile from '../../pages/Mobile/LK/CreateAddressMobile';
+import MainBrandMobile from '../../pages/Mobile/MainBrandMobile';
 
 const RoutesMobile = () => {
   const userAuth = true;
@@ -40,7 +41,8 @@ const RoutesMobile = () => {
     <Switch>
       <Route path="/" element={<LayoutMobile />}>
         <Route path="" element={<MainPageMobile />} />
-        <Route path="item" element={<ItemPageMobile />} />
+        <Route path="brand" element={<MainBrandMobile />} />
+        <Route path="brand/:id" element={<ItemPageMobile />} />
         <Route path="authorization" element={<AuthPageMobile />} />
         <Route path="FAQ" element={<FAQPageMobile />} />
         <Route path="about" element={<AboutUsPageMobile />} />

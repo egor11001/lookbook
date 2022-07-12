@@ -1,0 +1,117 @@
+@import '../../libs/normalize';
+@import '../../variables';
+
+.wrapper {
+  width: 100%;
+  padding: 0 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .top {
+    display: flex;
+    width: 100%;
+    margin-top: 32px;
+    justify-content: center;
+    align-items: top;
+
+    .back {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      left: 20px;
+      margin-top: -2px;
+
+      .back_icon {
+        width: 32px;
+        height: 32px;
+        color: $pink;
+      }
+    }
+
+    .title {
+      font-weight: 800;
+      font-size: 20px;
+      width: 260px;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .logo {
+      width: 64px;
+      height: 48px;
+      object-fit: scale-down;
+      position: absolute;
+      right: 20px;
+      margin-top: -2px;
+    }
+  }
+
+  .content {
+    width: 100%;
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 32px;
+    justify-items: center;
+    margin-bottom: 20px;
+
+    @media (max-width: 370px) {
+      column-gap: 12px;
+    }
+
+    .card {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0px 5px 22px 5px rgba(196, 196, 196, 0.3);
+      overflow: hidden;
+      margin-bottom: 32px;
+      transition: 0.3s;
+
+      @media (max-width: 370px) {
+      }
+
+      &:active {
+        background-color: #fbf9f9;
+        transition: 0.3s;
+        filter: opacity(0.8);
+      }
+
+      .card_photo {
+        width: 100%;
+        height: 160;
+        object-fit: scale-down;
+        margin-bottom: 8px;
+      }
+
+      .card_name {
+        text-align: center;
+        font-weight: 400;
+        font-size: 14px;
+        width: 100%;
+        padding: 0 16px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-bottom: 12px;
+      }
+
+      .card_price {
+        text-align: center;
+        font-weight: 800;
+        font-size: 16px;
+        width: 100%;
+        margin-bottom: 8px;
+        padding: 0 16px;
+      }
+    }
+  }
+}

@@ -29,6 +29,7 @@ import Home from '../../pages/Desctop/Home';
 import My from '../../pages/My';
 import Profile from '../../pages/Desctop/Profile';
 import OrdersPage from '../../pages/Desctop/OrdersPage';
+import MainBrand from '../../pages/Desctop/MainBrand';
 
 const Routes = () => {
   const userAuth = true;
@@ -38,7 +39,8 @@ const Routes = () => {
     <Switch>
       <Route path="/" element={<Layout />}>
         <Route path="" element={<MainPage />} />
-        <Route path="item" element={<ItemPage />} />
+        <Route path="brand" element={<MainBrand />} />
+        <Route path="brand/:id" element={<ItemPage />} />
         <Route path="authorization" element={<AuthPage />} />
         <Route path="about" element={<AboutUsPage />} />
         <Route path="contacts" element={<ContactsPage />} />

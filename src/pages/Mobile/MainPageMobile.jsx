@@ -29,7 +29,7 @@ const Hello = () => {
       <h5 className={styles.presale}>presale</h5>
       <div className={styles.content}>
         <Swiper loop={true} className={styles.swiper}>
-          <SwiperSlide onClick={() => navigate('/item')} className={styles.slide}>
+          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
             <img
               className={styles.photo}
               src="https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/573148/fleym.jpg"
@@ -38,7 +38,7 @@ const Hello = () => {
             <h3 className={styles.desc}>lastseen</h3>
             <h2 className={styles.title}>Кеды</h2>
           </SwiperSlide>
-          <SwiperSlide onClick={() => navigate('/item')} className={styles.slide}>
+          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
             <img
               className={styles.photo}
               src="https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg"
@@ -47,7 +47,7 @@ const Hello = () => {
             <h3 className={styles.desc}>lastseen</h3>
             <h2 className={styles.title}>Худи</h2>
           </SwiperSlide>
-          <SwiperSlide onClick={() => navigate('/item')} className={styles.slide}>
+          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
             <img
               className={styles.photo}
               src="https://cdn0.youla.io/files/images/720_720_out/5f/4c/5f4ccac0efee8d2ffd743c8a-1.jpg"
