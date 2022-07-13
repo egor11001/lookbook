@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { setUser, logOut } from '../redux/slices/authSlice';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: '',
+  baseUrl: 'api.lookbook.best',
   credentials: true,
   prepareHeaders: (headers, { getState }) => {
     const token = localStorage.getItem('token');

@@ -1,4 +1,4 @@
-import $api from './axios';
+/* import $api from './axios';
 
 export default class authApi {
   static async login(email, password) {
@@ -17,3 +17,4 @@ export default class authApi {
     return $api.post('/auth/refresh', { refreshToken: refreshToken });
   }
 }
+ */
