@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import styles from '../../../scss/components/Desctop/AboutUsPage.module.scss';
 import { emailRegexp } from '../../../utils/regExps';
-import emailFormImg from '../../../assets/emailFormImg.png';
+import emailFormImg from '../../../assets/emailFormImg.jpg';
 
 const AboutUsPage = () => {
   const {

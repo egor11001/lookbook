@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 
 import styles from '../../../scss/components/Mobile/AboutUsPageMobile.module.scss';
 import { emailRegexp } from '../../../utils/regExps';
-import emailFormImg from '../../../assets/emailFormImg.png';
+import emailFormImg from '../../../assets/emailFormImg.jpg';
 
 const AboutUsPageMobile = () => {
   const {

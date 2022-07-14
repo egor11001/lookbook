@@ -1,5 +1,6 @@
 {
   "name": "lookbook",
+  "homepage": "https://lookbook.best",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,6 +28,7 @@
     "react-router": "^6.3.0",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-spinners": "^0.13.3",
     "react-step-builder": "^3.0.6",
     "sass": "^1.52.3",
     "swiper": "^8.2.4",

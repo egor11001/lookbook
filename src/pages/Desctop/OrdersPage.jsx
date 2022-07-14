@@ -161,7 +161,7 @@ const OrdersPage = () => {
     <div className={styles.wrapper}>
       <div className={styles.top}>
         <div className={styles.top_left}>
-          <button onClick={() => navigate(-1)} className={styles.back}>
+          <button onClick={() => navigate('/my')} className={styles.back}>
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
 
