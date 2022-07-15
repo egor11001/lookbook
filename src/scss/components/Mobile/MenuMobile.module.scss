@@ -56,14 +56,26 @@
     margin-bottom: 16px;
 
     .profile {
-      width: 100%;
+      width: 85%;
       height: 64px;
-      padding-left: 40px;
+      padding-left: 48px;
+
       display: flex;
+      justify-content: space-between;
       align-items: center;
       font-weight: 600;
       font-size: 18px;
       color: white;
+
+      .link_profile {
+        display: flex;
+
+        .icon {
+          color: white;
+          width: 24px;
+          height: 24px;
+        }
+      }
     }
 
     hr {

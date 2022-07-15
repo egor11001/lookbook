@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { Navigate } from 'react-router';
 
 import Login from '../../components/Desctop/Auth/Presale/Login';
 import Registration from '../../components/Desctop/Auth/Presale/Registration';
 
 import styles from '../../scss/components/Desctop/AuthPage.module.scss';
+import { Context } from '../..';
 
-const AuthPage = () => {
+const AuthPage = observer(() => {
   const [active, setActive] = useState(0);
+
+  const { user } = useContext(Context);
+
+  if (user.isAuth) {
+    return <Navigate to={'/'} />;
+  }
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
@@ -25,6 +35,6 @@ const AuthPage = () => {
       </div>
     </div>
   );
-};
+});
 
 export default AuthPage;

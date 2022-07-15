@@ -14,12 +14,12 @@ import Returns from '../../pages/Desctop/infos/Returns';
 import AuthPage from '../../pages/Desctop/AuthPage';
 
 import Home from '../../pages/Desctop/Home';
-import My from '../../pages/My';
 import Profile from '../../pages/Desctop/Profile';
 import OrdersPage from '../../pages/Desctop/OrdersPage';
 import MainBrand from '../../pages/Desctop/MainBrand';
 
 import Loader from '../Loaders/Loader';
+import UserRouter from './UserRouter';
 
 const BasketPage = React.lazy(() => import('../../pages/Desctop/BasketPage'));
 const PrivacyPolicyPage = React.lazy(() => import('../../pages/Desctop/infos/PrivacyPolicyPage'));
@@ -37,7 +37,6 @@ const ProfileLK = React.lazy(() => import('../../pages/Desctop/LK/ProfileLK'));
 const FAQLK = React.lazy(() => import('../../pages/Desctop/LK/FAQLK')); */
 
 const Routes = () => {
-  const userAuth = true;
   const vendorAuth = true;
   return (
     <Suspense fallback={<Loader />}>
@@ -55,23 +54,22 @@ const Routes = () => {
           <Route path="returns" element={<Returns />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="FAQ" element={<FAQPage />} />
-          {userAuth ? (
-            <Route path="my/*" element={<My />}>
-              <Route path="" element={<Navigate to={'/my/home'} />} />
-              <Route path="home" element={<Home />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="orders" element={<OrdersPage />} />
-              <Route path="basket" element={<BasketPage />} />
-              <Route path="ordering" element={<Ordering />} />
-            </Route>
-          ) : (
-            <Route path="my/*" element={<Navigate to={'/authorization'} />} />
-          )}
+
+          <Route path="my/*" element={<UserRouter />}>
+            <Route path="" element={<Navigate to={'/my/home'} />} />
+            <Route path="home" element={<Home />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="orders" element={<OrdersPage />} />
+            <Route path="basket" element={<BasketPage />} />
+            <Route path="ordering" element={<Ordering />} />
+          </Route>
+
           {vendorAuth ? (
             <Route path="lk/*" element={<LK />} />
           ) : (
             <Route path="lk/*" element={<Navigate to={'/lk/authorization'} />} />
           )}
+          <Route path="*" element={<MainPage />} />
         </Route>
       </Switch>
     </Suspense>

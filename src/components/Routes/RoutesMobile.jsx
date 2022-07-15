@@ -14,14 +14,13 @@ import PaymentInfoPageMobile from '../../pages/Mobile/infos/PaymentInfoPageMobil
 import DeliveryInfoPageMobile from '../../pages/Mobile/infos/DeliveryInfoPageMobile';
 import CollaborationInfoPageMobile from '../../pages/Mobile/infos/CollaborationInfoPageMobile';
 import ReturnsMobile from '../../pages/Mobile/infos/ReturnsMobile';
-import My from '../../pages/My';
 import LK from '../../pages//Mobile/LK/LK';
 import AuthPageMobile from '../../pages/Mobile/AuthPageMobile';
-import OrderPageLKMobile from '../../pages/Mobile/LK/OrderPageLKMobile';
 import OrderPageMobile from '../../pages/Mobile/OrderPageMobile';
-import CreateAddressMobile from '../../pages/Mobile/LK/CreateAddressMobile';
 import MainBrandMobile from '../../pages/Mobile/MainBrandMobile';
+
 import Loader from '../Loaders/Loader';
+import UserRouter from './UserRouter';
 
 const BasketPageMobile = React.lazy(() => import('../../pages/Mobile/BasketPageMobile'));
 const PrivacyPolicyPageMobile = React.lazy(() =>
@@ -30,7 +29,6 @@ const PrivacyPolicyPageMobile = React.lazy(() =>
 const OrderingMobile = React.lazy(() => import('../../pages/Mobile/OrderingMobile'));
 
 const RoutesMobile = () => {
-  const userAuth = true;
   const vendorAuth = true;
   return (
     <Suspense fallback={<Loader />}>
@@ -49,25 +47,25 @@ const RoutesMobile = () => {
           <Route path="returns" element={<ReturnsMobile />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
 
-          {userAuth ? (
-            <Route path="my/*" element={<My />}>
-              <Route path="" element={<Navigate to={'/my/home'} />} />
-              <Route path="home" element={<HomeMobile />} />
-              <Route path="profile" element={<ProfileMobile />} />
-              <Route path="orders" element={<OrdersPageMobile />} />
-              <Route path="orders/:id" element={<OrderPageMobile />} />
-              <Route path="basket" element={<BasketPageMobile />} />
-              <Route path="ordering" element={<OrderingMobile />} />
-            </Route>
-          ) : (
-            <Route path="my/*" element={<Navigate to={'/authorization'} />} />
-          )}
+          <Route path="my/*" element={<UserRouter />}>
+            <Route path="" element={<Navigate to={'/my/home'} />} />
+            <Route path="home" element={<HomeMobile />} />
+            <Route path="profile" element={<ProfileMobile />} />
+            <Route path="orders" element={<OrdersPageMobile />} />
+            <Route path="orders/:id" element={<OrderPageMobile />} />
+            <Route path="basket" element={<BasketPageMobile />} />
+            <Route path="ordering" element={<OrderingMobile />} />
+          </Route>
+
+          <Route path="my/*" element={<Navigate to={'/authorization'} />} />
 
           {vendorAuth ? (
             <Route path="lk/*" element={<LK />} />
           ) : (
             <Route path="lk/*" element={<Navigate to={'/lk/authorization'} />} />
           )}
+
+          <Route path="*" element={<MainPageMobile />} />
         </Route>
       </Switch>
     </Suspense>

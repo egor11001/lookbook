@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
+import { observer } from 'mobx-react-lite';
 
 import styles from '../../scss/components/Mobile/MenuMobile.module.scss';
 import { FooterIconMobile } from '../../assets';
 import Div100vh from 'react-div-100vh';
+import { Context } from '../..';
 
 const languages = ['RU', 'ENG', 'CZ', 'JPN'];
 
-const MenuMobile = ({ showMenu, setShowMenu }) => {
-  const [lang, setLang] = useState(languages[0]);
-  const [showLang, setShowLang] = useState(false);
+const MenuMobile = observer(({ showMenu, setShowMenu }) => {
+  /* const [lang, setLang] = useState(languages[0]);
+  const [showLang, setShowLang] = useState(false); */
+
+  const { user } = useContext(Context);
 
   /* const handleChangeLang = () => {
     if (showLang) {
@@ -37,9 +41,16 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
           </button>
         </div>
         <div className={styles.content}>
-          <Link onClick={() => setShowMenu(!showMenu)} to={'/my'} className={styles.profile}>
-            Войти
-          </Link>
+          <div onClick={() => setShowMenu(!showMenu)} to={'/my'} className={styles.profile}>
+            <Link to={'/my'} className={styles.link_profile}>
+              <Icon className={styles.icon} icon="ci:user-circle" />
+            </Link>
+            {user.isAuth && (
+              <button onClick={() => user.logout()} className={styles.link_profile}>
+                <Icon className={styles.icon} icon="ic:twotone-logout" />
+              </button>
+            )}
+          </div>
           <hr />
           <ul className={styles.ul}>
             <Link onClick={() => setShowMenu(!showMenu)} to={'/about'} className={styles.li}>
@@ -70,14 +81,14 @@ const MenuMobile = ({ showMenu, setShowMenu }) => {
               className={styles.li}>
               <h1 className={styles.link}>Политика конфиденциальности</h1>
             </Link>
-            <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.li}>
+            {/* <Link onClick={() => setShowMenu(!showMenu)} to={'/FAQ'} className={styles.li}>
               <h1 className={styles.link}>Помощь и FAQ</h1>
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </div>
     </Div100vh>
   );
-};
+});
 
 export default MenuMobile;

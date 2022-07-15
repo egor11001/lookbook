@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { LogoIconMobile } from '../../assets';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
 
 import styles from '../../scss/components/Mobile/HeaderMobile.module.scss';
 import MenuMobile from './MenuMobile';
 import MenuMobileLK from './MenuMobileLK';
+import { Context } from '../..';
 
-const HeaderMobile = () => {
+const HeaderMobile = observer(() => {
   const [showMenu, setShowMenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { user } = useContext(Context);
 
   useEffect(() => {
     if (showMenu) {
@@ -34,11 +38,11 @@ const HeaderMobile = () => {
             <Link to={'/lk/profile'} className={styles.profile_btn}>
               <Icon className={styles.icon} icon="ci:user-circle" />
             </Link>
-          ) : (
+          ) : user.isAuth ? (
             <Link to={'/my/basket'} className={styles.basket_btn}>
               <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
             </Link>
-          )}
+          ) : null}
         </div>
 
         {showMenu ? (
@@ -51,6 +55,6 @@ const HeaderMobile = () => {
       </div>
     </div>
   );
-};
+});
 
 export default HeaderMobile;

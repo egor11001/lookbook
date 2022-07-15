@@ -27,7 +27,7 @@
       display: flex;
       justify-content: center;
       align-items: bottom;
-      margin-bottom: 56px;
+      margin-bottom: 40px;
 
       .auth_type {
         font-weight: 800;
@@ -52,32 +52,48 @@
       flex-direction: column;
       align-items: center;
 
-      .field,
-      .field_err {
-        width: 335px;
-        padding: 18px 20px;
-        border: 1px solid $light;
-        border-radius: 30px;
+      .input,
+      .input_err {
+        width: 336px;
+        padding: 18px 20px 18px 24px;
+        border: 2px solid $light;
         color: $black;
-        font-size: 14px;
-        margin-bottom: 48px;
+        font-weight: 400;
+        font-size: 16px;
+        border-radius: 30px;
+        margin-bottom: 16px;
 
         ::placeholder {
           color: $light;
-          font-size: 14px;
         }
 
         &:focus,
-        &:active {
-          border: 1px solid $black;
+        &:hover {
+          transition: 0.2s;
+          border: 2px solid $black;
+        }
+
+        &:disabled {
+          pointer-events: none;
         }
       }
 
-      .field_err {
+      .input_err {
         border: 1px solid $pink;
-        &:focus,
-        &:active {
-          border: 1px solid $pink;
+        &:focus {
+          transition: 0.2s;
+          border: 2px solid $pink;
+        }
+      }
+
+      .input_error {
+        height: 24px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        color: $pink;
+
+        &:nth-last-of-type(1) {
+          margin-bottom: 24px;
         }
       }
 
@@ -104,7 +120,7 @@
         position: absolute;
         align-self: flex-start;
         margin-left: -74px;
-        margin-top: -94px;
+        margin-top: -82px;
 
         .back_icon {
           width: 40px;

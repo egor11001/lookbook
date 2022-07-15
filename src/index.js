@@ -1,15 +1,16 @@
 import React from 'react';
+import { createContext } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { Provider } from 'react-redux';
+import UserStore from './store/UserStore';
 
-import { store } from './redux/store';
+export const Context = createContext(null);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Context.Provider value={{ user: new UserStore() }}>
       <App />
-    </Provider>
+    </Context.Provider>
   </React.StrictMode>,
 );

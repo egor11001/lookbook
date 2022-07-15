@@ -7,8 +7,8 @@ import { FooterIcon } from '../../assets';
 const languages = ['RU', 'ENG', 'CZ', 'JPN'];
 
 const Footer = () => {
-  const [lang, setLang] = useState(languages[0]);
-  const [showLang, setShowLang] = useState(false);
+  /* const [lang, setLang] = useState(languages[0]);
+  const [showLang, setShowLang] = useState(false); */
 
   /* const handleChangeLang = () => {
     if (showLang) {
@@ -60,11 +60,11 @@ const Footer = () => {
                 Возвраты
               </Link>
             </li>
-            <li className={styles.li}>
+            {/* <li className={styles.li}>
               <Link to={'/FAQ'} className={styles.link}>
                 Помощь и FAQ
               </Link>
-            </li>
+            </li> */}
             <li className={styles.li}>
               <Link to={'/contacts'} className={styles.link}>
                 Контакты

@@ -1,19 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { IMaskInput } from 'react-imask';
+import { useNavigate } from 'react-router';
+import { observer } from 'mobx-react-lite';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../../../scss/components/Mobile/AuthPageMobile.module.scss';
-import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
-import { useNavigate } from 'react-router';
+import { phoneRegexp } from '../../../../utils/regExps';
+import { Context } from '../../../..';
+import { login } from '../../../../services/actions';
 
-const LoginMobile = () => {
-  const [value, setValue] = useState('');
-  const [valid, setValid] = useState(true);
+const PhoneMask = '+{0}-000-000-00-00';
+
+const LoginMobile = observer(() => {
+  const navigate = useNavigate();
+  const [attempt, setAttempt] = useState(false);
   const [stepCode, setStepCode] = useState(false);
   const [code, setCode] = useState('');
-  const navigate = useNavigate();
 
-  const handleChange = (val) => {
-    setValue(val);
+  const [phone, setPhone] = useState({
+    value: '',
+    error: false,
+  });
+
+  const { user } = useContext(Context);
+
+  const handleChangePhone = (value) => {
+    if (attempt) {
+      if (value.split('').length < 11 || !phoneRegexp.test(value)) {
+        setPhone({ value: value, error: 'Неверный номер' });
+      } else {
+        setPhone({ value: value, error: false });
+      }
+    } else {
+      setPhone({ value: value, error: false });
+    }
+  };
+
+  const checkErrors = () => {
+    if (phone.value.split('').length < 11 || !phoneRegexp.test(phone.value)) {
+      setPhone({ value: phone.value, error: 'Неверный номер' });
+    }
   };
 
   const handleChangeCode = (val) => {
@@ -21,31 +47,33 @@ const LoginMobile = () => {
   };
 
   const onSubmit = () => {
-    if (value.length < 7) {
-      setValid(false);
+    if (!attempt) {
+      setAttempt(true);
+      return checkErrors();
     }
-    if (!emailRegexp.test(value) && !phoneRegexp.test(value)) {
-      setValid(false);
-    } else {
-      setValid(true);
-      setStepCode(true);
+    if (!phone.error) {
+      login({ phone_number: phone.value }).then(() => setStepCode(true));
     }
   };
 
   const onLogin = () => {
-    return navigate('/my');
+    user.loginCode({ phone_number: phone.value, code: code }).then(() => navigate('/my'));
   };
 
   return (
     <>
       {!stepCode ? (
         <>
-          <input
+          <IMaskInput
+            mask={PhoneMask}
+            value={phone.value}
+            unmask={true}
+            onAccept={(value, mask) => handleChangePhone(value)}
             placeholder="Номер телефона"
-            value={value}
-            onChange={(e) => handleChange(e.target.value)}
-            className={valid ? styles.field : styles.field_err}
+            type="text"
+            className={phone.error ? styles.input_err : styles.input}
           />
+          <h5 className={styles.input_error}>{phone.error ? phone.error : null}</h5>
           <button onClick={onSubmit} className={styles.submit}>
             Войти
           </button>
@@ -56,11 +84,12 @@ const LoginMobile = () => {
             <ChevronLeftIcon className={styles.back_icon} />
           </button>
           <input
-            placeholder="SMS код"
+            placeholder="Введите код с полученного письма"
             value={code}
             onChange={(e) => handleChangeCode(e.target.value)}
-            className={valid ? styles.field : styles.field_err}
+            className={code.error ? styles.input_err : styles.input}
           />
+          <h5 className={styles.input_error}>{code.error ? code.error : null}</h5>
 
           <button onClick={onLogin} className={styles.submit}>
             Отправить
@@ -69,6 +98,6 @@ const LoginMobile = () => {
       )}
     </>
   );
-};
+});
 
 export default LoginMobile;

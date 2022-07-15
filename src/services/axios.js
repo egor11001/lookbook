@@ -1,17 +1,21 @@
 import axios from 'axios';
 
-export const apiUrl = '';
+export const apiUrl = process.env.REACT_APP_API_URL;
 
 const $api = axios.create({
   baseURL: apiUrl,
 });
 
-$api.interceptors.request.use((config) => {
-  config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+const $apiUser = axios.create({
+  baseURL: apiUrl,
+});
+
+$apiUser.interceptors.request.use((config) => {
+  config.headers.Authorization = `Token ${localStorage.getItem('UToken')}`;
   return config;
 });
 
-$api.interceptors.response.use(
+$apiUser.interceptors.response.use(
   (config) => {
     return config;
   },
@@ -34,4 +38,4 @@ $api.interceptors.response.use(
   },
 );
 
-export default $api;
+export { $api, $apiUser };
