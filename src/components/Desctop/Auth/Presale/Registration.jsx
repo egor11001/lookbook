@@ -112,20 +112,35 @@ const Registration = () => {
   const onSubmit = () => {
     if (!attempt) {
       setAttempt(true);
-      return checkErrors();
+      checkErrors();
+      if (phone.error) {
+        return;
+      }
     }
     if (!name.error && !lastName.error && !email.error && !phone.error) {
       registration({
         first_name: name.value,
         last_name: lastName.value,
         email: email.value,
-        phone_number: phone.value,
-      }).then(() => setStepCode(true));
+        phone_number: '+' + phone.value,
+      }).then((data) => {
+        if (data === 200) {
+          setStepCode(true);
+        } else {
+          console.log('ERR');
+        }
+      });
     }
   };
 
   const onReg = () => {
-    user.loginCode({ phone_number: phone.value, code: code }).then(() => navigate('/my'));
+    user.loginCode({ phone_number: phone.value, code: code }).then((data) => {
+      if (data === 200) {
+        navigate('/my');
+      } else {
+        console.log('ERR');
+      }
+    });
   };
 
   return (

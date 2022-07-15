@@ -3,7 +3,7 @@ import api from '../services';
 
 export default class UserStore {
   user = {};
-  isAuth = false;
+  isAuth = true;
 
   constructor() {
     makeAutoObservable(this);
@@ -26,7 +26,7 @@ export default class UserStore {
       const { data } = await api.user.getProfile();
       this.setUser(data);
     } catch (e) {
-      console.log(e.response?.data?.message);
+      return e.response.status;
     }
   }
 
@@ -37,8 +37,9 @@ export default class UserStore {
       this.setAuth(true);
       const profileData = await api.user.getProfile();
       this.setUser(profileData.data);
+      return profileData.status;
     } catch (e) {
-      console.log(e.response?.data?.message);
+      return e.response.status;
     }
   }
 
@@ -48,10 +49,24 @@ export default class UserStore {
       this.setAuth(false);
       this.setUser({});
     } catch (e) {
-      console.log(e.response?.data?.message);
       localStorage.removeItem('UToken');
       this.setAuth(false);
       this.setUser({});
+      return e.response.status;
+    }
+  }
+
+  async checkAuth() {
+    try {
+      const res = await api.auth.checkAuth();
+      this.setAuth(true);
+      this.getProfile();
+      return res.status;
+    } catch (e) {
+      localStorage.removeItem('UToken');
+      this.setAuth(false);
+      this.setUser({});
+      return e.response.status;
     }
   }
 }

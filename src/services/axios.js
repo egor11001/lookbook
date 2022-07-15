@@ -4,14 +4,17 @@ export const apiUrl = process.env.REACT_APP_API_URL;
 
 const $api = axios.create({
   baseURL: apiUrl,
+  withCredentials: true,
 });
 
 const $apiUser = axios.create({
   baseURL: apiUrl,
+  withCredentials: true,
 });
 
 $apiUser.interceptors.request.use((config) => {
   config.headers.Authorization = `Token ${localStorage.getItem('UToken')}`;
+
   return config;
 });
 

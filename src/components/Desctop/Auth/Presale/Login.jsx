@@ -49,15 +49,32 @@ const Login = observer(() => {
   const onSubmit = () => {
     if (!attempt) {
       setAttempt(true);
-      return checkErrors();
+      checkErrors();
+      if (phone.error) {
+        return;
+      }
     }
     if (!phone.error) {
-      login({ phone_number: phone.value }).then(() => setStepCode(true));
+      login({ phone_number: '+' + phone.value }).then((data) => {
+        console.log(data);
+        if (data === 200) {
+          setStepCode(true);
+        } else {
+          console.log('ERR');
+        }
+      });
     }
   };
 
   const onLogin = () => {
-    user.loginCode({ phone_number: phone.value, code: code }).then(() => navigate('/my'));
+    user.loginCode({ phone_number: '+' + phone.value, code: code }).then((data) => {
+      console.log(data);
+      if (data === 200) {
+        return navigate('/my');
+      } else {
+        console.log('ERR');
+      }
+    });
   };
 
   return (

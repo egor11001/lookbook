@@ -43,8 +43,8 @@ const Routes = () => {
       <Switch>
         <Route path="/" element={<Layout />}>
           <Route path="" element={<MainPage />} />
-          <Route path="brand" element={<MainBrand />} />
-          <Route path="brand/:id" element={<ItemPage />} />
+          <Route path=":brand" element={<MainBrand />} />
+          <Route path=":brand/:id" element={<ItemPage />} />
           <Route path="authorization" element={<AuthPage />} />
           <Route path="about" element={<AboutUsPage />} />
           <Route path="contacts" element={<ContactsPage />} />

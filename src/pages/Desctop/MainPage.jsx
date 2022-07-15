@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -9,6 +9,7 @@ import Countdown from 'react-countdown';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import styles from '../../scss/components/Desctop/MainPage.module.scss';
+import { getBrands } from '../../services/actions';
 
 const Completionist = () => (
   <img
@@ -20,7 +21,11 @@ const Completionist = () => (
 
 const MainPage = () => {
   const navigate = useNavigate();
+  const [items, setItems] = useState(null);
 
+  useEffect(() => {
+    getBrands().then((data) => setItems(data));
+  }, []);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -45,7 +50,20 @@ const MainPage = () => {
           loop={true}
           modules={[Navigation]}
           className={styles.swiper}>
-          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
+          {items &&
+            items.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                onClick={() =>
+                  navigate(`/${item.vendor}`, { state: { image: item.image, vendor: item.vendor } })
+                }
+                className={styles.slide}>
+                <img className={styles.photo} src={item.image} alt={item.alt_text} />
+                <h3 className={styles.desc}>{item.vendor}</h3>
+                <h2 className={styles.title}>{item.vendor}</h2>
+              </SwiperSlide>
+            ))}
+          {/* <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
             <img
               className={styles.photo}
               src="https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/573148/fleym.jpg"
@@ -71,7 +89,7 @@ const MainPage = () => {
             />
             <h3 className={styles.desc}>богема ленинград</h3>
             <h2 className={styles.title}>Кепка</h2>
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
 
         <button id="next" className={styles.next}>
