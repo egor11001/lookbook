@@ -41,6 +41,7 @@ const MainPage = () => {
           <ArrowBackIcon className={styles.icon} />
         </button>
         <Swiper
+          initialSlide={1}
           slidesPerView={3}
           spaceBetween={40}
           navigation={{
@@ -55,7 +56,9 @@ const MainPage = () => {
               <SwiperSlide
                 key={index}
                 onClick={() =>
-                  navigate(`/${item.vendor}`, { state: { image: item.image, vendor: item.vendor } })
+                  navigate(`/${item.vendor_id}`, {
+                    state: { image: item.image, vendor: item.vendor, vendorId: item.vendor_id },
+                  })
                 }
                 className={styles.slide}>
                 <img className={styles.photo} src={item.image} alt={item.alt_text} />

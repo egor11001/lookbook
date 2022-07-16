@@ -1,16 +1,18 @@
 import React, { useContext, useState } from 'react';
 import { Icon } from '@iconify/react';
-import { useNavigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 import { IMaskInput } from 'react-imask';
+import { observer } from 'mobx-react-lite';
 
 import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
 import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
+
 import { Context } from '../../../..';
 import { registration } from '../../../../services/actions';
 
 const PhoneMask = '+{0}-000-000-00-00';
 
-const Registration = () => {
+const Registration = observer(() => {
   const [attempt, setAttempt] = useState(false);
   const [name, setName] = useState({
     value: '',
@@ -103,17 +105,18 @@ const Registration = () => {
 
   const [stepCode, setStepCode] = useState(false);
   const [code, setCode] = useState('');
-  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleChangeCode = (val) => {
     setCode(val);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     if (!attempt) {
       setAttempt(true);
       checkErrors();
-      if (phone.error) {
+      if (phone.error || email.error || name.error || lastName.error) {
         return;
       }
     }
@@ -133,10 +136,12 @@ const Registration = () => {
     }
   };
 
-  const onReg = () => {
-    user.loginCode({ phone_number: phone.value, code: code }).then((data) => {
+  const onReg = (e) => {
+    e.preventDefault();
+    user.loginCode({ phone_number: '+' + phone.value, code: code }).then((data) => {
       if (data === 200) {
-        navigate('/my');
+        console.log(location.state?.from?.pathname);
+        return <Navigate to={location.state?.from?.pathname} />;
       } else {
         console.log('ERR');
       }
@@ -184,7 +189,7 @@ const Registration = () => {
             className={phone.error ? styles.input_err : styles.input}
           />
           <h5 className={styles.input_error}>{phone.error ? phone.error : null}</h5>
-          <button onClick={onSubmit} className={styles.submit}>
+          <button type="submit" onClick={onSubmit} className={styles.submit}>
             Зарегистрироваться
           </button>
         </>
@@ -208,6 +213,6 @@ const Registration = () => {
       )}
     </>
   );
-};
+});
 
 export default Registration;

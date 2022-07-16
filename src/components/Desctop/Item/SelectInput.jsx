@@ -16,8 +16,7 @@ const Dropdown = ({ options, handleChangeOption }) => {
   );
 };
 
-const SelectInput = ({ values, defaultValue }) => {
-  const [value, setValue] = useState(null);
+const SelectInput = ({ values, defaultValue, value, setValue }) => {
   const [options, setOptions] = useState(values);
   const [visible, setVisible] = useState(false);
 

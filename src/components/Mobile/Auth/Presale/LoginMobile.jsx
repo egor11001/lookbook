@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { IMaskInput } from 'react-imask';
-import { useNavigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 import { observer } from 'mobx-react-lite';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -12,7 +12,7 @@ import { login } from '../../../../services/actions';
 const PhoneMask = '+{0}-000-000-00-00';
 
 const LoginMobile = observer(() => {
-  const navigate = useNavigate();
+  const location = useLocation();
   const [attempt, setAttempt] = useState(false);
   const [stepCode, setStepCode] = useState(false);
   const [code, setCode] = useState('');
@@ -46,7 +46,8 @@ const LoginMobile = observer(() => {
     setCode(val);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     if (!attempt) {
       setAttempt(true);
       checkErrors();
@@ -65,8 +66,15 @@ const LoginMobile = observer(() => {
     }
   };
 
-  const onLogin = () => {
-    user.loginCode({ phone_number: '+' + phone.value, code: code }).then(() => navigate('/my'));
+  const onLogin = (e) => {
+    e.preventDefault();
+    user.loginCode({ phone_number: '+' + phone.value, code: code }).then((data) => {
+      if (data === 200) {
+        return <Navigate to={location.state?.from?.pathname} />;
+      } else {
+        console.log('ERR');
+      }
+    });
   };
 
   return (

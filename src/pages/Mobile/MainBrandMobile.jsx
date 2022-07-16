@@ -1,86 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
 import styles from '../../scss/components/Mobile/MainBrandMobile.module.scss';
 import ScrollButton from '../../components/Mobile/ScrollButton';
-
-const items = [
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    name: 'Худи',
-    price: 9500,
-  },
-];
+import { getProducts } from '../../services/actions';
 
 const MainBrandMobile = () => {
+  const location = useLocation();
+  const path = location.pathname;
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    getProducts().then((data) => setItems(data));
+  }, []);
   return (
     <div className={styles.wrapper}>
       <div className={styles.top}>
@@ -88,22 +21,23 @@ const MainBrandMobile = () => {
           <ChevronLeftIcon className={styles.back_icon} />
         </Link>
 
-        <h3 className={styles.title}>lastseen</h3>
-        <img
-          className={styles.logo}
-          src="https://aws.kiiiosk.store/uploads/shop/8644/images/14330/45546579-708f-4148-a371-76ebf0ba1421.jpg"
-          alt="LOGO"
-        />
+        <h3 className={styles.title}>{location.state.vendor}</h3>
+        <img className={styles.logo} src={location.state.image} alt="LOGO" />
       </div>
 
       <div className={styles.content}>
-        {items.map((item, index) => (
-          <Link to={'/brand/item'} key={index} className={styles.card}>
-            <img src={item.photo} alt="IMG" className={styles.card_photo} />
-            <h2 className={styles.card_name}>{item.name}</h2>
-            <h1 className={styles.card_price}>{item.price} ₽</h1>
-          </Link>
-        ))}
+        {items &&
+          items.map((item) => (
+            <Link to={`${path}/${item.id}`} key={item.id} className={styles.card}>
+              <img
+                src={item.product_image.filter((photo) => photo.is_feature)[0].image}
+                alt={item.product_image.filter((photo) => photo.is_feature)[0].alt_text}
+                className={styles.card_photo}
+              />
+              <h2 className={styles.card_name}>{item.title}</h2>
+              <h1 className={styles.card_price}>{item.regular_price} ₽</h1>
+            </Link>
+          ))}
       </div>
 
       <ScrollButton />

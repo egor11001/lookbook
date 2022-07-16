@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import { observer } from 'mobx-react-lite';
 
@@ -9,6 +9,7 @@ import { Context } from '../..';
 
 const Header = observer(() => {
   const { user } = useContext(Context);
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
       <Link to={'/'} className={styles.presale}>
@@ -18,7 +19,28 @@ const Header = observer(() => {
         <LogoIcon />
       </Link>
       <div className={styles.buttons_block}>
-        <Link to={'/my'} className={styles.btn}>
+        {user.isAuth ? (
+          <>
+            <button onClick={() => navigate('/my')} className={styles.btn}>
+              <Icon className={styles.icon} icon="ci:user-circle" />
+            </button>
+
+            <button onClick={() => navigate('/my/basket')} className={styles.btn}>
+              <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
+            </button>
+
+            <button onClick={() => user.logout()} className={styles.btn}>
+              <Icon className={styles.icon} icon="ic:twotone-logout" />
+            </button>
+          </>
+        ) : (
+          <>
+            <Link to={'/my'} className={styles.btn}>
+              <Icon className={styles.icon} icon="ci:user-circle" />
+            </Link>
+          </>
+        )}
+        {/*  <Link to={'/my'} className={styles.btn}>
           <Icon className={styles.icon} icon="ci:user-circle" />
         </Link>
         {user.isAuth && (
@@ -26,9 +48,9 @@ const Header = observer(() => {
             <Icon className={styles.icon} icon="akar-icons:shopping-bag" />
           </Link>
         )}
-        <Link to={'/FAQ'} className={styles.btn}>
-          <Icon className={styles.icon} icon="fluent:question-circle-12-regular" />
-        </Link>
+        <button onClick={() => user.logout()} className={styles.btn}>
+          <Icon className={styles.icon} icon="ic:twotone-logout" />
+        </button> */}
       </div>
     </div>
   );

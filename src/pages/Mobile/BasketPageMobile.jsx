@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,43 +9,29 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from '../../scss/components/Mobile/BasketPageMobile.module.scss';
 import EmptyMobile from '../../components/Mobile/EmptyMobile';
-
-const items = [
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg',
-    brand: 'lastseen',
-    type: 'Худи',
-    count: '2',
-    price: '9500 ₽',
-  },
-  {
-    photo: 'https://i.ibb.co/8YLGtLk/photo-2022-06-13-21-50-59.jpg',
-    brand: 'Xylitos',
-    type: 'Кот Стикс',
-    count: '1',
-    price: '∞',
-  },
-  {
-    photo:
-      'https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/573148/fleym.jpg',
-    brand: 'lastseen',
-    type: 'Кеды',
-    count: '1',
-    price: '7500 ₽',
-  },
-  {
-    photo: 'https://static.tildacdn.com/tild3432-3831-4437-a631-643065353263/1.jpg',
-    brand: 'Fable',
-    type: 'Пиджак',
-    count: '1',
-    price: '10500 ₽',
-  },
-];
+import { getBasket, removeFromBasket } from '../../services/actions';
 
 const BasketPageMobile = () => {
   const navigate = useNavigate();
 
+  const [items, setItems] = useState(null);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const deleteItem = (data) => {
+    removeFromBasket(data).then(() => {
+      getBasket().then((data) => {
+        setItems(data[0].basket_item);
+        setTotalPrice(data[0].total);
+      });
+    });
+  };
+
+  useEffect(() => {
+    getBasket().then((data) => {
+      setItems(data[0].basket_item);
+      setTotalPrice(data[0].total);
+    });
+  }, []);
   return (
     <div id="BasketMobile" className={styles.wrapper}>
       <div className={styles.top}>
@@ -57,7 +43,7 @@ const BasketPageMobile = () => {
       </div>
 
       <div className={styles.content}>
-        {items ? (
+        {items && items.length > 0 ? (
           <Swiper
             pagination={{
               dynamicBullets: true,
@@ -68,14 +54,28 @@ const BasketPageMobile = () => {
             modules={[Pagination]}
             className={styles.swiper}>
             {items.map((item, index) => (
-              <SwiperSlide onClick={() => navigate('/item')} className={styles.slide} key={index}>
-                <Icon icon={'akar-icons:trash-can'} className={styles.remove_icon} />
-                <img src={item.photo} alt="IMG" className={styles.photo} />
-                <h1 className={styles.brand}>{item.brand}</h1>
-                <h3 className={styles.type}>{item.type}</h3>
+              <SwiperSlide
+                onClick={() => navigate(`/${item.productvendorId}/${item.product.id}`)}
+                className={styles.slide}
+                key={index}>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    deleteItem({ product: item.product.id, size: item.size });
+                  }}>
+                  <Icon icon={'akar-icons:trash-can'} className={styles.remove_icon} />
+                </button>
+                <img
+                  src={item.product.product_image.filter((photo) => photo.is_feature)[0].image}
+                  alt={item.product.product_image.filter((photo) => photo.is_feature)[0].alt_text}
+                  className={styles.photo}
+                />
+                <h1 className={styles.brand}>{item.product.vendor}</h1>
+                <h3 className={styles.type}>{item.product.title}</h3>
                 <div className={styles.block}>
-                  <h5 className={styles.count}>{item.count} шт.</h5>
-                  <h2 className={styles.price}>{item.price}</h2>
+                  <h5 className={styles.count}>{item.quantity} шт.</h5>
+                  <h5 className={styles.count}>{item.size}</h5>
+                  <h2 className={styles.price}>{item.product.regular_price} ₽</h2>
                 </div>
               </SwiperSlide>
             ))}
@@ -85,16 +85,20 @@ const BasketPageMobile = () => {
         )}
       </div>
 
-      <h2 className={styles.counts}>
-        <span>{items.length}</span> товаров
-      </h2>
-      <h1 className={styles.total_price}>
-        <span>Итого:</span>8650 ₽
-      </h1>
-
-      <button onClick={() => navigate('/my/ordering')} className={styles.submit}>
-        Перейти к оформлению
-      </button>
+      {items && items.length > 0 ? (
+        <>
+          <h2 className={styles.counts}>
+            <span>{items?.length || '0'}</span> товаров
+          </h2>
+          <h1 className={styles.total_price}>
+            <span>Итого:</span>
+            {totalPrice || 0} ₽
+          </h1>
+          <button onClick={() => navigate('/my/ordering')} className={styles.submit}>
+            Перейти к оформлению
+          </button>
+        </>
+      ) : null}
     </div>
   );
 };

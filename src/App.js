@@ -22,7 +22,6 @@ const App = observer(() => {
   });
 
   const { user } = useContext(Context);
-  console.log(user.userInfo);
   useEffect(() => {
     if (localStorage.getItem('UToken')) {
       user

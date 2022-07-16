@@ -3,7 +3,6 @@ import { Routes as Switch, Route, Navigate } from 'react-router-dom';
 
 import MainPage from '../../pages/Desctop/MainPage';
 import ItemPage from '../../pages/Desctop/ItemPage';
-import FAQPage from '../../pages/Desctop/FAQPage';
 import Layout from '../Desctop/Layout';
 import AboutUsPage from '../../pages/Desctop/infos/AboutUsPage';
 import ContactsPage from '../../pages/Desctop/infos/ContactsPage';
@@ -53,7 +52,7 @@ const Routes = () => {
           <Route path="collaboration" element={<CollaborationInfoPage />} />
           <Route path="returns" element={<Returns />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="FAQ" element={<FAQPage />} />
+          {/* <Route path="FAQ" element={<FAQPage />} /> */}
 
           <Route path="my/*" element={<UserRouter />}>
             <Route path="" element={<Navigate to={'/my/home'} />} />

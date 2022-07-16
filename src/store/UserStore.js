@@ -1,9 +1,10 @@
 import { makeAutoObservable } from 'mobx';
 import api from '../services';
+import { failAuthNotification } from '../components/Notifications';
 
 export default class UserStore {
   user = {};
-  isAuth = true;
+  isAuth = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -21,10 +22,14 @@ export default class UserStore {
     return this.user;
   }
 
+  get getAuth() {
+    return this.isAuth;
+  }
+
   async getProfile() {
     try {
       const { data } = await api.user.getProfile();
-      this.setUser(data);
+      this.setUser(data[0]);
     } catch (e) {
       return e.response.status;
     }
@@ -33,12 +38,14 @@ export default class UserStore {
   async loginCode(info) {
     try {
       const { data } = await api.auth.loginCode(info);
+
       localStorage.setItem('UToken', data.key);
       this.setAuth(true);
       const profileData = await api.user.getProfile();
       this.setUser(profileData.data);
       return profileData.status;
     } catch (e) {
+      failAuthNotification(e.response.data.message);
       return e.response.status;
     }
   }

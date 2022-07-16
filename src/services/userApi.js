@@ -9,11 +9,15 @@ export default class userApi {
     return $apiUser.get('/my/basket/');
   }
 
-  static async addToBasket({ id, count }) {
-    return $apiUser.put('/store/products/add/', { product: id, quantity: count });
+  static async addToBasket({ product, quantity, size }) {
+    return $apiUser.post('/store/products/add', {
+      product: product,
+      quantity: quantity,
+      size: size,
+    });
   }
 
-  static async removeFromBasket({ id }) {
-    return $apiUser.delete('/my/basket/delete-product/', { product: id });
+  static async removeFromBasket(info) {
+    return $apiUser.post('/my/basket/delete-product', info);
   }
 }

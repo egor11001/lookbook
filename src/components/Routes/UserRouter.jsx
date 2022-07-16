@@ -1,15 +1,20 @@
-import React, { useContext } from 'react';
+import { Outlet, useLocation, Navigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
-import { Navigate, Outlet } from 'react-router-dom';
+import { useContext } from 'react';
 import { Context } from '../..';
 
 const UserRouter = observer(() => {
   const { user } = useContext(Context);
-
-  if (!user.isAuth) {
-    return <Navigate to="/authorization" />;
-  }
-  return <Outlet />;
+  const location = useLocation();
+  return (
+    <>
+      {user.getAuth ? (
+        <Outlet />
+      ) : (
+        <Navigate to="/authorization" state={{ from: location }} replace />
+      )}
+    </>
+  );
 });
 
 export default UserRouter;

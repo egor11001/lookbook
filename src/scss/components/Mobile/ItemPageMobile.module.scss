@@ -41,6 +41,7 @@
         min-width: fit-content;
         max-width: 235px;
         text-align: right;
+        margin-top: 4px;
         margin-bottom: 8px;
 
         @media (max-width: 350px) {
@@ -217,10 +218,10 @@
       margin-bottom: 32px;
     }
 
-    .sizes_img {
-      width: 100%;
-      height: fit-content;
-      object-fit: cover;
+    .sizes_guide {
+      white-space: pre-wrap;
+      font-size: 16px;
+      line-height: 26px;
     }
   }
 }

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Icon } from '@iconify/react';
 import { IMaskInput } from 'react-imask';
-import { useNavigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 import { observer } from 'mobx-react-lite';
 
 import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
@@ -12,7 +12,7 @@ import { login } from '../../../../services/actions';
 const PhoneMask = '+{0}-000-000-00-00';
 
 const Login = observer(() => {
-  const navigate = useNavigate();
+  const location = useLocation();
   const [attempt, setAttempt] = useState(false);
   const [stepCode, setStepCode] = useState(false);
   const [code, setCode] = useState('');
@@ -46,7 +46,8 @@ const Login = observer(() => {
     setCode(val);
   };
 
-  const onSubmit = () => {
+  const onSubmit = (e) => {
+    e.preventDefault();
     if (!attempt) {
       setAttempt(true);
       checkErrors();
@@ -56,7 +57,6 @@ const Login = observer(() => {
     }
     if (!phone.error) {
       login({ phone_number: '+' + phone.value }).then((data) => {
-        console.log(data);
         if (data === 200) {
           setStepCode(true);
         } else {
@@ -66,11 +66,11 @@ const Login = observer(() => {
     }
   };
 
-  const onLogin = () => {
+  const onLogin = (e) => {
+    e.preventDefault();
     user.loginCode({ phone_number: '+' + phone.value, code: code }).then((data) => {
-      console.log(data);
       if (data === 200) {
-        return navigate('/my');
+        return <Navigate to={location.state?.from?.pathname} />;
       } else {
         console.log('ERR');
       }

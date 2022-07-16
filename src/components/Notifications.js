@@ -1,5 +1,35 @@
 import { Store } from 'react-notifications-component';
 
+export const defaultError = (text) => {
+  Store.addNotification({
+    title: text || 'Ошибка',
+    message: '',
+    type: 'danger',
+    insert: 'right',
+    container: 'bottom-left',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 5000,
+    },
+  });
+};
+
+export const warningError = (text) => {
+  Store.addNotification({
+    title: text || 'Ошибка',
+    message: '',
+    type: 'warning',
+    insert: 'right',
+    container: 'bottom-left',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 5000,
+    },
+  });
+};
+
 export const connectionError = () => {
   Store.addNotification({
     title: 'Ошибка подкючения',
@@ -15,9 +45,9 @@ export const connectionError = () => {
   });
 };
 
-export const failAuthNotification = () => {
+export const failAuthNotification = (info) => {
   Store.addNotification({
-    title: 'Неверные данные',
+    title: info,
     message: '',
     type: 'danger',
     insert: 'right',
@@ -86,6 +116,21 @@ export const failSignup = (message) => {
     animationOut: ['animate__animated', 'animate__fadeOut'],
     dismiss: {
       duration: 6000,
+    },
+  });
+};
+
+export const successAddToBasket = () => {
+  Store.addNotification({
+    title: 'Товар добавлен в корзину',
+    message: '',
+    type: 'default',
+    insert: 'right',
+    container: 'bottom-left',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 5000,
     },
   });
 };

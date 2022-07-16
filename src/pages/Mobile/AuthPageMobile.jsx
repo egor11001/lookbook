@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Navigate, useLocation } from 'react-router';
+import { Context } from '../..';
 
 import LoginMobile from '../../components/Mobile/Auth/Presale/LoginMobile';
 import RegistrationMobile from '../../components/Mobile/Auth/Presale/RegistrationMobile';
@@ -8,9 +10,17 @@ import styles from '../../scss/components/Mobile/AuthPageMobile.module.scss';
 const AuthPageMobile = () => {
   const [active, setActive] = useState(0);
 
+  const location = useLocation();
+
+  const { user } = useContext(Context);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (user.getAuth) {
+    return <Navigate to={location.state?.from?.pathname || '/'} />;
+  }
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>

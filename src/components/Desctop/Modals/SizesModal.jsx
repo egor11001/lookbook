@@ -21,7 +21,7 @@ const style = {
   boxShadow: 24,
 };
 
-const SizesModal = ({ visible, setVisible }) => {
+const SizesModal = ({ sizes, visible, setVisible }) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -40,7 +40,7 @@ const SizesModal = ({ visible, setVisible }) => {
         <button className="modal_close" onClick={handleClose}>
           <CloseIcon className="close_icon" />
         </button>
-        <img className="sizes_img" src={SizeImg} alt="sizes" />
+        <p style={{ whiteSpace: 'pre', lineHeight: '35px', fontSize: '20px' }}>{sizes}</p>
       </Box>
     </Modal>
   );

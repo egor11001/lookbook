@@ -7,7 +7,6 @@ import ItemPageMobile from '../../pages/Mobile/ItemPageMobile';
 import HomeMobile from '../../pages/Mobile/HomeMobile';
 import ProfileMobile from '../../pages/Mobile/ProfileMobile';
 import OrdersPageMobile from '../../pages/Mobile/OrdersPageMobile';
-import FAQPageMobile from '../../pages/Mobile/FAQPageMobile';
 import AboutUsPageMobile from '../../pages/Mobile/infos/AboutUsPageMobile';
 import ContactsPageMobile from '../../pages/Mobile/infos/ContactsPageMobile';
 import PaymentInfoPageMobile from '../../pages/Mobile/infos/PaymentInfoPageMobile';
@@ -35,10 +34,9 @@ const RoutesMobile = () => {
       <Switch>
         <Route path="/" element={<LayoutMobile />}>
           <Route path="" element={<MainPageMobile />} />
-          <Route path="brand" element={<MainBrandMobile />} />
-          <Route path="brand/:id" element={<ItemPageMobile />} />
+          <Route path=":brand" element={<MainBrandMobile />} />
+          <Route path=":brand/:id" element={<ItemPageMobile />} />
           <Route path="authorization" element={<AuthPageMobile />} />
-          <Route path="FAQ" element={<FAQPageMobile />} />
           <Route path="about" element={<AboutUsPageMobile />} />
           <Route path="contacts" element={<ContactsPageMobile />} />
           <Route path="payment" element={<PaymentInfoPageMobile />} />
@@ -46,6 +44,7 @@ const RoutesMobile = () => {
           <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
           <Route path="returns" element={<ReturnsMobile />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
+          {/* <Route path="FAQ" element={<FAQPageMobile />} /> */}
 
           <Route path="my/*" element={<UserRouter />}>
             <Route path="" element={<Navigate to={'/my/home'} />} />

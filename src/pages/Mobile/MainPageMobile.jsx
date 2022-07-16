@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
-// Import Swiper React components
+import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useNavigate } from 'react-router';
 import Countdown from 'react-countdown';
 
 import 'swiper/css';
 import styles from '../../scss/components/Mobile/MainPageMobile.module.scss';
+import { getBrands } from '../../services/actions';
 
 const Completionist = () => (
   <img
@@ -15,8 +15,13 @@ const Completionist = () => (
   />
 );
 
-const Hello = () => {
+const MainPageMobile = () => {
   const navigate = useNavigate();
+  const [items, setItems] = useState(null);
+
+  useEffect(() => {
+    getBrands().then((data) => setItems(data));
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -29,37 +34,25 @@ const Hello = () => {
       <h5 className={styles.presale}>presale</h5>
       <div className={styles.content}>
         <Swiper loop={true} className={styles.swiper}>
-          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
-            <img
-              className={styles.photo}
-              src="https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/573148/fleym.jpg"
-              alt="1"
-            />
-            <h3 className={styles.desc}>lastseen</h3>
-            <h2 className={styles.title}>Кеды</h2>
-          </SwiperSlide>
-          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
-            <img
-              className={styles.photo}
-              src="https://thumbor9.kiiiosk.store/unsafe/500x/https://aws.kiiiosk.store/uploads/shop/8644/uploads/product_image/image/603017/NSZ08812.jpg"
-              alt="2"
-            />
-            <h3 className={styles.desc}>lastseen</h3>
-            <h2 className={styles.title}>Худи</h2>
-          </SwiperSlide>
-          <SwiperSlide onClick={() => navigate('/brand')} className={styles.slide}>
-            <img
-              className={styles.photo}
-              src="https://cdn0.youla.io/files/images/720_720_out/5f/4c/5f4ccac0efee8d2ffd743c8a-1.jpg"
-              alt="3"
-            />
-            <h3 className={styles.desc}>богема ленинград</h3>
-            <h2 className={styles.title}>Кепка</h2>
-          </SwiperSlide>
+          {items &&
+            items.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                onClick={() =>
+                  navigate(`/${item.vendor_id}`, {
+                    state: { image: item.image, vendor: item.vendor, vendorId: item.vendor_id },
+                  })
+                }
+                className={styles.slide}>
+                <img className={styles.photo} src={item.image} alt={item.alt_text} />
+                <h3 className={styles.desc}>{item.vendor}</h3>
+                <h2 className={styles.title}>{item.vendor}</h2>
+              </SwiperSlide>
+            ))}
         </Swiper>
       </div>
     </div>
   );
 };
 
-export default Hello;
+export default MainPageMobile;

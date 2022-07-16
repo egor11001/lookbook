@@ -33,7 +33,7 @@ const MainBrand = () => {
             <Link to={`${path}/${item.id}`} key={item.id} className={styles.card}>
               <img
                 src={item.product_image.filter((photo) => photo.is_feature)[0].image}
-                alt="IMG"
+                alt={item.product_image.filter((photo) => photo.is_feature)[0].alt_text}
                 className={styles.card_photo}
               />
               <h2 className={styles.card_name}>{item.title}</h2>

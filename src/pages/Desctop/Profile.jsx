@@ -1,41 +1,48 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router';
 import { Icon } from '@iconify/react';
 import { IMaskInput } from 'react-imask';
+import { observer } from 'mobx-react-lite';
 
 import styles from '../../scss/components/Desctop/LK/ProfileLK.module.scss';
 import { emailRegexp, phoneRegexp } from '../../utils/regExps';
+import { Context } from '../..';
 
 const PhoneMask = '+{0}-000-000-00-00';
 
-const info = {
-  name: 'Стикс',
-  lastName: 'Власов',
-  email: 'мягкиелапки@yandex.ru',
-  phone: '+7-999-888-00-22',
-};
-
-const Profile = () => {
+const Profile = observer(() => {
   const [activeEdit, setActiveEdit] = useState(false);
   const [name, setName] = useState({
-    value: info.name || '',
+    value: '',
     error: false,
   });
   const [lastName, setLastName] = useState({
-    value: info.lastName || '',
+    value: '',
     error: false,
   });
   const [email, setEmail] = useState({
-    value: info.email || '',
+    value: '',
     error: false,
   });
   const [phone, setPhone] = useState({
-    value: info.phone || '',
+    value: '',
     error: false,
   });
   const [activeEmail, setActiveEmail] = useState(false);
   const [activePhone, setActivePhone] = useState(false);
   const navigate = useNavigate();
+
+  const { user } = useContext(Context);
+
+  useEffect(() => {
+    /*  console.log(user.userInfo.user.last_name); */
+    setName({ value: user.userInfo.user.first_name, error: false });
+    setLastName({ value: user.userInfo.user.last_name, error: false });
+    setEmail({ value: user.userInfo.user.email, error: false });
+    setPhone({ value: user.userInfo.user.phone_number, error: false });
+    setActiveEmail(user.userInfo.is_getting_email_notifications);
+    setActivePhone(user.userInfo.is_getting_sms_notifications);
+  }, [user]);
 
   const handleChangeName = (value) => {
     if (value.length < 1) {
@@ -73,7 +80,6 @@ const Profile = () => {
 
   const onSubmit = () => {
     if (!name.error && !email.error && !phone.error) {
-      console.log(name, email, phone);
       setActiveEdit(false);
     }
   };
@@ -164,6 +170,6 @@ const Profile = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Profile;

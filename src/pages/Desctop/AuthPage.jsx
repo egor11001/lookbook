@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Navigate } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 
 import Login from '../../components/Desctop/Auth/Presale/Login';
 import Registration from '../../components/Desctop/Auth/Presale/Registration';
@@ -10,11 +10,12 @@ import { Context } from '../..';
 
 const AuthPage = observer(() => {
   const [active, setActive] = useState(0);
+  const location = useLocation();
 
   const { user } = useContext(Context);
 
-  if (user.isAuth) {
-    return <Navigate to={'/'} />;
+  if (user.getAuth) {
+    return <Navigate to={location.state?.from?.pathname || '/'} />;
   }
 
   return (
@@ -29,9 +30,9 @@ const AuthPage = observer(() => {
           </button>
         </div>
 
-        <div className={styles.content}>
+        <form className={styles.content}>
           {active === 0 ? <Login /> : active === 1 ? <Registration /> : null}
-        </div>
+        </form>
       </div>
     </div>
   );
