@@ -7,7 +7,7 @@ const UserRouter = observer(() => {
   const { user } = useContext(Context);
   const location = useLocation();
   return (
-    <div style={{ height: '906px', backgroundColor: 'white' }}>
+    <div style={{ minHeight: '906px', maxHeight: 'fit-content', backgroundColor: 'white' }}>
       {user.getAuth ? (
         <Outlet />
       ) : (
