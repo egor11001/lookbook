@@ -11,6 +11,7 @@ import { Context } from '../../../..';
 import { registration } from '../../../../services/actions';
 
 const PhoneMask = '+{0}-000-000-00-00';
+const cyrillicPattern = /^\p{sc=Cyrillic}*$/u;
 
 const RegistrationMobile = observer(() => {
   const [attempt, setAttempt] = useState(false);
@@ -84,23 +85,36 @@ const RegistrationMobile = observer(() => {
   };
 
   const checkErrors = () => {
+    let err;
     if (name.value.length < 1) {
       setName({ value: name.value, error: 'Обязательное поле' });
+      err = true;
+    } else if (!cyrillicPattern.test(name.value)) {
+      setName({ value: name.value, error: 'Только латинские буквы' });
+      err = true;
     }
 
     if (lastName.value.length < 1) {
       setLastName({ value: lastName.value, error: 'Обязательное поле' });
+      err = true;
+    } else if (!cyrillicPattern.test(lastName.value)) {
+      setLastName({ value: lastName.value, error: 'Только латинские буквы' });
+      err = true;
     }
 
     if (email.value.length < 1) {
       setEmail({ value: email.value, error: 'Обязательное поле' });
+      err = true;
     } else if (!emailRegexp.test(email.value)) {
       setEmail({ value: email.value, error: 'Некорректный email' });
+      err = true;
     }
 
     if (phone.value.split('').length < 11 || !phoneRegexp.test(phone.value)) {
       setPhone({ value: phone.value, error: 'Неверный номер' });
+      err = true;
     }
+    return err;
   };
 
   const [stepCode, setStepCode] = useState(false);
@@ -111,12 +125,12 @@ const RegistrationMobile = observer(() => {
     setCode(val);
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (!attempt) {
       setAttempt(true);
-      checkErrors();
-      if (phone.error || email.error || name.error || lastName.error) {
+      const res = await checkErrors();
+      if (res) {
         return;
       }
     }

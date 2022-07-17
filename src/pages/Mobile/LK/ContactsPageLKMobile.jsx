@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 
 import styles from '../../../scss/components/Mobile/ContactsPageMobile.module.scss';
 
-const ContactsPageMobile = () => {
+const ContactsPageLKMobile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const ContactsPageMobile = () => {
   );
 };
 
-export default ContactsPageMobile;
+export default ContactsPageLKMobile;

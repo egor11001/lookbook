@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import { useLocation, useNavigate } from 'react-router';
+import { observer } from 'mobx-react-lite';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
 import styles from '../../scss/components/Mobile/ItemPageMobile.module.scss';
 import { addToBasket, getProductsById } from '../../services/actions';
+import { Context } from '../..';
 
 const infos = [
   {
@@ -24,7 +26,7 @@ const infos = [
   },
 ];
 
-const ItemPageMobile = () => {
+const ItemPageMobile = observer(() => {
   const location = useLocation();
   const [info, setInfo] = useState(null);
   const [text, setText] = useState(infos);
@@ -34,11 +36,16 @@ const ItemPageMobile = () => {
   const [activeSize, setActiveSize] = useState(null);
   const navigate = useNavigate();
 
+  const { user } = useContext(Context);
+
   const onChangeInfo = (value) => () => {
     setActiveInfo(value);
   };
 
   const handleAddToBasket = () => {
+    if (!user.getAuth) {
+      return navigate('/authorization', { state: { from: location } });
+    }
     addToBasket({ product: info.id, quantity: 1, size: sizes[activeSize] });
   };
 
@@ -56,6 +63,10 @@ const ItemPageMobile = () => {
           .value.split(', '),
       );
     });
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
   }, []);
   return (
     <div id="ItemPageMobile" className={styles.wrapper}>
@@ -149,6 +160,6 @@ const ItemPageMobile = () => {
       </div>
     </div>
   );
-};
+});
 
 export default ItemPageMobile;

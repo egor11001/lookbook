@@ -101,7 +101,7 @@ const Login = observer(() => {
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <input
-            placeholder="Введите код с полученного письма"
+            placeholder="Введите СМС код"
             value={code}
             onChange={(e) => handleChangeCode(e.target.value)}
             className={code.error ? styles.input_err : styles.input}

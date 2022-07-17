@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 
 import styles from '../../scss/components/Desctop/Footer.module.scss';
 import { FooterIcon } from '../../assets';
+import mc from '../../assets/payments/mc.png';
+import mir from '../../assets/payments/mir.png';
+import visa from '../../assets/payments/visa.png';
 
 const languages = ['RU', 'ENG', 'CZ', 'JPN'];
 
@@ -73,7 +76,11 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-
+      <div className={styles.payments}>
+        <img src={mir} alt="МИР" className={styles.payment} />
+        <img src={mc} alt="MC" className={styles.payment} />
+        <img src={visa} alt="VISA" className={styles.payment} />
+      </div>
       {/*  <div className={styles.set_lng}>
         {showLang
           ? languages.map((item, index) =>

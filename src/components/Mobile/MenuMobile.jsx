@@ -7,6 +7,9 @@ import styles from '../../scss/components/Mobile/MenuMobile.module.scss';
 import { FooterIconMobile } from '../../assets';
 import Div100vh from 'react-div-100vh';
 import { Context } from '../..';
+import mc from '../../assets/payments/mc.png';
+import mir from '../../assets/payments/mir.png';
+import visa from '../../assets/payments/visa.png';
 
 const languages = ['RU', 'ENG', 'CZ', 'JPN'];
 
@@ -85,6 +88,12 @@ const MenuMobile = observer(({ showMenu, setShowMenu }) => {
               <h1 className={styles.link}>Помощь и FAQ</h1>
             </Link> */}
           </ul>
+          <hr />
+          <div className={styles.payments}>
+            <img src={mir} alt="МИР" className={styles.payment} />
+            <img src={mc} alt="MC" className={styles.payment} />
+            <img src={visa} alt="VISA" className={styles.payment} />
+          </div>
         </div>
       </div>
     </Div100vh>

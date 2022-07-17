@@ -10,6 +10,7 @@ import { emailRegexp, phoneRegexp } from '../../utils/regExps';
 import { Context } from '../..';
 
 const PhoneMask = '+{0}-000-000-00-00';
+const cyrillicPattern = /^\p{sc=Cyrillic}*$/u;
 
 const ProfileMobile = observer(() => {
   const [activeEdit, setActiveEdit] = useState(false);
@@ -36,18 +37,21 @@ const ProfileMobile = observer(() => {
   const { user } = useContext(Context);
 
   useEffect(() => {
-    /*  console.log(user.userInfo.user.last_name); */
-    setName({ value: user.userInfo.user.first_name, error: false });
-    setLastName({ value: user.userInfo.user.last_name, error: false });
-    setEmail({ value: user.userInfo.user.email, error: false });
-    setPhone({ value: user.userInfo.user.phone_number, error: false });
-    setActiveEmail(user.userInfo.is_getting_email_notifications);
-    setActivePhone(user.userInfo.is_getting_sms_notifications);
-  }, [user]);
+    if (user.getUser.user?.first_name) {
+      setName({ value: user.getUser.user.first_name, error: false });
+      setLastName({ value: user.getUser.user.last_name, error: false });
+      setEmail({ value: user.getUser.user.email, error: false });
+      setPhone({ value: user.getUser.user.phone_number, error: false });
+      setActiveEmail(user.getUser.is_getting_email_notifications);
+      setActivePhone(user.getUser.is_getting_sms_notifications);
+    }
+  }, []);
 
   const handleChangeName = (value) => {
     if (value.length < 1) {
       setName({ value: value, error: 'Обязательное поле' });
+    } else if (!cyrillicPattern.test(value)) {
+      setName({ value: value, error: 'Только латинские буквы' });
     } else {
       setName({ value: value, error: false });
     }
@@ -56,6 +60,9 @@ const ProfileMobile = observer(() => {
   const handleChangeLastName = (value) => {
     if (value.length < 1) {
       setLastName({ value: value, error: 'Обязательное поле' });
+    }
+    if (!cyrillicPattern.test(value)) {
+      setLastName({ value: value, error: 'Только латинские буквы' });
     } else {
       setLastName({ value: value, error: false });
     }
@@ -79,8 +86,18 @@ const ProfileMobile = observer(() => {
     }
   };
 
-  const onSubmit = () => {
-    if (!name.error && !email.error && !phone.error) {
+  const onSubmit = async () => {
+    if (!name.error && !lastName.error && !email.error && !phone.error) {
+      await user.updateProfile({
+        user: {
+          first_name: name.value,
+          last_name: lastName.value,
+          email: email.value,
+          phone_number: `+${phone.value}`,
+        },
+        is_getting_email_notifications: activeEmail,
+        is_getting_sms_notifications: activePhone,
+      });
       setActiveEdit(false);
     }
   };
@@ -133,7 +150,7 @@ const ProfileMobile = observer(() => {
         <h5 className={styles.input_error}>{email.error ? email.error : null}</h5>
 
         <IMaskInput
-          disabled={!activeEdit}
+          disabled
           mask={PhoneMask}
           value={phone.value}
           unmask={true}

@@ -11,6 +11,7 @@ import FAQLKMobile from './FAQLKMobile';
 
 import CollaborationInfoPageMobile from '../infos/CollaborationInfoPageMobile';
 import PrivacyPolicyPageMobile from '../infos/PrivacyPolicyPageMobile';
+import ContactsPageLKMobile from './ContactsPageLKMobile';
 
 const LK = () => {
   return (
@@ -29,6 +30,7 @@ const LK = () => {
         <Route path="FAQ" element={<FAQLKMobile />} />
         <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
         <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
+        <Route path="contacts" element={<ContactsPageLKMobile />} />
       </Routes>
     </>
   );

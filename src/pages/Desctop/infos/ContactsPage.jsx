@@ -28,6 +28,14 @@ const ContactsPage = () => {
             <Icon icon={'fluent:mail-16-regular'} className={styles.email_icon} />
             <h1 className={styles.email}>lookbook.rf@inbox.ru</h1>
           </div>
+          <div className={styles.row}>
+            <Icon icon={'carbon:phone'} className={styles.phone_icon} />
+            <h1 className={styles.phone}>8-800-201-75-67</h1>
+          </div>
+          <div className={styles.row}>
+            <Icon icon={'carbon:phone'} className={styles.phone_icon} />
+            <h1 className={styles.phone}>204-08-88</h1>
+          </div>
         </div>
       </div>
     </div>

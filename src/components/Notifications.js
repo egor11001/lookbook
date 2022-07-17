@@ -1,5 +1,20 @@
 import { Store } from 'react-notifications-component';
 
+export const defaultSuccess = (text) => {
+  Store.addNotification({
+    title: text || 'Успешно',
+    message: '',
+    type: 'success',
+    insert: 'right',
+    container: 'bottom-left',
+    animationIn: ['animate__animated', 'animate__fadeIn'],
+    animationOut: ['animate__animated', 'animate__fadeOut'],
+    dismiss: {
+      duration: 5000,
+    },
+  });
+};
+
 export const defaultError = (text) => {
   Store.addNotification({
     title: text || 'Ошибка',

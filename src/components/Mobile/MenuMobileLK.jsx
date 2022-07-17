@@ -4,6 +4,9 @@ import { Icon } from '@iconify/react';
 
 import styles from '../../scss/components/Mobile/MenuMobile.module.scss';
 import { FooterIconMobile } from '../../assets';
+import mc from '../../assets/payments/mc.png';
+import mir from '../../assets/payments/mir.png';
+import visa from '../../assets/payments/visa.png';
 import Div100vh from 'react-div-100vh';
 
 const MenuMobileLK = ({ showMenu, setShowMenu }) => {
@@ -69,14 +72,21 @@ const MenuMobileLK = ({ showMenu, setShowMenu }) => {
               <Icon className={styles.icon} icon={'system-uicons:document-list'} />
               <h1 className={styles.link_more}>Политика конфиденциальности</h1>
             </Link>
+            <Link
+              onClick={() => setShowMenu(!showMenu)}
+              to={'/lk/contacts'}
+              className={styles.li_more}>
+              <Icon className={styles.icon} icon={'fluent:mail-16-regular'} />
+              <h1 className={styles.link_more}>Контакты</h1>
+            </Link>
           </ul>
 
           <hr />
-
-          <h1 className={styles.contacts}>
-            <span>Свяжитесь с нами:</span>
-            <span>lookbook.rf@inbox.ru</span>
-          </h1>
+          <div className={styles.payments}>
+            <img src={mir} alt="МИР" className={styles.payment} />
+            <img src={mc} alt="MC" className={styles.payment} />
+            <img src={visa} alt="VISA" className={styles.payment} />
+          </div>
         </div>
       </div>
     </Div100vh>

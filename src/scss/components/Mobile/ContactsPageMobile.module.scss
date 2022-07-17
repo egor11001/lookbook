@@ -55,7 +55,7 @@
 
       .text {
         font-size: 16px;
-        margin-bottom: 32px;
+        margin-bottom: 40px;
         font-weight: 800;
         color: $light;
       }
@@ -63,6 +63,10 @@
       .row {
         display: flex;
         align-items: center;
+        margin-bottom: 32px;
+        &:nth-last-of-type(1) {
+          margin-bottom: 0;
+        }
 
         .email_icon {
           width: 32px;
@@ -74,6 +78,17 @@
         .email {
           font-size: 24px;
           font-weight: 400;
+        }
+        .phone {
+          font-size: 20px;
+          font-weight: 400;
+        }
+
+        .phone_icon {
+          width: 24px;
+          height: 24px;
+          color: $black;
+          margin-right: 12px;
         }
       }
     }

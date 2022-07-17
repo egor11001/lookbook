@@ -79,7 +79,8 @@
       }
 
       .input_err {
-        border: 1px solid $pink;
+        border: 2px solid $pink;
+        &:hover,
         &:focus {
           transition: 0.2s;
           border: 2px solid $pink;

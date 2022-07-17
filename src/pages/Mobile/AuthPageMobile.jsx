@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Navigate, useLocation } from 'react-router';
+import { observer } from 'mobx-react-lite';
 import { Context } from '../..';
 
 import LoginMobile from '../../components/Mobile/Auth/Presale/LoginMobile';
@@ -7,7 +8,7 @@ import RegistrationMobile from '../../components/Mobile/Auth/Presale/Registratio
 
 import styles from '../../scss/components/Mobile/AuthPageMobile.module.scss';
 
-const AuthPageMobile = () => {
+const AuthPageMobile = observer(() => {
   const [active, setActive] = useState(0);
 
   const location = useLocation();
@@ -19,7 +20,7 @@ const AuthPageMobile = () => {
   }, []);
 
   if (user.getAuth) {
-    return <Navigate to={location.state?.from?.pathname || '/'} />;
+    return <Navigate to={location.state?.from?.pathname || '/my'} />;
   }
   return (
     <div className={styles.wrapper}>
@@ -33,12 +34,12 @@ const AuthPageMobile = () => {
           </button>
         </div>
 
-        <div className={styles.content}>
+        <form className={styles.content}>
           {active === 0 ? <LoginMobile /> : active === 1 ? <RegistrationMobile /> : null}
-        </div>
+        </form>
       </div>
     </div>
   );
-};
+});
 
 export default AuthPageMobile;

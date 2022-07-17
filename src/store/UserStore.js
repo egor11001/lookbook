@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx';
 import api from '../services';
-import { failAuthNotification } from '../components/Notifications';
+import { failAuthNotification, defaultError, defaultSuccess } from '../components/Notifications';
 
 export default class UserStore {
-  user = {};
+  user = { sadasd: '123213' };
   isAuth = false;
 
   constructor() {
@@ -18,7 +18,7 @@ export default class UserStore {
     this.user = info;
   }
 
-  get userInfo() {
+  get getUser() {
     return this.user;
   }
 
@@ -28,9 +28,22 @@ export default class UserStore {
 
   async getProfile() {
     try {
-      const { data } = await api.user.getProfile();
-      this.setUser(data[0]);
+      const res = await api.user.getProfile();
+      this.setUser(res.data[0]);
+      return res.status;
     } catch (e) {
+      return e.response.status;
+    }
+  }
+
+  async updateProfile(info) {
+    try {
+      const { data } = await api.user.updateProfile(info);
+      this.setUser(data);
+      defaultSuccess('Данные изменены');
+      return data;
+    } catch (e) {
+      defaultError();
       return e.response.status;
     }
   }
@@ -38,12 +51,9 @@ export default class UserStore {
   async loginCode(info) {
     try {
       const { data } = await api.auth.loginCode(info);
-
       localStorage.setItem('UToken', data.key);
       this.setAuth(true);
-      const profileData = await api.user.getProfile();
-      this.setUser(profileData.data);
-      return profileData.status;
+      return await this.getProfile();
     } catch (e) {
       failAuthNotification(e.response.data.message);
       return e.response.status;
@@ -67,12 +77,12 @@ export default class UserStore {
     try {
       const res = await api.auth.checkAuth();
       this.setAuth(true);
-      this.getProfile();
+      await this.getProfile();
       return res.status;
     } catch (e) {
       localStorage.removeItem('UToken');
       this.setAuth(false);
-      this.setUser({});
+      this.setUser(null);
       return e.response.status;
     }
   }

@@ -5,6 +5,10 @@ export default class userApi {
     return $apiUser.get('/my/profile/');
   }
 
+  static async updateProfile(info) {
+    return $apiUser.patch('/my/profile/update', info);
+  }
+
   static async getBasket() {
     return $apiUser.get('/my/basket/');
   }

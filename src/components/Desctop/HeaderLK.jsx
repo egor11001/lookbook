@@ -18,9 +18,9 @@ const HeaderLK = () => {
         <Link to={'/lk/profile'} className={styles.btn}>
           <Icon className={styles.icon} icon="ci:user-circle" />
         </Link>
-        <Link to={'/lk/FAQ'} className={styles.btn}>
+        {/* <Link to={'/lk/FAQ'} className={styles.btn}>
           <Icon className={styles.icon} icon="fluent:question-circle-12-regular" />
-        </Link>
+        </Link> */}
         <Link to={'/'} className={styles.btn}>
           <Icon className={styles.icon} icon="ic:twotone-logout" />
         </Link>

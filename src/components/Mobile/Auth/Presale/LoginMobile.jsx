@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { IMaskInput } from 'react-imask';
-import { Navigate, useLocation } from 'react-router';
+import { Navigate, useLocation } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 
@@ -101,7 +101,7 @@ const LoginMobile = observer(() => {
             <ChevronLeftIcon className={styles.back_icon} />
           </button>
           <input
-            placeholder="Введите код с полученного письма"
+            placeholder="Введите СМС код"
             value={code}
             onChange={(e) => handleChangeCode(e.target.value)}
             className={code.error ? styles.input_err : styles.input}

@@ -77,7 +77,7 @@
 
       .text {
         font-size: 32px;
-        margin-bottom: 40px;
+        margin-bottom: 32px;
         font-weight: 800;
         color: $light;
       }
@@ -85,6 +85,10 @@
       .row {
         display: flex;
         align-items: center;
+        margin-bottom: 24px;
+        &:nth-last-of-type(1) {
+          margin-bottom: 0;
+        }
 
         .email_icon {
           width: 48px;
@@ -96,6 +100,18 @@
         .email {
           font-size: 48px;
           font-weight: 400;
+        }
+
+        .phone {
+          font-size: 32px;
+          font-weight: 400;
+        }
+
+        .phone_icon {
+          width: 32px;
+          height: 32px;
+          color: $black;
+          margin-right: 16px;
         }
       }
       @media (max-width: 1620px) {
