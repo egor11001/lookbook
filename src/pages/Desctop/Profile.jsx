@@ -44,7 +44,7 @@ const Profile = observer(() => {
       setActiveEmail(user.getUser.is_getting_email_notifications);
       setActivePhone(user.getUser.is_getting_sms_notifications);
     }
-  }, []);
+  }, [user]);
 
   const handleChangeName = (value) => {
     if (value.length < 1) {

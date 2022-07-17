@@ -37,6 +37,7 @@ const ProfileMobile = observer(() => {
   const { user } = useContext(Context);
 
   useEffect(() => {
+    user.getProfile();
     if (user.getUser.user?.first_name) {
       setName({ value: user.getUser.user.first_name, error: false });
       setLastName({ value: user.getUser.user.last_name, error: false });
@@ -45,7 +46,7 @@ const ProfileMobile = observer(() => {
       setActiveEmail(user.getUser.is_getting_email_notifications);
       setActivePhone(user.getUser.is_getting_sms_notifications);
     }
-  }, []);
+  }, [user]);
 
   const handleChangeName = (value) => {
     if (value.length < 1) {
