@@ -12,6 +12,8 @@ const BasketPage = () => {
   const [items, setItems] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
 
+  console.log(items && items);
+
   const deleteItem = (data) => {
     removeFromBasket(data).then(() => {
       getBasket().then((data) => {
@@ -39,7 +41,13 @@ const BasketPage = () => {
         </div>
 
         <h2 className={styles.counts}>
-          <span>{items?.length || '0'}</span> товаров
+          <span>
+            {(items &&
+              items.length > 0 &&
+              items.map((item) => item.quantity).reduce((prev, cur) => prev + cur)) ||
+              '0'}{' '}
+          </span>
+          товаров
         </h2>
         <h3 className={styles.total_price}>
           Итого: <span>{totalPrice || 0} ₽</span>

@@ -15,7 +15,6 @@ const AuthPage = observer(() => {
   const { user } = useContext(Context);
 
   if (user.getAuth) {
-    console.log('010101');
     return <Navigate to={location.state?.from?.pathname || '/my'} />;
   }
 

@@ -15,6 +15,7 @@ export const login = async (phone_number) => {
       e.response.data.phone_number ||
         e.response.data.email ||
         e.response.data.code ||
+        e.response.data.message ||
         e.response.data,
     );
     return e.response.status;

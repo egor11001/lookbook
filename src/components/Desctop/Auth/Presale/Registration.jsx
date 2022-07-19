@@ -173,6 +173,7 @@ const Registration = observer(() => {
       {!stepCode ? (
         <>
           <input
+            autoFocus
             value={name.value}
             onChange={(e) => handleChangeName(e.target.value)}
             placeholder="Имя"
@@ -219,9 +220,11 @@ const Registration = observer(() => {
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <input
+            autoFocus
             placeholder="Введите СМС код"
             value={code.value}
             onChange={(e) => handleChangeCode(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && onReg(e)}
             className={code.error ? styles.input_err : styles.input}
           />
           <h5 className={styles.input_error}>{code.error ? code.error : null}</h5>

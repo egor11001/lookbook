@@ -22,6 +22,6 @@ export default class userApi {
   }
 
   static async removeFromBasket(info) {
-    return $apiUser.post('/my/basket/delete-product', info);
+    return $apiUser.post('/my/basket/delete-one-product', info);
   }
 }

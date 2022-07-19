@@ -83,6 +83,7 @@ const Login = observer(() => {
         <>
           <IMaskInput
             mask={PhoneMask}
+            autoFocus
             value={phone.value}
             unmask={true}
             onAccept={(value, mask) => handleChangePhone(value)}
@@ -91,24 +92,26 @@ const Login = observer(() => {
             className={phone.error ? styles.input_err : styles.input}
           />
           <h5 className={styles.input_error}>{phone.error ? phone.error : null}</h5>
-          <button onClick={onSubmit} className={styles.submit}>
+          <button type="submit" onClick={onSubmit} className={styles.submit}>
             Войти
           </button>
         </>
       ) : (
         <>
-          <button onClick={() => setStepCode(false)} className={styles.back_btn}>
+          <button onClick={() => console.log(123)} className={styles.back_btn}>
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </button>
           <input
+            autoFocus
             placeholder="Введите СМС код"
             value={code}
             onChange={(e) => handleChangeCode(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && onLogin(e)}
             className={code.error ? styles.input_err : styles.input}
           />
           <h5 className={styles.input_error}>{code.error ? code.error : null}</h5>
 
-          <button onClick={onLogin} className={styles.submit}>
+          <button type="submit" onClick={onLogin} className={styles.submit}>
             Отправить
           </button>
         </>

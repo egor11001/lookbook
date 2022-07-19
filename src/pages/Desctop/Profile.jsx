@@ -36,6 +36,7 @@ const Profile = observer(() => {
   const { user } = useContext(Context);
 
   useEffect(() => {
+    user.getProfile();
     if (user.getUser.user?.first_name) {
       setName({ value: user.getUser.user.first_name, error: false });
       setLastName({ value: user.getUser.user.last_name, error: false });
