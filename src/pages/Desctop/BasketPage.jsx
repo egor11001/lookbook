@@ -12,8 +12,6 @@ const BasketPage = () => {
   const [items, setItems] = useState(null);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  console.log(items && items);
-
   const deleteItem = (data) => {
     removeFromBasket(data).then(() => {
       getBasket().then((data) => {

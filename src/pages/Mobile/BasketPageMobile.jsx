@@ -88,7 +88,10 @@ const BasketPageMobile = () => {
       {items && items.length > 0 ? (
         <>
           <h2 className={styles.counts}>
-            <span>{items?.length || '0'}</span> товаров
+            <span>
+              {items.map((item) => item.quantity).reduce((prev, cur) => prev + cur) || '0'}
+            </span>{' '}
+            товаров
           </h2>
           <h1 className={styles.total_price}>
             <span>Итого:</span>
