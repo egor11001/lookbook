@@ -4,12 +4,16 @@ export const apiUrl = process.env.REACT_APP_API_URL;
 
 const $api = axios.create({
   baseURL: apiUrl,
-  withCredentials: true,
+  headers: {
+    'Access-Control-Allow-Origin': 'https://lookbook.best/',
+  },
 });
 
 const $apiUser = axios.create({
   baseURL: apiUrl,
-  withCredentials: true,
+  headers: {
+    'Access-Control-Allow-Origin': 'https://lookbook.best/',
+  },
 });
 
 $apiUser.interceptors.request.use((config) => {
