@@ -22,7 +22,7 @@ const MainBrand = () => {
           <Link to={'/'} className={styles.back}>
             <Icon icon={'bi:arrow-left'} className={styles.back_icon} />
           </Link>
-          <h3 className={styles.title}>{location.state.vendor}</h3>
+          <h3 className={styles.title}>{location.state.vendor || '-'}</h3>
           <img className={styles.logo} src={location.state.image} alt="LOGO" />
         </div>
       </div>

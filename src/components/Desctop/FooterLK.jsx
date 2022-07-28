@@ -22,9 +22,9 @@ const FooterLK = () => {
         </div>
         <div className={styles.col}>
           <h2 className={styles.text}>Свяжитесь с нами:</h2>
-          <h1 className={styles.item}>lookbook.rf@inbox.ru</h1>
+          <h1 className={styles.item}>info@lookbook.best</h1>
           <h1 className={styles.item}>
-            8-800-201-75-67 <span>/</span> 204-08-88
+            8-800-201-75-67 <span>/</span> 8-391-204-08-88
           </h1>
         </div>
       </div>

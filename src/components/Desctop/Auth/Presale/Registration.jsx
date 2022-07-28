@@ -3,18 +3,21 @@ import { Icon } from '@iconify/react';
 import { Navigate, useLocation } from 'react-router';
 import { IMaskInput } from 'react-imask';
 import { observer } from 'mobx-react-lite';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 import styles from '../../../../scss/components/Desctop/AuthPage.module.scss';
-import { emailRegexp, phoneRegexp } from '../../../../utils/regExps';
 
 import { Context } from '../../../..';
 import { registration } from '../../../../services/actions';
+import authRedirect from '../../../../services/authRedirect';
+import useValidate from '../../../../hooks/useValidate';
 
 const PhoneMask = '+{0}-000-000-00-00';
-const cyrillicPattern = /^\p{sc=Cyrillic}*$/u;
 
 const Registration = observer(() => {
   const [attempt, setAttempt] = useState(false);
+  const [vissible, setVissible] = useState(false);
   const [name, setName] = useState({
     value: '',
     error: false,
@@ -27,6 +30,10 @@ const Registration = observer(() => {
     value: '',
     error: false,
   });
+  const [password, setPassword] = useState({
+    value: '',
+    error: false,
+  });
   const [phone, setPhone] = useState({
     value: '',
     error: false,
@@ -34,15 +41,15 @@ const Registration = observer(() => {
 
   const { user } = useContext(Context);
 
+  const validator = useValidate();
+
   const handleChangeName = (value) => {
     if (attempt) {
-      if (value.length < 1) {
-        setName({ value: value, error: 'Обязательное поле' });
-      }
-      if (!cyrillicPattern.test(value)) {
-        setName({ value: value, error: 'Только латинские буквы' });
-      } else {
+      const res = validator.nameValidate(value);
+      if (res === '') {
         setName({ value: value, error: false });
+      } else {
+        setName({ value: value, error: res });
       }
     } else {
       setName({ value: value, error: false });
@@ -51,13 +58,11 @@ const Registration = observer(() => {
 
   const handleChangeLastName = (value) => {
     if (attempt) {
-      if (value.length < 1) {
-        setLastName({ value: value, error: 'Обязательное поле' });
-      }
-      if (!cyrillicPattern.test(value)) {
-        setLastName({ value: value, error: 'Только латинские буквы' });
-      } else {
+      const res = validator.nameValidate(value);
+      if (res === '') {
         setLastName({ value: value, error: false });
+      } else {
+        setLastName({ value: value, error: res });
       }
     } else {
       setLastName({ value: value, error: false });
@@ -66,61 +71,70 @@ const Registration = observer(() => {
 
   const handleChangeEmail = (value) => {
     if (attempt) {
-      if (value.length < 1) {
-        setEmail({ value: value, error: 'Обязательное поле' });
-      } else if (!emailRegexp.test(value)) {
-        setEmail({ value: value, error: 'Некорректный email' });
-      } else {
+      const res = validator.emailValidate(value);
+      if (res === '') {
         setEmail({ value: value, error: false });
+      } else {
+        setEmail({ value: value, error: res });
       }
     } else {
       setEmail({ value: value, error: false });
     }
   };
 
+  const handleChangePassword = (value) => {
+    if (attempt) {
+      const res = validator.passwordValidate(value);
+      if (res === '') {
+        setPassword({ value: value, error: false });
+      } else {
+        setPassword({ value: value, error: res });
+      }
+    } else {
+      setPassword({ value: value, error: false });
+    }
+  };
+
   const handleChangePhone = (value) => {
     if (attempt) {
-      if (value.split('').length < 11 || !phoneRegexp.test(value)) {
-        setPhone({ value: value, error: 'Неверный номер' });
-      } else {
+      const res = validator.phoneValidate(value);
+      if (res === '') {
         setPhone({ value: value, error: false });
+      } else {
+        setPhone({ value: value, error: res });
       }
     } else {
       setPhone({ value: value, error: false });
     }
   };
 
-  const checkErrors = () => {
-    let err;
-    if (name.value.length < 1) {
-      setName({ value: name.value, error: 'Обязательное поле' });
-      err = true;
-    } else if (!cyrillicPattern.test(name.value)) {
-      setName({ value: name.value, error: 'Только латинские буквы' });
-      err = true;
-    }
+  const changeVisible = () => {
+    setVissible(!vissible);
+  };
 
-    if (lastName.value.length < 1) {
-      setLastName({ value: lastName.value, error: 'Обязательное поле' });
-      err = true;
-    } else if (!cyrillicPattern.test(lastName.value)) {
-      setLastName({ value: lastName.value, error: 'Только латинские буквы' });
-      err = true;
-    }
-
-    if (email.value.length < 1) {
-      setEmail({ value: email.value, error: 'Обязательное поле' });
-      err = true;
-    } else if (!emailRegexp.test(email.value)) {
-      setEmail({ value: email.value, error: 'Некорректный email' });
-      err = true;
-    }
-
-    if (phone.value.split('').length < 11 || !phoneRegexp.test(phone.value)) {
-      setPhone({ value: phone.value, error: 'Неверный номер' });
-      err = true;
-    }
-    return err;
+  const checkErrors = async () => {
+    const res = await validator.allValidate(
+      {
+        name: validator.nameValidate,
+        lastName: validator.nameValidate,
+        email: validator.emailValidate,
+        password: validator.passwordValidate,
+        phone: validator.phoneValidate,
+      },
+      {
+        name: name.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
+        phone: phone.value,
+      },
+    );
+    setName({ ...name, error: res.res.name });
+    setLastName({ ...lastName, error: res.res.lastName });
+    setEmail({ ...email, error: res.res.email });
+    setPassword({ ...password, error: res.res.password });
+    setPhone({ ...phone, error: res.res.phone });
+    return res.err;
   };
 
   const [stepCode, setStepCode] = useState(false);
@@ -136,23 +150,26 @@ const Registration = observer(() => {
     if (!attempt) {
       setAttempt(true);
       const res = await checkErrors();
-      if (res) {
+      if (!res) {
         return;
       }
     }
-    if (!name.error && !lastName.error && !email.error && !phone.error) {
-      registration({
-        first_name: name.value,
-        last_name: lastName.value,
-        email: email.value,
-        phone_number: '+' + phone.value,
-      }).then((data) => {
-        if (data === 200) {
-          setStepCode(true);
-        } else {
-          console.log('ERR');
-        }
-      });
+    if (!name.error && !lastName.error && !email.error && !password.error && !phone.error) {
+      user
+        .registration({
+          first_name: name.value,
+          last_name: lastName.value,
+          email: email.value,
+          phone_number: '+' + phone.value,
+          password: password.value,
+        })
+        .then((data) => {
+          if (data === 200) {
+            return <Navigate to={location.state?.from?.pathname} />;
+          } else {
+            console.log('ERR');
+          }
+        });
     }
   };
 
@@ -160,12 +177,21 @@ const Registration = observer(() => {
     e.preventDefault();
     user.loginCode({ phone_number: '+' + phone.value, code: code }).then((data) => {
       if (data === 200) {
-        console.log(location.state?.from?.pathname);
         return <Navigate to={location.state?.from?.pathname} />;
       } else {
         console.log('ERR');
       }
     });
+  };
+
+  const onVk = (e) => {
+    e.preventDefault();
+    authRedirect.forVK();
+  };
+
+  const onYandex = (e) => {
+    e.preventDefault();
+    authRedirect.forYandex();
   };
 
   return (
@@ -200,18 +226,52 @@ const Registration = observer(() => {
           />
           <h5 className={styles.input_error}>{email.error ? email.error : null}</h5>
 
+          <div className={styles.password}>
+            <input
+              value={password.value}
+              onChange={(e) => handleChangePassword(e.target.value)}
+              placeholder="Пароль"
+              type={vissible ? 'text' : 'password'}
+              className={password.error ? styles.input_err : styles.input}
+            />
+            {vissible ? (
+              <VisibilityIcon className={styles.vissible} onClick={changeVisible} />
+            ) : (
+              <VisibilityOffIcon className={styles.vissible} onClick={changeVisible} />
+            )}
+          </div>
+          <h5 className={styles.input_error}>{password.error ? password.error : null}</h5>
+
           <IMaskInput
             mask={PhoneMask}
             value={phone.value}
             unmask={true}
             onAccept={(value, mask) => handleChangePhone(value)}
             placeholder="Номер телефона"
-            type="text"
+            type="tel"
             className={phone.error ? styles.input_err : styles.input}
           />
           <h5 className={styles.input_error}>{phone.error ? phone.error : null}</h5>
           <button type="submit" onClick={onSubmit} className={styles.submit}>
             Зарегистрироваться
+          </button>
+
+          <hr />
+
+          <h5 className={styles.or}>Или</h5>
+
+          {/* <button className={styles.social_mail}>
+            <Icon icon={'simple-icons:maildotru'} className={styles.mail_icon} />
+            Продолжить с Mail.ru
+          </button> */}
+          <button onClick={onVk} className={styles.social_vk}>
+            <Icon icon={'akar-icons:vk-fill'} className={styles.vk_icon} />
+            Продолжить с VK
+          </button>
+
+          <button onClick={onYandex} className={styles.social_yandex}>
+            <Icon icon={'brandico:yandex'} className={styles.yandex_icon} />
+            Продолжить с Yandex
           </button>
         </>
       ) : (
@@ -221,7 +281,7 @@ const Registration = observer(() => {
           </button>
           <input
             autoFocus
-            placeholder="Введите СМС код"
+            placeholder="Код с письма"
             value={code.value}
             onChange={(e) => handleChangeCode(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && onReg(e)}

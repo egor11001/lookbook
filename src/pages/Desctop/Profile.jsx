@@ -7,11 +7,13 @@ import { observer } from 'mobx-react-lite';
 import styles from '../../scss/components/Desctop/LK/ProfileLK.module.scss';
 import { emailRegexp, phoneRegexp } from '../../utils/regExps';
 import { Context } from '../..';
+import Loader from '../../components/Loaders/Loader';
 
 const PhoneMask = '+{0}-000-000-00-00';
 const cyrillicPattern = /^\p{sc=Cyrillic}*$/u;
 
 const Profile = observer(() => {
+  const [loading, setLoading] = useState(true);
   const [activeEdit, setActiveEdit] = useState(false);
   const [name, setName] = useState({
     value: '',
@@ -45,7 +47,8 @@ const Profile = observer(() => {
       setActiveEmail(user.getUser.is_getting_email_notifications);
       setActivePhone(user.getUser.is_getting_sms_notifications);
     }
-  }, [user]);
+    setLoading(false);
+  }, []);
 
   const handleChangeName = (value) => {
     if (value.length < 1) {
@@ -101,6 +104,10 @@ const Profile = observer(() => {
       setActiveEdit(false);
     }
   };
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className={styles.wrapper}>

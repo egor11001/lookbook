@@ -20,6 +20,7 @@ import MainBrandMobile from '../../pages/Mobile/MainBrandMobile';
 
 import Loader from '../Loaders/Loader';
 import UserRouter from './UserRouter';
+import AuthServicesRouter from './AuthServicesRouter';
 
 const BasketPageMobile = React.lazy(() => import('../../pages/Mobile/BasketPageMobile'));
 const PrivacyPolicyPageMobile = React.lazy(() =>
@@ -44,6 +45,7 @@ const RoutesMobile = () => {
           <Route path="collaboration" element={<CollaborationInfoPageMobile />} />
           <Route path="returns" element={<ReturnsMobile />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPageMobile />} />
+          <Route path="social-auth-service" element={<AuthServicesRouter />} />
           {/* <Route path="FAQ" element={<FAQPageMobile />} /> */}
 
           <Route path="my/*" element={<UserRouter />}>

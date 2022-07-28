@@ -19,6 +19,7 @@ import MainBrand from '../../pages/Desctop/MainBrand';
 
 import Loader from '../Loaders/Loader';
 import UserRouter from './UserRouter';
+import AuthServicesRouter from './AuthServicesRouter';
 
 const BasketPage = React.lazy(() => import('../../pages/Desctop/BasketPage'));
 const PrivacyPolicyPage = React.lazy(() => import('../../pages/Desctop/infos/PrivacyPolicyPage'));
@@ -52,6 +53,8 @@ const Routes = () => {
           <Route path="collaboration" element={<CollaborationInfoPage />} />
           <Route path="returns" element={<Returns />} />
           <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="social-auth-service" element={<AuthServicesRouter />} />
+
           {/* <Route path="FAQ" element={<FAQPage />} /> */}
 
           <Route path="my/*" element={<UserRouter />}>

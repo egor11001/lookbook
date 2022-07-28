@@ -11,7 +11,7 @@ const $apiUser = axios.create({
 });
 
 $apiUser.interceptors.request.use((config) => {
-  config.headers.Authorization = `Token ${localStorage.getItem('UToken')}`;
+  config.headers.Authorization = `Bearer ${localStorage.getItem('UToken')}`;
 
   return config;
 });
@@ -25,11 +25,11 @@ $apiUser.interceptors.response.use(
     if (error.response.status === 401 && error.config && !error.config._isRetry) {
       originalRequest._isRetry = true;
       try {
-        const response = await axios.post(`${apiUrl}/auth/refresh`, {
-          refreshToken: localStorage.getItem('refreshToken'),
+        const response = await axios.post('/auth/refresh-token/', {
+          refresh_token: localStorage.getItem('URefresh'),
         });
-        localStorage.setItem('token', response.data.token);
-        localStorage.setItem('refreshToken', response.data.refreshToken);
+        localStorage.setItem('UToken', response.data.access_token);
+        localStorage.setItem('URefresh', response.data.refresh_token);
         return $api.request(originalRequest);
       } catch (error) {
         alert(`ERROR AUTHORIZATION - ${error}`);

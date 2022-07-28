@@ -1,6 +1,12 @@
 import { $apiUser } from './axios';
 
 export default class userApi {
+  /*  static async profileVK(token, userId) {
+    return axios.get(`https://api.vk.com/method/users.get?user_id=${userId}&v=5.131`, {
+      headers: { Authoriation: `Bearer ${token}` },
+    });
+  } */
+
   static async getProfile() {
     return $apiUser.get('/my/profile/');
   }

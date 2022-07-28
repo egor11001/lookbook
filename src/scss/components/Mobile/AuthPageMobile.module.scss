@@ -3,16 +3,18 @@
 
 .wrapper {
   width: 100%;
-  height: 91vh;
+  min-height: 91vh;
+  max-height: fit-content;
+
   background-image: url('../../../assets/octopusMobile.png');
   background-position: -384px -224px;
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 40px 20px;
 
   .container {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     min-height: 338px;
     max-height: fit-content;
     padding: 40px 56px;
@@ -85,6 +87,54 @@
         }
       }
 
+      .password {
+        margin-bottom: 8x;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        position: relative;
+
+        .input,
+        .input_err {
+          width: 225px;
+          height: 40px;
+          padding: 12px 24px 12px 16px;
+          border: 1px solid $light;
+          color: $black;
+          font-weight: 400;
+          font-size: 14px;
+          border-radius: 30px;
+          margin: 0;
+
+          ::placeholder {
+            color: $light;
+          }
+
+          &:focus {
+            border: 1px solid $black;
+          }
+
+          &:disabled {
+            pointer-events: none;
+          }
+        }
+
+        .vissible {
+          position: absolute;
+          font-size: 16px;
+          color: $grey;
+          margin-right: 16px;
+          cursor: pointer;
+        }
+
+        .input_err {
+          border: 1px solid $pink;
+          &:focus {
+            border: 1px solid $pink;
+          }
+        }
+      }
+
       .input_error {
         height: 20px;
         margin-bottom: 16px;
@@ -112,6 +162,89 @@
         &:active {
           background: $black;
           transition: 0.2s;
+        }
+      }
+
+      hr {
+        width: 100%;
+        background-color: #c4c4c4;
+        color: #c4c4c4;
+        border: 1px solid #c4c4c4;
+        margin: 40px 0 16px 0;
+      }
+
+      .or {
+        font-weight: 400;
+        font-size: 14px;
+        color: $light;
+        margin-bottom: 24px;
+      }
+
+      .socials {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        .social {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 48px;
+          height: 48px;
+          border-radius: 100px;
+          margin-right: 24px;
+
+          &:nth-last-child(1) {
+            margin: 0;
+          }
+
+          &_mail {
+            @extend .social;
+            background-color: #005ff9;
+
+            &:hover {
+              background-color: #0055e0;
+            }
+
+            .mail_icon {
+              width: 24px;
+              height: 24px;
+              color: #ff9e00;
+            }
+          }
+
+          &_yandex {
+            @extend .social;
+            border: 1px solid $light;
+            color: $black;
+
+            &:hover {
+              background-color: #e0e0e0;
+              border: 1px solid #e0e0e0;
+            }
+
+            .yandex_icon {
+              width: 24px;
+              height: 24px;
+              color: #fc3f1d;
+            }
+          }
+
+          &_vk {
+            @extend .social;
+            background-color: #0077ff;
+
+            &:hover {
+              background-color: #0062d2;
+            }
+
+            .vk_icon {
+              width: 24px;
+              height: 24px;
+              color: white;
+            }
+          }
         }
       }
 

@@ -22,14 +22,15 @@ const App = observer(() => {
   });
 
   const { user } = useContext(Context);
+
   useEffect(() => {
-    if (localStorage.getItem('UToken')) {
+    if (localStorage.getItem('URefresh')) {
       user
         .checkAuth()
         .then(() => console.log(true))
         .catch(() => console.log(false));
     }
-  }, []);
+  }, [user]);
 
   return (
     <div className="App">
